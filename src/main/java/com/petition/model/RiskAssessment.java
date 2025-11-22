@@ -1,5 +1,6 @@
 package com.petition.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.petition.model.enums.RiskLevel;
 
 /**
@@ -46,6 +47,7 @@ public class RiskAssessment {
      *
      * @return true表示高危或极高危
      */
+    @JsonIgnore
     public boolean isHighRisk() {
         return riskLevel == RiskLevel.HIGH || riskLevel == RiskLevel.CRITICAL;
     }
@@ -55,6 +57,7 @@ public class RiskAssessment {
      *
      * @return 等级值，数字越大危险等级越高
      */
+    @JsonIgnore
     public int getLevelValue() {
         return riskLevel != null ? riskLevel.getLevelValue() : -1;
     }

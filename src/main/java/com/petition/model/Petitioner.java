@@ -1,5 +1,7 @@
 package com.petition.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -164,6 +166,7 @@ public class Petitioner {
      *
      * @return 姓名，personalInfo为null时返回null
      */
+    @JsonIgnore
     public String getName() {
         return personalInfo != null ? personalInfo.getName() : null;
     }
@@ -173,6 +176,7 @@ public class Petitioner {
      *
      * @return 身份证号，personalInfo为null时返回null
      */
+    @JsonIgnore
     public String getIdCard() {
         return personalInfo != null ? personalInfo.getIdCard() : null;
     }
@@ -182,6 +186,7 @@ public class Petitioner {
      *
      * @return true表示高危或极高危
      */
+    @JsonIgnore
     public boolean isHighRisk() {
         return riskAssessment != null && riskAssessment.isHighRisk();
     }

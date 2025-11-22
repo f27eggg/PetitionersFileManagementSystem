@@ -1,5 +1,7 @@
 package com.petition.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -126,6 +128,7 @@ public class BeijingContact {
      *
      * @return 主照片路径，无照片返回null
      */
+    @JsonIgnore
     public String getPrimaryPhoto() {
         return photos != null && !photos.isEmpty() ? photos.get(0) : null;
     }

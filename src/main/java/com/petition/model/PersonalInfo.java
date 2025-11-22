@@ -1,5 +1,6 @@
 package com.petition.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.petition.model.enums.Education;
 import com.petition.model.enums.Gender;
 import com.petition.model.enums.MaritalStatus;
@@ -282,6 +283,7 @@ public class PersonalInfo {
      *
      * @return 主要联系电话，无电话返回null
      */
+    @JsonIgnore
     public String getPrimaryPhone() {
         return phones != null && !phones.isEmpty() ? phones.get(0) : null;
     }
@@ -291,8 +293,9 @@ public class PersonalInfo {
      *
      * @return 主照片路径，无照片返回null
      */
+    @JsonIgnore
     public String getPrimaryPhoto() {
-        return photos != null && !photos.isEmpty() ? photos.get(0) : null;
+        return photos != null && !phones.isEmpty() ? photos.get(0) : null;
     }
 
     @Override
