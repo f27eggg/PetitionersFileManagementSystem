@@ -82,27 +82,42 @@
   - ✅ RiskAssessment.java（评估结果，1字段）
   - ✅ Petitioner.java（主实体，聚合以上四个模块）
 
-### 3.2 数据访问层实现
-- ⏭️ JsonDataManager.java（JSON文件读写）
-  - ⏭️ 实现loadAll()方法（加载所有数据）
-  - ⏭️ 实现saveAll()方法（保存所有数据）
-  - ⏭️ 实现findById()方法（按ID查询）
-  - ⏭️ 实现save()方法（保存单条）
-  - ⏭️ 实现delete()方法（删除单条）
+### 3.2 数据访问层实现（已完成 ✅）
+- ✅ JsonDataManager.java（JSON文件读写）
+  - ✅ 实现loadAll()方法（加载所有数据）
+  - ✅ 实现saveAll()方法（保存所有数据）
+  - ✅ 实现findById()方法（按ID查询）
+  - ✅ 实现save()方法（保存单条）
+  - ✅ 实现delete()方法（删除单条）
+  - ✅ 实现batchDelete()方法（批量删除）
+  - ✅ 实现count()方法（统计总数）
+  - ✅ 实现clear()方法（清空数据）
+  - ✅ 实现refresh()方法（刷新缓存）
 
-- ⏭️ ConfigManager.java（配置管理）
-  - ⏭️ 实现loadConfig()方法
-  - ⏭️ 实现saveConfig()方法
+- ✅ ConfigManager.java（配置管理）
+  - ✅ 实现loadConfig()方法
+  - ✅ 实现saveConfig()方法
+  - ✅ 实现get/getString/getInt/getBoolean()方法
+  - ✅ 实现set()方法
+  - ✅ 实现resetToDefault()方法
 
-- ⏭️ BackupManager.java（数据备份）
-  - ⏭️ 实现backup()方法
-  - ⏭️ 实现restore()方法
-  - ⏭️ 实现autoBackup()方法（定时备份）
+- ✅ BackupManager.java（数据备份）
+  - ✅ 实现backup()方法
+  - ✅ 实现restore()方法
+  - ✅ 实现restoreLatest()方法
+  - ✅ 实现listBackups()方法
+  - ✅ 实现startAutoBackup()方法（定时备份）
+  - ✅ 实现stopAutoBackup()方法
+  - ✅ 实现cleanupOldBackups()方法
 
-### 3.3 单元测试
-- ⏭️ 编写JsonDataManager测试用例
-- ⏭️ 编写数据模型序列化/反序列化测试
-- ⏭️ 测试数据验证逻辑
+### 3.3 单元测试（已完成 ✅）
+- ✅ 编写JsonDataManager测试用例（12个测试）
+- ✅ 编写ConfigManager测试用例（9个测试）
+- ✅ 编写BackupManager测试用例（12个测试）
+- ✅ 测试数据序列化/反序列化
+- ✅ 测试枚举类序列化
+- ✅ 测试LocalDateTime序列化
+- ✅ 所有测试通过（33/33）
 
 ---
 
