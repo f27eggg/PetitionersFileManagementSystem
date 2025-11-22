@@ -121,29 +121,44 @@
 
 ---
 
-## 阶段四：业务逻辑层开发（待开始 ⏭️）
+## 阶段四：业务逻辑层开发（进行中 🔄）
 
-### 4.1 核心业务服务
-- ⏭️ PetitionerService.java（人员管理服务）
-  - ⏭️ getAllPetitioners()
-  - ⏭️ getPetitionerById()
-  - ⏭️ addPetitioner()
-  - ⏭️ updatePetitioner()
-  - ⏭️ deletePetitioner()
-  - ⏭️ batchDelete()
+### 4.1 核心业务服务（已完成 ✅）
+- ✅ PetitionerService.java（人员管理服务）
+  - ✅ getAllPetitioners()
+  - ✅ getPetitionerById()
+  - ✅ addPetitioner()（含身份证号重复检查）
+  - ✅ updatePetitioner()
+  - ✅ deletePetitioner()
+  - ✅ batchDelete()
+  - ✅ getTotalCount()
+  - ✅ 数据验证功能
 
-- ⏭️ QueryService.java（查询服务）
-  - ⏭️ quickSearch()（快速搜索）
-  - ⏭️ advancedQuery()（高级查询）
-  - ⏭️ filterByRiskLevel()
-  - ⏭️ filterByVisitCount()
+- ✅ QueryService.java（查询服务）
+  - ✅ quickSearch()（快速搜索）
+  - ✅ advancedQuery()（高级查询）
+  - ✅ filterByRiskLevel()
+  - ✅ filterByVisitCount()
+  - ✅ getHighRiskPetitioners()
+  - ✅ filterByNativePlace()
+  - ✅ QueryCriteria查询条件类
 
-- ⏭️ StatisticsService.java（统计服务）
-  - ⏭️ getTotalCount()
-  - ⏭️ getRiskLevelDistribution()（危险等级分布）
-  - ⏭️ getVisitCountDistribution()（上访次数分布）
-  - ⏭️ getNativePlaceDistribution()（籍贯分布）
-  - ⏭️ getEntryMethodDistribution()（进京方式分布）
+- ✅ StatisticsService.java（统计服务）
+  - ✅ getTotalCount()
+  - ✅ getRiskLevelDistribution()（危险等级分布）
+  - ✅ getVisitCountDistribution()（上访次数分布）
+  - ✅ getNativePlaceDistribution()（籍贯分布）
+  - ✅ getEntryMethodDistribution()（进京方式分布）
+  - ✅ getEducationDistribution()（学历分布）
+  - ✅ getGenderDistribution()（性别分布）
+  - ✅ getMaritalStatusDistribution()（婚姻状态分布）
+  - ✅ getHighRiskCount()（高危人员数量）
+  - ✅ getStatisticsSummary()（统计摘要）
+
+- ✅ 单元测试（38个测试用例）
+  - ✅ PetitionerServiceTest（14个测试）
+  - ✅ QueryServiceTest（14个测试）
+  - ✅ StatisticsServiceTest（10个测试）
 
 ### 4.2 导入导出服务
 - ⏭️ ImportService.java（导入服务）
