@@ -121,7 +121,7 @@
 
 ---
 
-## 阶段四：业务逻辑层开发（进行中 🔄）
+## 阶段四：业务逻辑层开发（已完成 ✅）
 
 ### 4.1 核心业务服务（已完成 ✅）
 - ✅ PetitionerService.java（人员管理服务）
@@ -182,20 +182,44 @@
   - ✅ ExportServiceTest（16个测试）
   - ✅ 所有测试通过（99/99）
 
-### 4.3 工具类开发
-- ⏭️ ValidationUtil.java（验证工具）
-  - ⏭️ 身份证号验证
-  - ⏭️ 手机号验证
-  - ⏭️ 必填字段验证
+### 4.3 工具类开发（已完成 ✅）
+- ✅ ValidationUtil.java（验证工具）
+  - ✅ isEmpty/isNotEmpty() - 空值验证
+  - ✅ isValidIdCard() - 身份证号格式验证
+  - ✅ isValidPhone() - 手机号验证
+  - ✅ isValidEmail() - 邮箱验证
+  - ✅ isLengthInRange() - 长度范围验证
+  - ✅ isNumberInRange() - 数值范围验证
+  - ✅ isNumeric/isAlpha/isAlphanumeric() - 字符类型验证
+  - ✅ matches() - 正则表达式匹配
 
-- ⏭️ IdCardUtil.java（身份证工具）
-  - ⏭️ 提取性别
-  - ⏭️ 提取出生日期
-  - ⏭️ 计算年龄
-  - ⏭️ 脱敏显示
+- ✅ IdCardUtil.java（身份证工具）
+  - ✅ extractGender() - 提取性别
+  - ✅ extractBirthDate() - 提取出生日期
+  - ✅ extractAge() - 计算年龄
+  - ✅ extractProvinceCode/extractProvinceName() - 提取省份信息
+  - ✅ maskIdCard() - 脱敏显示（默认/自定义）
+  - ✅ convert15To18() - 15位转18位
 
-- ⏭️ DateUtil.java（日期工具）
-- ⏭️ FileUtil.java（文件工具）
+- ✅ DateUtil.java（日期工具）
+  - ✅ 日期格式化与解析（多种格式）
+  - ✅ 日期时间计算（加减天/月/年）
+  - ✅ 日期判断（今天/过去/未来/范围）
+  - ✅ 月份边界获取
+
+- ✅ FileUtil.java（文件工具）
+  - ✅ 文件判断（存在/文件/目录）
+  - ✅ 文件操作（创建/删除/复制/移动）
+  - ✅ 文件读写（字符串/行列表）
+  - ✅ 文件信息（大小/扩展名/名称）
+  - ✅ 目录操作（列表/递归）
+
+- ✅ 单元测试（91个测试用例）
+  - ✅ ValidationUtilTest（22个测试）
+  - ✅ IdCardUtilTest（19个测试）
+  - ✅ DateUtilTest（28个测试）
+  - ✅ FileUtilTest（22个测试）
+  - ✅ 所有测试通过（190/190）
 
 ---
 
@@ -350,7 +374,7 @@
 | 阶段一：项目初始化 | ✅ 已完成 | 100% |
 | 阶段二：开发环境准备 | ✅ 已完成 | 100% |
 | 阶段三：数据层开发 | ✅ 已完成 | 100% |
-| 阶段四：业务逻辑层开发 | 🔄 进行中 | 67% |
+| 阶段四：业务逻辑层开发 | ✅ 已完成 | 100% |
 | 阶段五：UI界面开发 | ⏭️ 待开始 | 0% |
 | 阶段六：UI样式美化 | ⏭️ 待开始 | 0% |
 | 阶段七：功能集成与测试 | ⏭️ 待开始 | 0% |
