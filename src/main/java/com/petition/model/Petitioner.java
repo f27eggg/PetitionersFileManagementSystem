@@ -7,7 +7,7 @@ import java.util.UUID;
  * 上访人员主实体类
  * 聚合个人信息、在京关系人、信访案件、评估结果四大模块
  *
- * @author 济南市公安局历下分局刑侦大队
+ * @author 刘一村
  * @version 1.0.0
  */
 public class Petitioner {

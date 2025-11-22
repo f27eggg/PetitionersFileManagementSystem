@@ -4,7 +4,7 @@ package com.petition.model.enums;
  * 危险等级枚举类
  * 定义上访人员的风险评估等级
  *
- * @author 济南市公安局历下分局刑侦大队
+ * @author 刘一村
  * @version 1.0.0
  */
 public enum RiskLevel {

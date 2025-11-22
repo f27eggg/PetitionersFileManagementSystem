@@ -11,7 +11,7 @@ import java.util.List;
  * 个人信息实体类
  * 包含上访人员的基本身份信息、联系方式、职业住址、上访相关信息和照片
  *
- * @author 济南市公安局历下分局刑侦大队
+ * @author 刘一村
  * @version 1.0.0
  */
 public class PersonalInfo {

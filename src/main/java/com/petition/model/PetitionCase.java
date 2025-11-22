@@ -7,7 +7,7 @@ import com.petition.model.enums.TransportMethod;
  * 信访案件实体类
  * 记录上访人员的诉求及上访行为相关信息
  *
- * @author 济南市公安局历下分局刑侦大队
+ * @author 刘一村
  * @version 1.0.0
  */
 public class PetitionCase {

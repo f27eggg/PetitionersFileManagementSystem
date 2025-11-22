@@ -4,7 +4,7 @@ package com.petition.model.enums;
  * 进京方式枚举类
  * 定义上访人员进京的交通方式选项
  *
- * @author 济南市公安局历下分局刑侦大队
+ * @author 刘一村
  * @version 1.0.0
  */
 public enum EntryMethod {

@@ -6,7 +6,7 @@ import com.petition.model.enums.RiskLevel;
  * 评估结果实体类
  * 对上访人员的综合风险评估结果
  *
- * @author 济南市公安局历下分局刑侦大队
+ * @author 刘一村
  * @version 1.0.0
  */
 public class RiskAssessment {

@@ -7,7 +7,7 @@ import java.util.List;
  * 在京关系人实体类
  * 记录上访人员在北京的社会关系人信息，用于追踪可能的协助网络
  *
- * @author 济南市公安局历下分局刑侦大队
+ * @author 刘一村
  * @version 1.0.0
  */
 public class BeijingContact {

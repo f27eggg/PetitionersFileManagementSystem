@@ -7,7 +7,7 @@ import javafx.stage.Stage;
  * 上访人员重点监控信息管理系统
  * 主入口类
  *
- * @author 济南市公安局历下分局刑侦大队
+ * @author 刘一村
  * @version 1.0.0
  */
 public class Main extends Application {
