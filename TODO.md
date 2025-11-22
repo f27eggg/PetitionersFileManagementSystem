@@ -75,12 +75,12 @@
   - ✅ EntryMethod.java（进京方式）
   - ✅ TransportMethod.java（在京通行方式）
 
-- ⏭️ 创建实体类
-  - ⏭️ PersonalInfo.java（个人信息，19字段）
-  - ⏭️ BeijingContact.java（在京关系人，5字段）
-  - ⏭️ PetitionCase.java（信访案件，7字段）
-  - ⏭️ RiskAssessment.java（评估结果，2字段）
-  - ⏭️ Petitioner.java（主实体，聚合以上四个模块）
+- ✅ 创建实体类
+  - ✅ PersonalInfo.java（个人信息，17字段）
+  - ✅ BeijingContact.java（在京关系人，6字段）
+  - ✅ PetitionCase.java（信访案件，7字段）
+  - ✅ RiskAssessment.java（评估结果，1字段）
+  - ✅ Petitioner.java（主实体，聚合以上四个模块）
 
 ### 3.2 数据访问层实现
 - ⏭️ JsonDataManager.java（JSON文件读写）
