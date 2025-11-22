@@ -67,13 +67,13 @@
 ## 阶段三：数据层开发（待开始 ⏭️）
 
 ### 3.1 数据模型实现
-- ⏭️ 创建枚举类
-  - ⏭️ Gender.java（性别）
-  - ⏭️ Education.java（学历）
-  - ⏭️ MaritalStatus.java（婚姻状态）
-  - ⏭️ RiskLevel.java（危险等级）
-  - ⏭️ EntryMethod.java（进京方式）
-  - ⏭️ TransportMethod.java（在京通行方式）
+- ✅ 创建枚举类
+  - ✅ Gender.java（性别）
+  - ✅ Education.java（学历）
+  - ✅ MaritalStatus.java（婚姻状态）
+  - ✅ RiskLevel.java（危险等级）
+  - ✅ EntryMethod.java（进京方式）
+  - ✅ TransportMethod.java（在京通行方式）
 
 - ⏭️ 创建实体类
   - ⏭️ PersonalInfo.java（个人信息，19字段）
