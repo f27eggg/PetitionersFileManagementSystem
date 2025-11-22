@@ -160,16 +160,27 @@
   - ✅ QueryServiceTest（14个测试）
   - ✅ StatisticsServiceTest（10个测试）
 
-### 4.2 导入导出服务
-- ⏭️ ImportService.java（导入服务）
-  - ⏭️ importFromExcel()
-  - ⏭️ validateImportData()
-  - ⏭️ handleDuplicates()
+### 4.2 导入导出服务（已完成 ✅）
+- ✅ ImportService.java（导入服务）
+  - ✅ importFromExcel()（从Excel导入数据）
+  - ✅ parseRowData()（解析Excel行数据，16列映射）
+  - ✅ validateImportData()（数据验证）
+  - ✅ isDuplicate()（重复检查）
+  - ✅ ImportResult内部类（导入结果统计）
+  - ✅ ImportError内部类（错误信息封装）
 
-- ⏭️ ExportService.java（导出服务）
-  - ⏭️ exportToExcel()
-  - ⏭️ exportToCsv()
-  - ⏭️ exportSelected()
+- ✅ ExportService.java（导出服务）
+  - ✅ exportToExcel()（导出为Excel格式）
+  - ✅ exportToCsv()（导出为CSV格式）
+  - ✅ exportSelected()（按ID列表导出）
+  - ✅ createExcelHeader()（创建Excel表头）
+  - ✅ fillExcelRow()（填充Excel数据行）
+  - ✅ csvEscape()（CSV特殊字符转义）
+
+- ✅ 单元测试（28个测试用例）
+  - ✅ ImportServiceTest（12个测试）
+  - ✅ ExportServiceTest（16个测试）
+  - ✅ 所有测试通过（99/99）
 
 ### 4.3 工具类开发
 - ⏭️ ValidationUtil.java（验证工具）
@@ -338,8 +349,8 @@
 |------|------|--------|
 | 阶段一：项目初始化 | ✅ 已完成 | 100% |
 | 阶段二：开发环境准备 | ✅ 已完成 | 100% |
-| 阶段三：数据层开发 | ⏭️ 待开始 | 0% |
-| 阶段四：业务逻辑层开发 | ⏭️ 待开始 | 0% |
+| 阶段三：数据层开发 | ✅ 已完成 | 100% |
+| 阶段四：业务逻辑层开发 | 🔄 进行中 | 67% |
 | 阶段五：UI界面开发 | ⏭️ 待开始 | 0% |
 | 阶段六：UI样式美化 | ⏭️ 待开始 | 0% |
 | 阶段七：功能集成与测试 | ⏭️ 待开始 | 0% |
