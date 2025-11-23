@@ -86,18 +86,18 @@
                                 <Label fx:id="spouseLabel" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
 
                                 <!-- 第6行 -->
-                                <Label text="联系电话1：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-                                <Label fx:id="phone1Label" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                                <Label text="联系电话：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                                <Label fx:id="phonesLabel" text="-" styleClass="detail-value" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
 
-                                <Label text="联系电话2：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
-                                <Label fx:id="phone2Label" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="5"/>
+                                <Label text="职业：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+                                <Label fx:id="occupationLabel" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="5"/>
 
                                 <!-- 第7行 -->
-                                <Label text="联系电话3：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
-                                <Label fx:id="phone3Label" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                                <Label text="上访次数：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                                <Label fx:id="visitCountLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
 
-                                <Label text="职业：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="6"/>
-                                <Label fx:id="occupationLabel" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="6"/>
+                                <Label text="应对措施：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="6"/>
+                                <Label fx:id="counterMeasuresLabel" text="-" styleClass="detail-value" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="6"/>
 
                                 <!-- 第8行 -->
                                 <Label text="工作地址：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
@@ -108,8 +108,12 @@
                                 <Label fx:id="homeAddressLabel" text="-" styleClass="detail-value" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8" GridPane.columnSpan="3"/>
 
                                 <!-- 第10行 -->
-                                <Label text="照片路径：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
-                                <Label fx:id="photoLabel" text="-" styleClass="detail-value" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9" GridPane.columnSpan="3"/>
+                                <Label text="消费习惯：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+                                <Label fx:id="consumptionHabitsLabel" text="-" styleClass="detail-value" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9" GridPane.columnSpan="3"/>
+
+                                <!-- 第11行 -->
+                                <Label text="照片路径：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+                                <Label fx:id="photosLabel" text="-" styleClass="detail-value" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10" GridPane.columnSpan="3"/>
                             </GridPane>
                         </ScrollPane>
                     </Tab>
@@ -137,26 +141,28 @@
                                 <Label fx:id="relationshipLabel" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
 
                                 <!-- 第2行 -->
-                                <Label text="联系电话：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                                <Label fx:id="contactPhoneLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                <Label text="身份证号：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                <Label fx:id="contactIdCardLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
-                                <Label text="进京方式：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-                                <Label fx:id="entryMethodLabel" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                                <Label text="曾住地址：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                <Label fx:id="formerAddressLabel" text="-" styleClass="detail-value" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
 
                                 <!-- 第3行 -->
-                                <Label text="在京通行方式：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                                <Label fx:id="transportMethodLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                <Label text="协助说明：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                <TextArea fx:id="assistDescriptionArea" editable="false" wrapText="true" prefRowCount="3"
+                                          styleClass="detail-textarea" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.columnSpan="3"/>
 
-                                <Label text="居住地址：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
-                                <Label fx:id="beijingAddressLabel" text="-" styleClass="detail-value" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+                                <!-- 第4行 -->
+                                <Label text="关系人照片：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                <Label fx:id="contactPhotosLabel" text="-" styleClass="detail-value" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.columnSpan="3"/>
 
                                 <!-- 说明文字 -->
-                                <VBox spacing="10.0" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="4">
+                                <VBox spacing="10.0" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="4">
                                     <padding>
                                         <Insets top="20.0"/>
                                     </padding>
                                     <Separator/>
-                                    <Label text="ℹ 此部分记录该上访人员在北京的关系人信息和活动情况" styleClass="info-text"/>
+                                    <Label text="ℹ 此部分记录该上访人员在北京的关系人信息" styleClass="info-text"/>
                                 </VBox>
                             </GridPane>
                         </ScrollPane>
@@ -178,33 +184,32 @@
                                 </columnConstraints>
 
                                 <!-- 第1行 -->
-                                <Label text="上访次数：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                                <Label fx:id="visitCountLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-
-                                <Label text="首次上访日期：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
-                                <Label fx:id="firstVisitDateLabel" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+                                <Label text="诉求内容：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                <TextArea fx:id="petitionContentArea" editable="false" wrapText="true" prefRowCount="4"
+                                          styleClass="detail-textarea" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="3"/>
 
                                 <!-- 第2行 -->
-                                <Label text="最近上访日期：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                                <Label fx:id="lastVisitDateLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                <Label text="是否能解决：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                <Label fx:id="canResolveLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
-                                <Label text="类别：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-                                <Label fx:id="categoryLabel" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                                <Label text="解决方式：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                <Label fx:id="resolutionMethodLabel" text="-" styleClass="detail-value" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
 
                                 <!-- 第3行 -->
-                                <Label text="诉求事项：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                                <TextArea fx:id="appealArea" editable="false" wrapText="true" prefRowCount="4"
+                                <Label text="上访轨迹：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                <TextArea fx:id="visitTrajectoryArea" editable="false" wrapText="true" prefRowCount="3"
                                           styleClass="detail-textarea" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.columnSpan="3"/>
 
                                 <!-- 第4行 -->
-                                <Label text="涉及单位：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-                                <TextArea fx:id="involvedDepartmentsArea" editable="false" wrapText="true" prefRowCount="3"
-                                          styleClass="detail-textarea" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.columnSpan="3"/>
+                                <Label text="进京方式：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                <Label fx:id="entryMethodLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                                <Label text="在京通行方式：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                                <Label fx:id="transportInBeijingLabel" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
 
                                 <!-- 第5行 -->
-                                <Label text="备注：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-                                <TextArea fx:id="remarksArea" editable="false" wrapText="true" prefRowCount="3"
-                                          styleClass="detail-textarea" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.columnSpan="3"/>
+                                <Label text="有无接应人：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                                <Label fx:id="hasReceptionLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.columnSpan="3"/>
                             </GridPane>
                         </ScrollPane>
                     </Tab>
