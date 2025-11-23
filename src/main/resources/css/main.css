@@ -329,3 +329,55 @@
     -fx-text-fill: #cbd5e1;
     -fx-font-size: 16px;
 }
+
+/* ==================== 搜索栏样式 ==================== */
+
+.search-bar {
+    -fx-background-color: #1e293b;
+    -fx-background-radius: 8;
+    -fx-padding: 15;
+}
+
+/* 下拉框 */
+.combo-box {
+    -fx-background-color: #334155;
+    -fx-background-radius: 5;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: #334155;
+    -fx-text-fill: #f1f5f9;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #475569;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #1e293b;
+    -fx-border-color: #475569;
+    -fx-border-width: 1;
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: #f1f5f9;
+    -fx-padding: 8 12;
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: #334155;
+}
+
+.combo-box-popup .list-view .list-cell:selected {
+    -fx-background-color: #1e3a8a;
+    -fx-text-fill: white;
+}
+
+/* ==================== 分页栏样式 ==================== */
+
+.pagination-bar {
+    -fx-background-color: #1e293b;
+    -fx-background-radius: 8;
+    -fx-padding: 15;
+}

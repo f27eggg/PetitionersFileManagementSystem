@@ -6,11 +6,80 @@
 
 <VBox xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.petition.controller.PetitionersController"
       spacing="20.0" styleClass="page-container">
     <padding>
         <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
     </padding>
 
-    <Label text="👥 人员管理" styleClass="page-title"/>
-    <Label text="此页面将在后续开发中完善" styleClass="page-subtitle"/>
+    <!-- 页面标题 -->
+    <HBox alignment="CENTER_LEFT" spacing="20.0">
+        <Label text="👥 人员管理" styleClass="page-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="addButton" text="+ 新增人员" styleClass="primary-button" onAction="#handleAdd"/>
+        <Button fx:id="importButton" text="📥 导入数据" styleClass="secondary-button" onAction="#handleImport"/>
+        <Button fx:id="exportButton" text="📤 导出数据" styleClass="secondary-button" onAction="#handleExport"/>
+    </HBox>
+
+    <!-- 搜索和筛选栏 -->
+    <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="search-bar">
+        <TextField fx:id="searchField" promptText="搜索姓名、身份证号、联系方式..."
+                   prefWidth="300.0" styleClass="text-field" onKeyReleased="#handleSearch"/>
+
+        <ComboBox fx:id="riskLevelFilter" promptText="风险等级" prefWidth="120.0"
+                  styleClass="combo-box" onAction="#handleFilter"/>
+
+        <ComboBox fx:id="genderFilter" promptText="性别" prefWidth="100.0"
+                  styleClass="combo-box" onAction="#handleFilter"/>
+
+        <ComboBox fx:id="categoryFilter" promptText="类别" prefWidth="120.0"
+                  styleClass="combo-box" onAction="#handleFilter"/>
+
+        <Button fx:id="resetButton" text="🔄 重置" styleClass="secondary-button" onAction="#handleReset"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Label fx:id="countLabel" text="共 0 条记录" styleClass="info-label"/>
+    </HBox>
+
+    <!-- 数据表格 -->
+    <TableView fx:id="petitionersTable" VBox.vgrow="ALWAYS" styleClass="table-view">
+        <columns>
+            <TableColumn fx:id="idColumn" text="编号" prefWidth="60.0" sortable="false"/>
+            <TableColumn fx:id="nameColumn" text="姓名" prefWidth="100.0"/>
+            <TableColumn fx:id="genderColumn" text="性别" prefWidth="60.0"/>
+            <TableColumn fx:id="ageColumn" text="年龄" prefWidth="60.0"/>
+            <TableColumn fx:id="idCardColumn" text="身份证号" prefWidth="180.0"/>
+            <TableColumn fx:id="phoneColumn" text="联系电话" prefWidth="120.0"/>
+            <TableColumn fx:id="categoryColumn" text="类别" prefWidth="100.0"/>
+            <TableColumn fx:id="riskLevelColumn" text="风险等级" prefWidth="100.0"/>
+            <TableColumn fx:id="riskScoreColumn" text="评分" prefWidth="80.0"/>
+            <TableColumn fx:id="lastVisitDateColumn" text="最后上访日期" prefWidth="120.0"/>
+            <TableColumn fx:id="actionsColumn" text="操作" prefWidth="200.0" sortable="false"/>
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+    </TableView>
+
+    <!-- 分页控制栏 -->
+    <HBox alignment="CENTER" spacing="10.0" styleClass="pagination-bar">
+        <Button fx:id="firstPageButton" text="⏮ 首页" styleClass="secondary-button" onAction="#handleFirstPage"/>
+        <Button fx:id="prevPageButton" text="⏪ 上一页" styleClass="secondary-button" onAction="#handlePrevPage"/>
+
+        <Label text="第" styleClass="info-label"/>
+        <TextField fx:id="pageField" text="1" prefWidth="50.0" alignment="CENTER"
+                   styleClass="text-field" onAction="#handleJumpPage"/>
+        <Label fx:id="totalPagesLabel" text="/ 1 页" styleClass="info-label"/>
+
+        <Button fx:id="nextPageButton" text="下一页 ⏩" styleClass="secondary-button" onAction="#handleNextPage"/>
+        <Button fx:id="lastPageButton" text="末页 ⏭" styleClass="secondary-button" onAction="#handleLastPage"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Label text="每页显示" styleClass="info-label"/>
+        <ComboBox fx:id="pageSizeComboBox" value="20" prefWidth="80.0"
+                  styleClass="combo-box" onAction="#handlePageSizeChange"/>
+        <Label text="条" styleClass="info-label"/>
+    </HBox>
 </VBox>
