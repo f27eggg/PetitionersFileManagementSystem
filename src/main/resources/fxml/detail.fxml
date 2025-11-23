@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.petition.controller.DetailController"
+            styleClass="page-container">
+
+    <!-- 顶部标题栏 -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="form-header">
+            <padding>
+                <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+            </padding>
+            <Button fx:id="backButton" text="← 返回" styleClass="secondary-button" onAction="#handleBack"/>
+            <Label fx:id="titleLabel" text="人员详细信息" styleClass="page-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="riskBadge" text="风险等级：中危" styleClass="risk-badge-medium"/>
+            <Button fx:id="editButton" text="✏ 编辑" styleClass="primary-button" onAction="#handleEdit"/>
+            <Button fx:id="deleteButton" text="🗑 删除" styleClass="danger-button" onAction="#handleDelete"/>
+        </HBox>
+    </top>
+
+    <!-- 中央详情区域 -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="detail-scroll">
+            <VBox spacing="0" styleClass="detail-container">
+                <padding>
+                    <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+                </padding>
+
+                <!-- 标签页 -->
+                <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" styleClass="detail-tabs">
+
+                    <!-- 个人信息标签页 -->
+                    <Tab text="📋 个人信息">
+                        <ScrollPane fitToWidth="true">
+                            <GridPane hgap="30.0" vgap="20.0" styleClass="detail-grid">
+                                <padding>
+                                    <Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/>
+                                </padding>
+
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="NEVER" minWidth="120" prefWidth="120"/>
+                                    <ColumnConstraints hgrow="ALWAYS" minWidth="250" prefWidth="350"/>
+                                    <ColumnConstraints hgrow="NEVER" minWidth="120" prefWidth="120"/>
+                                    <ColumnConstraints hgrow="ALWAYS" minWidth="250" prefWidth="350"/>
+                                </columnConstraints>
+
+                                <!-- 第1行 -->
+                                <Label text="姓名：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                <Label fx:id="nameLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                                <Label text="曾用名：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                <Label fx:id="formerNameLabel" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+                                <!-- 第2行 -->
+                                <Label text="身份证号：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                <Label fx:id="idCardLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                                <Label text="性别：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                <Label fx:id="genderLabel" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+                                <!-- 第3行 -->
+                                <Label text="出生日期：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                <Label fx:id="birthDateLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                                <Label text="年龄：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                <Label fx:id="ageLabel" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+
+                                <!-- 第4行 -->
+                                <Label text="籍贯：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                <Label fx:id="nativePlaceLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                                <Label text="文化程度：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                                <Label fx:id="educationLabel" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+
+                                <!-- 第5行 -->
+                                <Label text="婚姻状况：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                                <Label fx:id="maritalStatusLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                                <Label text="配偶姓名：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+                                <Label fx:id="spouseLabel" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+
+                                <!-- 第6行 -->
+                                <Label text="联系电话1：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                                <Label fx:id="phone1Label" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+                                <Label text="联系电话2：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+                                <Label fx:id="phone2Label" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="5"/>
+
+                                <!-- 第7行 -->
+                                <Label text="联系电话3：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                                <Label fx:id="phone3Label" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+                                <Label text="职业：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="6"/>
+                                <Label fx:id="occupationLabel" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="6"/>
+
+                                <!-- 第8行 -->
+                                <Label text="工作地址：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                                <Label fx:id="workAddressLabel" text="-" styleClass="detail-value" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" GridPane.columnSpan="3"/>
+
+                                <!-- 第9行 -->
+                                <Label text="家庭住址：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                                <Label fx:id="homeAddressLabel" text="-" styleClass="detail-value" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8" GridPane.columnSpan="3"/>
+
+                                <!-- 第10行 -->
+                                <Label text="照片路径：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+                                <Label fx:id="photoLabel" text="-" styleClass="detail-value" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9" GridPane.columnSpan="3"/>
+                            </GridPane>
+                        </ScrollPane>
+                    </Tab>
+
+                    <!-- 在京关系人标签页 -->
+                    <Tab text="👥 在京关系人">
+                        <ScrollPane fitToWidth="true">
+                            <GridPane hgap="30.0" vgap="20.0" styleClass="detail-grid">
+                                <padding>
+                                    <Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/>
+                                </padding>
+
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="NEVER" minWidth="120" prefWidth="120"/>
+                                    <ColumnConstraints hgrow="ALWAYS" minWidth="250" prefWidth="350"/>
+                                    <ColumnConstraints hgrow="NEVER" minWidth="120" prefWidth="120"/>
+                                    <ColumnConstraints hgrow="ALWAYS" minWidth="250" prefWidth="350"/>
+                                </columnConstraints>
+
+                                <!-- 第1行 -->
+                                <Label text="关系人姓名：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                <Label fx:id="contactNameLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                                <Label text="关系：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                <Label fx:id="relationshipLabel" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+                                <!-- 第2行 -->
+                                <Label text="联系电话：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                <Label fx:id="contactPhoneLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                                <Label text="进京方式：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                <Label fx:id="entryMethodLabel" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+                                <!-- 第3行 -->
+                                <Label text="在京通行方式：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                <Label fx:id="transportMethodLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                                <Label text="居住地址：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                <Label fx:id="beijingAddressLabel" text="-" styleClass="detail-value" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+
+                                <!-- 说明文字 -->
+                                <VBox spacing="10.0" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="4">
+                                    <padding>
+                                        <Insets top="20.0"/>
+                                    </padding>
+                                    <Separator/>
+                                    <Label text="ℹ 此部分记录该上访人员在北京的关系人信息和活动情况" styleClass="info-text"/>
+                                </VBox>
+                            </GridPane>
+                        </ScrollPane>
+                    </Tab>
+
+                    <!-- 信访案件标签页 -->
+                    <Tab text="📄 信访案件">
+                        <ScrollPane fitToWidth="true">
+                            <GridPane hgap="30.0" vgap="20.0" styleClass="detail-grid">
+                                <padding>
+                                    <Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/>
+                                </padding>
+
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="NEVER" minWidth="120" prefWidth="120"/>
+                                    <ColumnConstraints hgrow="ALWAYS" minWidth="250" prefWidth="350"/>
+                                    <ColumnConstraints hgrow="NEVER" minWidth="120" prefWidth="120"/>
+                                    <ColumnConstraints hgrow="ALWAYS" minWidth="250" prefWidth="350"/>
+                                </columnConstraints>
+
+                                <!-- 第1行 -->
+                                <Label text="上访次数：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                <Label fx:id="visitCountLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                                <Label text="首次上访日期：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                <Label fx:id="firstVisitDateLabel" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+                                <!-- 第2行 -->
+                                <Label text="最近上访日期：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                <Label fx:id="lastVisitDateLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                                <Label text="类别：" styleClass="detail-label" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                <Label fx:id="categoryLabel" text="-" styleClass="detail-value" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+                                <!-- 第3行 -->
+                                <Label text="诉求事项：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                <TextArea fx:id="appealArea" editable="false" wrapText="true" prefRowCount="4"
+                                          styleClass="detail-textarea" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.columnSpan="3"/>
+
+                                <!-- 第4行 -->
+                                <Label text="涉及单位：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                <TextArea fx:id="involvedDepartmentsArea" editable="false" wrapText="true" prefRowCount="3"
+                                          styleClass="detail-textarea" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.columnSpan="3"/>
+
+                                <!-- 第5行 -->
+                                <Label text="备注：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                                <TextArea fx:id="remarksArea" editable="false" wrapText="true" prefRowCount="3"
+                                          styleClass="detail-textarea" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.columnSpan="3"/>
+                            </GridPane>
+                        </ScrollPane>
+                    </Tab>
+
+                    <!-- 评估结果标签页 -->
+                    <Tab text="⚠ 评估结果">
+                        <ScrollPane fitToWidth="true">
+                            <VBox spacing="30.0" styleClass="detail-grid">
+                                <padding>
+                                    <Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/>
+                                </padding>
+
+                                <!-- 风险等级卡片 -->
+                                <VBox spacing="15.0" styleClass="risk-card">
+                                    <padding>
+                                        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+                                    </padding>
+
+                                    <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                        <Label text="危险等级评估" styleClass="section-title"/>
+                                        <Region HBox.hgrow="ALWAYS"/>
+                                        <Label fx:id="riskLevelLabel" text="中危" styleClass="risk-badge-large"/>
+                                    </HBox>
+
+                                    <Separator/>
+
+                                    <!-- 风险等级说明 -->
+                                    <GridPane hgap="20.0" vgap="15.0">
+                                        <columnConstraints>
+                                            <ColumnConstraints hgrow="NEVER" minWidth="100" prefWidth="100"/>
+                                            <ColumnConstraints hgrow="ALWAYS"/>
+                                        </columnConstraints>
+
+                                        <Label text="评估时间：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                        <Label fx:id="assessmentDateLabel" text="-" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                                        <Label text="等级描述：" styleClass="detail-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                        <Label fx:id="riskDescriptionLabel" text="-" wrapText="true" styleClass="detail-value" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                    </GridPane>
+                                </VBox>
+
+                                <!-- 风险等级说明 -->
+                                <VBox spacing="10.0" styleClass="info-box">
+                                    <padding>
+                                        <Insets top="15.0" right="15.0" bottom="15.0" left="15.0"/>
+                                    </padding>
+
+                                    <Label text="📌 危险等级分类标准" styleClass="info-title"/>
+                                    <Separator/>
+
+                                    <GridPane hgap="15.0" vgap="10.0">
+                                        <columnConstraints>
+                                            <ColumnConstraints hgrow="NEVER" minWidth="80" prefWidth="80"/>
+                                            <ColumnConstraints hgrow="ALWAYS"/>
+                                        </columnConstraints>
+
+                                        <Label text="低危：" styleClass="risk-low" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                        <Label text="上访次数较少，诉求合理，情绪稳定" styleClass="info-text" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                                        <Label text="中危：" styleClass="risk-medium" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                        <Label text="多次上访，诉求复杂，需要重点关注" styleClass="info-text" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                                        <Label text="高危：" styleClass="risk-high" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                        <Label text="频繁上访，行为激进，需要严密监控" styleClass="info-text" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                                        <Label text="极危：" styleClass="risk-extreme" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                        <Label text="存在极端倾向，可能危害公共安全，需24小时监控" styleClass="info-text" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                    </GridPane>
+                                </VBox>
+                            </VBox>
+                        </ScrollPane>
+                    </Tab>
+
+                </TabPane>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

@@ -489,9 +489,34 @@ public class PetitionersController implements Initializable {
      * 查看人员详情
      */
     private void handleView(Petitioner petitioner) {
-        if (petitioner != null) {
-            showAlert("查看详情", "查看人员：" + petitioner.getName() + "\n详情页面将在后续开发");
-            // TODO: 打开详情页面
+        if (petitioner == null) {
+            return;
+        }
+
+        try {
+            // 加载详情页面
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/detail.fxml"));
+            Parent root = loader.load();
+
+            // 获取控制器并设置数据
+            DetailController controller = loader.getController();
+            controller.setData(petitioner);
+
+            // 设置数据变更回调（删除或编辑后刷新列表）
+            controller.setOnDataChangedCallback(this::loadData);
+
+            // 创建新窗口
+            Stage stage = new Stage();
+            stage.setTitle("人员详细信息 - " + petitioner.getPersonalInfo().getName());
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setWidth(1100);
+            stage.setHeight(750);
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("错误", "打开详情页面失败：" + e.getMessage());
         }
     }
 
