@@ -10,11 +10,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -477,8 +482,7 @@ public class PetitionersController implements Initializable {
      */
     @FXML
     private void handleAdd() {
-        showAlert("功能提示", "新增人员功能将在表单页面中实现");
-        // TODO: 打开表单页面进行新增
+        openFormDialog(null);
     }
 
     /**
@@ -496,8 +500,41 @@ public class PetitionersController implements Initializable {
      */
     private void handleEdit(Petitioner petitioner) {
         if (petitioner != null) {
-            showAlert("编辑人员", "编辑人员：" + petitioner.getName() + "\n表单页面将在后续开发");
-            // TODO: 打开表单页面进行编辑
+            openFormDialog(petitioner);
+        }
+    }
+
+    /**
+     * 打开表单对话框
+     */
+    private void openFormDialog(Petitioner petitioner) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/form.fxml"));
+            Parent root = loader.load();
+
+            FormController controller = loader.getController();
+
+            if (petitioner == null) {
+                controller.setAddMode();
+            } else {
+                controller.setEditMode(petitioner);
+            }
+
+            // 设置保存成功回调
+            controller.setOnSaveCallback(() -> {
+                loadData(); // 刷新列表
+            });
+
+            Stage stage = new Stage();
+            stage.setTitle(petitioner == null ? "新增人员" : "编辑人员");
+            stage.setScene(new Scene(root, 1000, 700));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+
+        } catch (Exception e) {
+            System.err.println("打开表单失败: " + e.getMessage());
+            e.printStackTrace();
+            showAlert("错误", "无法打开表单: " + e.getMessage());
         }
     }
 

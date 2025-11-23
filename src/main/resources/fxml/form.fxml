@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.petition.controller.FormController"
+            styleClass="page-container">
+
+    <!-- 顶部标题栏 -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="form-header">
+            <padding>
+                <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+            </padding>
+            <Label fx:id="titleLabel" text="新增人员信息" styleClass="page-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="saveButton" text="💾 保存" styleClass="primary-button" onAction="#handleSave"/>
+            <Button fx:id="cancelButton" text="✖ 取消" styleClass="secondary-button" onAction="#handleCancel"/>
+        </HBox>
+    </top>
+
+    <!-- 中央表单区域 -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="form-scroll">
+            <VBox spacing="20.0" styleClass="form-container">
+                <padding>
+                    <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+                </padding>
+
+                <!-- 标签页 -->
+                <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" styleClass="form-tabs">
+
+                    <!-- 个人信息标签页 -->
+                    <Tab text="📋 个人信息">
+                        <ScrollPane fitToWidth="true">
+                            <GridPane hgap="20.0" vgap="15.0" styleClass="form-grid">
+                                <padding>
+                                    <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+                                </padding>
+
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="150"/>
+                                    <ColumnConstraints hgrow="ALWAYS" minWidth="200" prefWidth="300"/>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="150"/>
+                                    <ColumnConstraints hgrow="ALWAYS" minWidth="200" prefWidth="300"/>
+                                </columnConstraints>
+
+                                <!-- 第1行 -->
+                                <Label text="*姓名：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                <TextField fx:id="nameField" promptText="请输入姓名" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                                <Label text="曾用名：" styleClass="form-label" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                <TextField fx:id="formerNameField" promptText="无则不填" styleClass="form-field" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+                                <!-- 第2行 -->
+                                <Label text="*身份证号：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                <TextField fx:id="idCardField" promptText="18位身份证号" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                                <Label text="*性别：" styleClass="form-label" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                <ComboBox fx:id="genderCombo" promptText="选择性别" prefWidth="300" styleClass="form-field" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+                                <!-- 第3行 -->
+                                <Label text="籍贯：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                <TextField fx:id="nativePlaceField" promptText="省市区" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                                <Label text="文化程度：" styleClass="form-label" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                <ComboBox fx:id="educationCombo" promptText="选择学历" prefWidth="300" styleClass="form-field" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+
+                                <!-- 第4行 -->
+                                <Label text="婚姻状况：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                <ComboBox fx:id="maritalStatusCombo" promptText="选择婚姻状况" prefWidth="300" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                                <Label text="配偶姓名：" styleClass="form-label" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                                <TextField fx:id="spouseField" promptText="配偶姓名" styleClass="form-field" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+
+                                <!-- 第5行 -->
+                                <Label text="*联系电话1：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                                <TextField fx:id="phone1Field" promptText="主要联系电话" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                                <Label text="联系电话2：" styleClass="form-label" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+                                <TextField fx:id="phone2Field" promptText="备用电话" styleClass="form-field" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+
+                                <!-- 第6行 -->
+                                <Label text="联系电话3：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                                <TextField fx:id="phone3Field" promptText="第三个电话" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+                                <Label text="职业：" styleClass="form-label" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+                                <TextField fx:id="occupationField" promptText="职业或工作单位" styleClass="form-field" GridPane.columnIndex="3" GridPane.rowIndex="5"/>
+
+                                <!-- 第7行 -->
+                                <Label text="工作地址：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                                <TextField fx:id="workAddressField" promptText="工作详细地址" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="6" GridPane.columnSpan="3"/>
+
+                                <!-- 第8行 -->
+                                <Label text="家庭住址：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                                <TextField fx:id="homeAddressField" promptText="家庭详细地址" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="7" GridPane.columnSpan="3"/>
+
+                                <!-- 第9行 -->
+                                <Label text="上访次数：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                                <Spinner fx:id="visitCountSpinner" min="0" max="999" initialValue="1" editable="true" prefWidth="150" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+
+                                <!-- 第10行 -->
+                                <Label text="应对措施：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+                                <TextArea fx:id="counterMeasuresArea" promptText="简要说明应对措施" wrapText="true" prefRowCount="3" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="9" GridPane.columnSpan="3"/>
+
+                                <!-- 第11行 -->
+                                <Label text="消费习惯：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+                                <TextArea fx:id="consumptionHabitsArea" promptText="消费习惯描述" wrapText="true" prefRowCount="3" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="10" GridPane.columnSpan="3"/>
+                            </GridPane>
+                        </ScrollPane>
+                    </Tab>
+
+                    <!-- 在京关系人标签页 -->
+                    <Tab text="👥 在京关系人">
+                        <ScrollPane fitToWidth="true">
+                            <GridPane hgap="20.0" vgap="15.0" styleClass="form-grid">
+                                <padding>
+                                    <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+                                </padding>
+
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="150"/>
+                                    <ColumnConstraints hgrow="ALWAYS" minWidth="200" prefWidth="300"/>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="150"/>
+                                    <ColumnConstraints hgrow="ALWAYS" minWidth="200" prefWidth="300"/>
+                                </columnConstraints>
+
+                                <Label text="姓名：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                <TextField fx:id="contactNameField" promptText="在京关系人姓名" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                                <Label text="关系：" styleClass="form-label" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                <TextField fx:id="relationshipField" promptText="与上访人的关系" styleClass="form-field" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+                                <Label text="联系电话：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                <TextField fx:id="contactPhoneField" promptText="关系人电话" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                                <Label text="单位名称：" styleClass="form-label" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                <TextField fx:id="contactCompanyField" promptText="工作单位" styleClass="form-field" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+                                <Label text="单位地址：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                <TextField fx:id="contactCompanyAddressField" promptText="单位详细地址" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.columnSpan="3"/>
+
+                                <Label text="住址：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                <TextField fx:id="contactHomeAddressField" promptText="居住地址" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.columnSpan="3"/>
+                            </GridPane>
+                        </ScrollPane>
+                    </Tab>
+
+                    <!-- 信访案件标签页 -->
+                    <Tab text="📝 信访案件">
+                        <ScrollPane fitToWidth="true">
+                            <GridPane hgap="20.0" vgap="15.0" styleClass="form-grid">
+                                <padding>
+                                    <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+                                </padding>
+
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="150"/>
+                                    <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                                </columnConstraints>
+
+                                <Label text="诉求描述：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                <TextArea fx:id="petitionContentArea" promptText="详细描述上访诉求内容" wrapText="true" prefRowCount="5" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                                <Label text="是否能解决：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                <ComboBox fx:id="canResolveCombo" promptText="选择" prefWidth="300" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <items>
+                                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="是"/>
+                                            <String fx:value="否"/>
+                                            <String fx:value="部分可以"/>
+                                        </javafx.collections.FXCollections>
+                                    </items>
+                                </ComboBox>
+
+                                <Label text="解决方式：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                <TextArea fx:id="resolutionMethodArea" promptText="说明解决方式" wrapText="true" prefRowCount="3" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                                <Label text="上访轨迹：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                <TextArea fx:id="visitTrajectoryArea" promptText="历次上访的时间地点记录" wrapText="true" prefRowCount="4" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                                <Label text="进京方式：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                                <ComboBox fx:id="entryMethodCombo" promptText="选择进京方式" prefWidth="300" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                                <Label text="在京通行方式：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                                <ComboBox fx:id="transportMethodCombo" promptText="选择通行方式" prefWidth="300" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+                                <Label text="有无接应人：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                                <ComboBox fx:id="hasReceptionCombo" promptText="选择" prefWidth="300" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                    <items>
+                                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="有"/>
+                                            <String fx:value="无"/>
+                                            <String fx:value="不详"/>
+                                        </javafx.collections.FXCollections>
+                                    </items>
+                                </ComboBox>
+                            </GridPane>
+                        </ScrollPane>
+                    </Tab>
+
+                    <!-- 风险评估标签页 -->
+                    <Tab text="⚠️ 风险评估">
+                        <ScrollPane fitToWidth="true">
+                            <GridPane hgap="20.0" vgap="15.0" styleClass="form-grid">
+                                <padding>
+                                    <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+                                </padding>
+
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="150"/>
+                                    <ColumnConstraints hgrow="ALWAYS" minWidth="200" prefWidth="300"/>
+                                </columnConstraints>
+
+                                <Label text="*危险等级：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                <ComboBox fx:id="riskLevelCombo" promptText="选择危险等级" prefWidth="300" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                                <Label text="说明：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                <Label text="系统将自动保存风险评估信息" styleClass="form-hint" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                            </GridPane>
+                        </ScrollPane>
+                    </Tab>
+                </TabPane>
+
+                <!-- 表单提示信息 -->
+                <HBox spacing="10.0" styleClass="form-footer">
+                    <Label text="*" styleClass="required-mark"/>
+                    <Label text="为必填项" styleClass="form-hint"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="errorLabel" text="" styleClass="error-label" visible="false"/>
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>
