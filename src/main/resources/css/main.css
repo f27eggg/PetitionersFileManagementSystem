@@ -463,3 +463,485 @@
     -fx-font-size: 14px;
     -fx-font-weight: bold;
 }
+
+/* ==================== 危险等级样式 ==================== */
+
+.risk-low {
+    -fx-text-fill: #10b981;
+    -fx-font-weight: bold;
+}
+
+.risk-medium {
+    -fx-text-fill: #f59e0b;
+    -fx-font-weight: bold;
+}
+
+.risk-high {
+    -fx-text-fill: #f97316;
+    -fx-font-weight: bold;
+}
+
+.risk-extreme {
+    -fx-text-fill: #ef4444;
+    -fx-font-weight: bold;
+}
+
+.risk-badge-low {
+    -fx-background-color: #10b981;
+    -fx-text-fill: white;
+    -fx-padding: 5 12;
+    -fx-background-radius: 15;
+    -fx-font-size: 12px;
+}
+
+.risk-badge-medium {
+    -fx-background-color: #f59e0b;
+    -fx-text-fill: white;
+    -fx-padding: 5 12;
+    -fx-background-radius: 15;
+    -fx-font-size: 12px;
+}
+
+.risk-badge-high {
+    -fx-background-color: #f97316;
+    -fx-text-fill: white;
+    -fx-padding: 5 12;
+    -fx-background-radius: 15;
+    -fx-font-size: 12px;
+}
+
+.risk-badge-extreme {
+    -fx-background-color: #ef4444;
+    -fx-text-fill: white;
+    -fx-padding: 5 12;
+    -fx-background-radius: 15;
+    -fx-font-size: 12px;
+}
+
+.risk-badge-large {
+    -fx-background-color: #f59e0b;
+    -fx-text-fill: white;
+    -fx-padding: 8 16;
+    -fx-background-radius: 20;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/* ==================== 详情页面样式 ==================== */
+
+.detail-scroll {
+    -fx-background-color: transparent;
+}
+
+.detail-container {
+    -fx-background-color: #0f172a;
+}
+
+.detail-tabs .tab-pane {
+    -fx-background-color: #0f172a;
+}
+
+.detail-tabs .tab-header-area {
+    -fx-background-color: #1e293b;
+}
+
+.detail-tabs .tab {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: #cbd5e1;
+    -fx-padding: 12 20;
+    -fx-background-radius: 0;
+}
+
+.detail-tabs .tab:selected {
+    -fx-background-color: #1e3a8a;
+    -fx-text-fill: white;
+}
+
+.detail-tabs .tab:hover {
+    -fx-background-color: #334155;
+}
+
+.detail-grid {
+    -fx-background-color: #1e293b;
+    -fx-background-radius: 8;
+}
+
+.detail-label {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 14px;
+}
+
+.detail-value {
+    -fx-text-fill: #f1f5f9;
+    -fx-font-size: 14px;
+    -fx-background-color: #334155;
+    -fx-background-radius: 5;
+    -fx-padding: 8 12;
+}
+
+.detail-textarea {
+    -fx-background-color: #334155;
+    -fx-text-fill: #f1f5f9;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+}
+
+.risk-card {
+    -fx-background-color: #1e293b;
+    -fx-background-radius: 8;
+    -fx-border-color: #475569;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+}
+
+.info-box {
+    -fx-background-color: #1e293b;
+    -fx-background-radius: 8;
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+}
+
+.info-title {
+    -fx-text-fill: #f1f5f9;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.info-text {
+    -fx-text-fill: #cbd5e1;
+    -fx-font-size: 13px;
+}
+
+.section-title {
+    -fx-text-fill: #f1f5f9;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+/* ==================== 查询页面样式 ==================== */
+
+.query-panel {
+    -fx-background-color: #1e293b;
+    -fx-background-radius: 8;
+}
+
+.query-label {
+    -fx-text-fill: #cbd5e1;
+    -fx-font-size: 14px;
+}
+
+.query-field {
+    -fx-background-color: #334155;
+    -fx-text-fill: #f1f5f9;
+    -fx-prompt-text-fill: #64748b;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+    -fx-padding: 8 12;
+}
+
+.query-field:focused {
+    -fx-border-color: #3b82f6;
+    -fx-border-width: 2;
+}
+
+.query-combo {
+    -fx-background-color: #334155;
+    -fx-background-radius: 5;
+}
+
+.query-combo .list-cell {
+    -fx-text-fill: #f1f5f9;
+    -fx-background-color: #334155;
+}
+
+.query-spinner {
+    -fx-background-color: #334155;
+    -fx-background-radius: 5;
+}
+
+.query-spinner .text-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: #f1f5f9;
+}
+
+.result-count {
+    -fx-text-fill: #cbd5e1;
+    -fx-font-size: 14px;
+}
+
+.success-button {
+    -fx-background-color: #10b981;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 12 24;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.success-button:hover {
+    -fx-background-color: #059669;
+}
+
+.danger-button {
+    -fx-background-color: #ef4444;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 12 24;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.danger-button:hover {
+    -fx-background-color: #dc2626;
+}
+
+/* ==================== 数据表格样式 ==================== */
+
+.data-table {
+    -fx-background-color: #1e293b;
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.data-table .column-header-background {
+    -fx-background-color: #334155;
+}
+
+.data-table .column-header {
+    -fx-background-color: #334155;
+}
+
+.data-table .column-header .label {
+    -fx-text-fill: #f1f5f9;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+.data-table .table-cell {
+    -fx-text-fill: #f1f5f9;
+    -fx-border-color: transparent transparent #334155 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 8 10;
+}
+
+.data-table .table-row-cell {
+    -fx-background-color: #1e293b;
+}
+
+.data-table .table-row-cell:hover {
+    -fx-background-color: #334155;
+}
+
+.data-table .table-row-cell:selected {
+    -fx-background-color: #1e3a8a;
+}
+
+.data-table .table-row-cell:selected .table-cell {
+    -fx-text-fill: white;
+}
+
+.table-button {
+    -fx-background-color: #3b82f6;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 5 10;
+    -fx-background-radius: 3;
+    -fx-cursor: hand;
+}
+
+.table-button:hover {
+    -fx-background-color: #2563eb;
+}
+
+.table-placeholder {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 14px;
+}
+
+/* ==================== 统计图表样式 ==================== */
+
+.page-scroll {
+    -fx-background-color: transparent;
+}
+
+.stats-cards {
+    -fx-spacing: 20;
+}
+
+.stat-card-title {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 14px;
+}
+
+.stat-card-value {
+    -fx-text-fill: #f1f5f9;
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+}
+
+.chart-container {
+    -fx-background-color: #1e293b;
+    -fx-background-radius: 8;
+    -fx-padding: 15;
+}
+
+.chart-title {
+    -fx-text-fill: #f1f5f9;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 10 0;
+}
+
+/* 图表颜色 */
+.chart {
+    -fx-background-color: transparent;
+}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+}
+
+.chart-legend-item {
+    -fx-text-fill: #cbd5e1;
+}
+
+.axis {
+    -fx-tick-label-fill: #cbd5e1;
+}
+
+.axis-label {
+    -fx-text-fill: #cbd5e1;
+}
+
+.chart-horizontal-grid-lines,
+.chart-vertical-grid-lines {
+    -fx-stroke: #334155;
+}
+
+/* ==================== 设置页面样式 ==================== */
+
+.settings-section {
+    -fx-background-color: #1e293b;
+    -fx-background-radius: 8;
+    -fx-padding: 20;
+}
+
+.settings-label {
+    -fx-text-fill: #cbd5e1;
+    -fx-font-size: 14px;
+}
+
+.settings-value {
+    -fx-text-fill: #f1f5f9;
+    -fx-font-size: 14px;
+}
+
+.settings-field {
+    -fx-background-color: #334155;
+    -fx-text-fill: #f1f5f9;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+    -fx-padding: 8 12;
+}
+
+/* 复选框样式 */
+.check-box {
+    -fx-text-fill: #f1f5f9;
+}
+
+.check-box .box {
+    -fx-background-color: #334155;
+    -fx-border-color: #475569;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+}
+
+.check-box:selected .box {
+    -fx-background-color: #3b82f6;
+    -fx-border-color: #3b82f6;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: white;
+}
+
+/* Spinner样式 */
+.spinner {
+    -fx-background-color: #334155;
+    -fx-background-radius: 5;
+}
+
+.spinner .text-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: #f1f5f9;
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color: #475569;
+}
+
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-background-color: #64748b;
+}
+
+/* 分隔线 */
+.separator .line {
+    -fx-border-color: #334155;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* ==================== 对话框样式 ==================== */
+
+.dialog-pane {
+    -fx-background-color: #1e293b;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #334155;
+}
+
+.dialog-pane .content {
+    -fx-background-color: #1e293b;
+}
+
+.dialog-pane .button-bar .button {
+    -fx-background-color: #334155;
+    -fx-text-fill: #f1f5f9;
+}
+
+.dialog-pane .button-bar .button:hover {
+    -fx-background-color: #475569;
+}
+
+/* ==================== 滚动面板样式 ==================== */
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* ==================== 选项卡面板通用样式 ==================== */
+
+.tab-pane .tab-header-area {
+    -fx-padding: 0;
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: #1e293b;
+}
+
+.tab-content-area {
+    -fx-background-color: #0f172a;
+}
