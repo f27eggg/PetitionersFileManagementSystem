@@ -4,13 +4,110 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1"
-      spacing="20.0" styleClass="page-container">
-    <padding>
-        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
-    </padding>
+<ScrollPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.petition.controller.SettingsController"
+            fitToWidth="true" styleClass="page-scroll">
 
-    <Label text="⚙️ 系统设置" styleClass="page-title"/>
-    <Label text="此页面将在后续开发中完善" styleClass="page-subtitle"/>
-</VBox>
+    <VBox spacing="20.0" styleClass="page-container">
+        <padding>
+            <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+        </padding>
+
+        <!-- 页面标题 -->
+        <Label text="⚙️ 系统设置" styleClass="page-title"/>
+
+        <!-- 数据管理设置 -->
+        <VBox spacing="15.0" styleClass="settings-section">
+            <Label text="📁 数据管理" styleClass="section-title"/>
+            <Separator/>
+
+            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                <Label text="数据存储路径：" styleClass="settings-label" prefWidth="120"/>
+                <TextField fx:id="dataPathField" editable="false" HBox.hgrow="ALWAYS" styleClass="settings-field"/>
+                <Button text="打开目录" styleClass="secondary-button" onAction="#handleOpenDataDir"/>
+            </HBox>
+
+            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                <Label text="数据备份" styleClass="settings-label" prefWidth="120"/>
+                <Button text="立即备份" styleClass="primary-button" onAction="#handleBackup"/>
+                <Button text="恢复备份" styleClass="secondary-button" onAction="#handleRestore"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="lastBackupLabel" text="上次备份：从未" styleClass="info-text"/>
+            </HBox>
+
+            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                <Label text="自动备份" styleClass="settings-label" prefWidth="120"/>
+                <CheckBox fx:id="autoBackupCheck" text="启用自动备份"/>
+                <Label text="间隔：" styleClass="settings-label"/>
+                <Spinner fx:id="backupIntervalSpinner" prefWidth="80"/>
+                <Label text="小时" styleClass="settings-label"/>
+            </HBox>
+        </VBox>
+
+        <!-- 显示设置 -->
+        <VBox spacing="15.0" styleClass="settings-section">
+            <Label text="🖥️ 显示设置" styleClass="section-title"/>
+            <Separator/>
+
+            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                <Label text="每页显示条数：" styleClass="settings-label" prefWidth="120"/>
+                <ComboBox fx:id="pageSizeCombo" prefWidth="100"/>
+            </HBox>
+
+            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                <Label text="身份证脱敏：" styleClass="settings-label" prefWidth="120"/>
+                <CheckBox fx:id="maskIdCardCheck" text="启用身份证号脱敏显示"/>
+            </HBox>
+        </VBox>
+
+        <!-- 导入导出设置 -->
+        <VBox spacing="15.0" styleClass="settings-section">
+            <Label text="📤 导入导出" styleClass="section-title"/>
+            <Separator/>
+
+            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                <Label text="默认导出格式：" styleClass="settings-label" prefWidth="120"/>
+                <ComboBox fx:id="exportFormatCombo" prefWidth="120"/>
+            </HBox>
+
+            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                <Label text="快捷操作" styleClass="settings-label" prefWidth="120"/>
+                <Button text="导出全部数据" styleClass="success-button" onAction="#handleExportAll"/>
+                <Button text="导入数据" styleClass="primary-button" onAction="#handleImport"/>
+                <Button text="清空所有数据" styleClass="danger-button" onAction="#handleClearAll"/>
+            </HBox>
+        </VBox>
+
+        <!-- 关于信息 -->
+        <VBox spacing="15.0" styleClass="settings-section">
+            <Label text="ℹ️ 关于系统" styleClass="section-title"/>
+            <Separator/>
+
+            <GridPane hgap="20.0" vgap="10.0">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="120"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <Label text="系统名称：" styleClass="settings-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label text="上访人员重点监控信息管理系统" styleClass="settings-value" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="版本号：" styleClass="settings-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label text="v1.0.0" styleClass="settings-value" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="开发人员：" styleClass="settings-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <Label text="刘一村" styleClass="settings-value" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <Label text="技术栈：" styleClass="settings-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <Label text="Java 17 + JavaFX 17.0.2 + Maven" styleClass="settings-value" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            </GridPane>
+        </VBox>
+
+        <!-- 操作按钮 -->
+        <HBox spacing="15.0" alignment="CENTER_RIGHT">
+            <Button text="恢复默认设置" styleClass="secondary-button" onAction="#handleResetDefaults"/>
+            <Button text="保存设置" styleClass="primary-button" onAction="#handleSaveSettings"/>
+        </HBox>
+    </VBox>
+</ScrollPane>
