@@ -1,0 +1,354 @@
+/**
+ * 主样式文件
+ * 包含应用程序的基础样式定义
+ *
+ * @author 刘一村
+ * @version 1.0.0
+ */
+
+/* ==================== 全局样式 ==================== */
+
+.root {
+    /* 色彩变量定义 */
+    -fx-primary-color: #1e3a8a;        /* 主色调：深蓝色 */
+    -fx-secondary-color: #3b82f6;      /* 次要色：亮蓝色 */
+    -fx-accent-color: #60a5fa;         /* 强调色：浅蓝色 */
+    -fx-success-color: #10b981;        /* 成功色：绿色 */
+    -fx-warning-color: #f59e0b;        /* 警告色：橙色 */
+    -fx-danger-color: #ef4444;         /* 危险色：红色 */
+    -fx-info-color: #06b6d4;           /* 信息色：青色 */
+
+    /* 背景色 */
+    -fx-background-dark: #0f172a;      /* 深色背景 */
+    -fx-background-medium: #1e293b;    /* 中等深度背景 */
+    -fx-background-light: #334155;     /* 浅色背景 */
+
+    /* 文字颜色 */
+    -fx-text-primary: #f1f5f9;         /* 主要文字：白色 */
+    -fx-text-secondary: #cbd5e1;       /* 次要文字：浅灰 */
+    -fx-text-disabled: #64748b;        /* 禁用文字：深灰 */
+
+    /* 边框和分隔线 */
+    -fx-border-color: #475569;
+    -fx-divider-color: #334155;
+
+    /* 字体 */
+    -fx-font-family: "Microsoft YaHei UI", "微软雅黑", "SimHei", "黑体", sans-serif;
+    -fx-font-size: 14px;
+}
+
+/* ==================== 主容器 ==================== */
+
+.main-container {
+    -fx-background-color: -fx-background-dark;
+}
+
+/* ==================== 顶部标题栏 ==================== */
+
+.header {
+    -fx-background-color: -fx-background-medium;
+    -fx-border-color: transparent transparent -fx-border-color transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-min-height: 80px;
+}
+
+.header-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.header-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-size: 24px;
+    -fx-cursor: hand;
+    -fx-padding: 5 15 5 15;
+    -fx-background-radius: 5;
+}
+
+.menu-button:hover {
+    -fx-background-color: -fx-background-light;
+}
+
+.user-label {
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-size: 14px;
+}
+
+.logout-button {
+    -fx-background-color: -fx-danger-color;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8 20 8 20;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.logout-button:hover {
+    -fx-background-color: derive(-fx-danger-color, -10%);
+}
+
+/* ==================== 侧边导航栏 ==================== */
+
+.sidebar {
+    -fx-background-color: -fx-background-medium;
+    -fx-border-color: transparent -fx-border-color transparent transparent;
+    -fx-border-width: 0 1 0 0;
+}
+
+.nav-menu {
+    -fx-padding: 10 10 10 10;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-size: 15px;
+    -fx-padding: 12 20 12 20;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.nav-button:hover {
+    -fx-background-color: -fx-background-light;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.nav-button-active {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: white;
+}
+
+.nav-button-active:hover {
+    -fx-background-color: derive(-fx-primary-color, -10%);
+}
+
+.sidebar-footer {
+    -fx-padding: 20 15 10 15;
+}
+
+.version-label,
+.info-label {
+    -fx-text-fill: -fx-text-disabled;
+    -fx-font-size: 12px;
+}
+
+/* ==================== 内容区域 ==================== */
+
+.content-area {
+    -fx-background-color: -fx-background-dark;
+    -fx-padding: 20;
+}
+
+.welcome-text {
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-size: 24px;
+}
+
+/* ==================== 通用组件样式 ==================== */
+
+/* 按钮 */
+.button {
+    -fx-background-color: -fx-secondary-color;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20 10 20;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: derive(-fx-secondary-color, -10%);
+}
+
+.button:pressed {
+    -fx-background-color: derive(-fx-secondary-color, -20%);
+}
+
+.button:disabled {
+    -fx-opacity: 0.5;
+    -fx-cursor: default;
+}
+
+/* 输入框 */
+.text-field {
+    -fx-background-color: -fx-background-light;
+    -fx-text-fill: -fx-text-primary;
+    -fx-prompt-text-fill: -fx-text-disabled;
+    -fx-font-size: 14px;
+    -fx-padding: 8 12 8 12;
+    -fx-background-radius: 5;
+    -fx-border-color: transparent;
+}
+
+.text-field:focused {
+    -fx-border-color: -fx-secondary-color;
+    -fx-border-width: 2;
+}
+
+/* 标签 */
+.label {
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-size: 14px;
+}
+
+/* 表格 */
+.table-view {
+    -fx-background-color: -fx-background-medium;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.table-view .column-header {
+    -fx-background-color: -fx-background-light;
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-weight: bold;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: -fx-divider-color;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: -fx-background-light;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: -fx-primary-color;
+}
+
+/* 滚动条 */
+.scroll-bar {
+    -fx-background-color: -fx-background-medium;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: -fx-background-light;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: derive(-fx-background-light, 10%);
+}
+
+/* ==================== 卡片样式 ==================== */
+
+.card {
+    -fx-background-color: -fx-background-medium;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 2);
+}
+
+.card-title {
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.card-subtitle {
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-size: 12px;
+}
+
+/* ==================== 仪表盘样式 ==================== */
+
+.dashboard-container {
+    -fx-background-color: -fx-background-dark;
+}
+
+.page-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary;
+}
+
+/* 统计卡片 */
+.stat-card {
+    -fx-background-color: -fx-background-medium;
+    -fx-background-radius: 12;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 2);
+    -fx-pref-height: 150;
+}
+
+.stat-card-danger {
+    -fx-border-color: -fx-danger-color;
+    -fx-border-width: 2;
+    -fx-border-radius: 12;
+}
+
+.stat-card-warning {
+    -fx-border-color: -fx-warning-color;
+    -fx-border-width: 2;
+    -fx-border-radius: 12;
+}
+
+.stat-card-success {
+    -fx-border-color: -fx-success-color;
+    -fx-border-width: 2;
+    -fx-border-radius: 12;
+}
+
+.stat-label {
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-size: 14px;
+    -fx-padding: 0 0 10 0;
+}
+
+.stat-value {
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-size: 42px;
+    -fx-font-weight: bold;
+    -fx-padding: 5 0 10 0;
+}
+
+.stat-desc {
+    -fx-text-fill: -fx-text-disabled;
+    -fx-font-size: 12px;
+}
+
+/* 按钮样式变体 */
+.primary-button {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 12 24 12 24;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.primary-button:hover {
+    -fx-background-color: derive(-fx-primary-color, -10%);
+}
+
+.secondary-button {
+    -fx-background-color: -fx-background-light;
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-size: 14px;
+    -fx-padding: 12 24 12 24;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.secondary-button:hover {
+    -fx-background-color: derive(-fx-background-light, 10%);
+}
+
+/* ==================== 页面容器样式 ==================== */
+
+.page-container {
+    -fx-background-color: -fx-background-dark;
+}
+
+.page-subtitle {
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-size: 16px;
+}
