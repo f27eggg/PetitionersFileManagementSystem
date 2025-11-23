@@ -1,16 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1"
-      spacing="20.0" styleClass="page-container">
-    <padding>
-        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
-    </padding>
+<ScrollPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.petition.controller.StatisticsController"
+            fitToWidth="true" styleClass="page-scroll">
 
-    <Label text="📈 统计分析" styleClass="page-title"/>
-    <Label text="此页面将在后续开发中完善" styleClass="page-subtitle"/>
-</VBox>
+    <VBox spacing="20.0" styleClass="page-container">
+        <padding>
+            <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+        </padding>
+
+        <!-- 页面标题 -->
+        <HBox alignment="CENTER_LEFT" spacing="15.0">
+            <Label text="📈 统计分析" styleClass="page-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="refreshButton" text="🔄 刷新数据" styleClass="primary-button" onAction="#handleRefresh"/>
+        </HBox>
+
+        <!-- 统计概览卡片 -->
+        <HBox spacing="20.0" styleClass="stats-cards">
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <Label text="总人数" styleClass="stat-card-title"/>
+                <Label fx:id="totalCountLabel" text="0" styleClass="stat-card-value"/>
+            </VBox>
+            <VBox styleClass="stat-card stat-card-danger" HBox.hgrow="ALWAYS">
+                <Label text="高危人员" styleClass="stat-card-title"/>
+                <Label fx:id="highRiskCountLabel" text="0" styleClass="stat-card-value"/>
+            </VBox>
+            <VBox styleClass="stat-card stat-card-warning" HBox.hgrow="ALWAYS">
+                <Label text="中危人员" styleClass="stat-card-title"/>
+                <Label fx:id="mediumRiskCountLabel" text="0" styleClass="stat-card-value"/>
+            </VBox>
+            <VBox styleClass="stat-card stat-card-success" HBox.hgrow="ALWAYS">
+                <Label text="低危人员" styleClass="stat-card-title"/>
+                <Label fx:id="lowRiskCountLabel" text="0" styleClass="stat-card-value"/>
+            </VBox>
+        </HBox>
+
+        <!-- 图表区域 -->
+        <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+            <!-- 危险等级分布饼图 -->
+            <VBox styleClass="chart-container" HBox.hgrow="ALWAYS">
+                <Label text="危险等级分布" styleClass="chart-title"/>
+                <PieChart fx:id="riskLevelChart" legendVisible="true" labelsVisible="true"
+                          prefHeight="300" VBox.vgrow="ALWAYS"/>
+            </VBox>
+
+            <!-- 性别分布饼图 -->
+            <VBox styleClass="chart-container" HBox.hgrow="ALWAYS">
+                <Label text="性别分布" styleClass="chart-title"/>
+                <PieChart fx:id="genderChart" legendVisible="true" labelsVisible="true"
+                          prefHeight="300" VBox.vgrow="ALWAYS"/>
+            </VBox>
+        </HBox>
+
+        <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+            <!-- 上访次数分布柱状图 -->
+            <VBox styleClass="chart-container" HBox.hgrow="ALWAYS">
+                <Label text="上访次数分布" styleClass="chart-title"/>
+                <BarChart fx:id="visitCountChart" prefHeight="300" VBox.vgrow="ALWAYS">
+                    <xAxis>
+                        <CategoryAxis label="次数范围"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="人数"/>
+                    </yAxis>
+                </BarChart>
+            </VBox>
+
+            <!-- 进京方式分布柱状图 -->
+            <VBox styleClass="chart-container" HBox.hgrow="ALWAYS">
+                <Label text="进京方式分布" styleClass="chart-title"/>
+                <BarChart fx:id="entryMethodChart" prefHeight="300" VBox.vgrow="ALWAYS">
+                    <xAxis>
+                        <CategoryAxis label="进京方式"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="人数"/>
+                    </yAxis>
+                </BarChart>
+            </VBox>
+        </HBox>
+
+        <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+            <!-- 文化程度分布柱状图 -->
+            <VBox styleClass="chart-container" HBox.hgrow="ALWAYS">
+                <Label text="文化程度分布" styleClass="chart-title"/>
+                <BarChart fx:id="educationChart" prefHeight="300" VBox.vgrow="ALWAYS">
+                    <xAxis>
+                        <CategoryAxis label="文化程度"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="人数"/>
+                    </yAxis>
+                </BarChart>
+            </VBox>
+
+            <!-- 籍贯分布柱状图 -->
+            <VBox styleClass="chart-container" HBox.hgrow="ALWAYS">
+                <Label text="籍贯分布（前10）" styleClass="chart-title"/>
+                <BarChart fx:id="nativePlaceChart" prefHeight="300" VBox.vgrow="ALWAYS">
+                    <xAxis>
+                        <CategoryAxis label="籍贯"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="人数"/>
+                    </yAxis>
+                </BarChart>
+            </VBox>
+        </HBox>
+    </VBox>
+</ScrollPane>
