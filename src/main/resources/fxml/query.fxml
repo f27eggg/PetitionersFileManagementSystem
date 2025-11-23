@@ -6,11 +6,107 @@
 
 <VBox xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.petition.controller.QueryController"
       spacing="20.0" styleClass="page-container">
     <padding>
         <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
     </padding>
 
-    <Label text="🔍 高级查询" styleClass="page-title"/>
-    <Label text="此页面将在后续开发中完善" styleClass="page-subtitle"/>
+    <!-- 页面标题 -->
+    <HBox alignment="CENTER_LEFT" spacing="15.0">
+        <Label text="🔍 高级查询" styleClass="page-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="resultCountLabel" text="共 0 条结果" styleClass="result-count"/>
+    </HBox>
+
+    <!-- 查询条件区域 -->
+    <VBox spacing="15.0" styleClass="query-panel">
+        <padding>
+            <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+        </padding>
+
+        <!-- 第一行条件 -->
+        <HBox spacing="30.0" alignment="CENTER_LEFT">
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <Label text="姓名：" styleClass="query-label"/>
+                <TextField fx:id="nameField" promptText="请输入姓名" prefWidth="150" styleClass="query-field"/>
+            </HBox>
+
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <Label text="身份证号：" styleClass="query-label"/>
+                <TextField fx:id="idCardField" promptText="请输入身份证号" prefWidth="180" styleClass="query-field"/>
+            </HBox>
+
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <Label text="籍贯：" styleClass="query-label"/>
+                <TextField fx:id="nativePlaceField" promptText="请输入籍贯" prefWidth="150" styleClass="query-field"/>
+            </HBox>
+        </HBox>
+
+        <!-- 第二行条件 -->
+        <HBox spacing="30.0" alignment="CENTER_LEFT">
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <Label text="危险等级：" styleClass="query-label"/>
+                <ComboBox fx:id="riskLevelCombo" prefWidth="120" styleClass="query-combo"/>
+            </HBox>
+
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <Label text="性别：" styleClass="query-label"/>
+                <ComboBox fx:id="genderCombo" prefWidth="100" styleClass="query-combo"/>
+            </HBox>
+
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <Label text="上访次数：" styleClass="query-label"/>
+                <Spinner fx:id="minVisitSpinner" prefWidth="80" styleClass="query-spinner"/>
+                <Label text="至" styleClass="query-label"/>
+                <Spinner fx:id="maxVisitSpinner" prefWidth="80" styleClass="query-spinner"/>
+                <Label text="次" styleClass="query-label"/>
+            </HBox>
+        </HBox>
+
+        <!-- 第三行条件 -->
+        <HBox spacing="30.0" alignment="CENTER_LEFT">
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <Label text="文化程度：" styleClass="query-label"/>
+                <ComboBox fx:id="educationCombo" prefWidth="120" styleClass="query-combo"/>
+            </HBox>
+
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <Label text="婚姻状况：" styleClass="query-label"/>
+                <ComboBox fx:id="maritalStatusCombo" prefWidth="120" styleClass="query-combo"/>
+            </HBox>
+
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <Label text="进京方式：" styleClass="query-label"/>
+                <ComboBox fx:id="entryMethodCombo" prefWidth="120" styleClass="query-combo"/>
+            </HBox>
+        </HBox>
+
+        <!-- 操作按钮 -->
+        <HBox spacing="15.0" alignment="CENTER_RIGHT">
+            <Button fx:id="resetButton" text="🔄 重置条件" styleClass="secondary-button" onAction="#handleReset"/>
+            <Button fx:id="searchButton" text="🔍 查询" styleClass="primary-button" onAction="#handleSearch"/>
+            <Button fx:id="exportButton" text="📤 导出结果" styleClass="success-button" onAction="#handleExport"/>
+        </HBox>
+    </VBox>
+
+    <!-- 查询结果表格 -->
+    <VBox VBox.vgrow="ALWAYS" spacing="10.0">
+        <TableView fx:id="resultTable" VBox.vgrow="ALWAYS" styleClass="data-table">
+            <columns>
+                <TableColumn fx:id="indexColumn" text="序号" prefWidth="60"/>
+                <TableColumn fx:id="nameColumn" text="姓名" prefWidth="100"/>
+                <TableColumn fx:id="idCardColumn" text="身份证号" prefWidth="180"/>
+                <TableColumn fx:id="genderColumn" text="性别" prefWidth="60"/>
+                <TableColumn fx:id="nativePlaceColumn" text="籍贯" prefWidth="100"/>
+                <TableColumn fx:id="visitCountColumn" text="上访次数" prefWidth="80"/>
+                <TableColumn fx:id="riskLevelColumn" text="危险等级" prefWidth="100"/>
+                <TableColumn fx:id="phoneColumn" text="联系电话" prefWidth="130"/>
+                <TableColumn fx:id="actionColumn" text="操作" prefWidth="150"/>
+            </columns>
+            <placeholder>
+                <Label text="请设置查询条件后点击查询按钮" styleClass="table-placeholder"/>
+            </placeholder>
+        </TableView>
+    </VBox>
 </VBox>
