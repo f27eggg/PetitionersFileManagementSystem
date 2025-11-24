@@ -41,9 +41,8 @@ public class FormController implements Initializable {
     @FXML private ComboBox<String> educationCombo;
     @FXML private ComboBox<String> maritalStatusCombo;
     @FXML private TextField spouseField;
-    @FXML private TextField phone1Field;
-    @FXML private TextField phone2Field;
-    @FXML private TextField phone3Field;
+    @FXML private javafx.scene.layout.VBox phonesContainer; // 动态电话容器
+    private List<TextField> phoneFields = new ArrayList<>(); // 电话字段列表
     @FXML private TextField occupationField;
     @FXML private TextField workAddressField;
     @FXML private TextField homeAddressField;
@@ -101,6 +100,9 @@ public class FormController implements Initializable {
 
         // 添加验证监听
         addValidationListeners();
+
+        // 初始化电话号码容器（添加一个默认的电话输入框）
+        addPhoneField();
 
         System.out.println("FormController 初始化完成！");
     }
@@ -176,17 +178,85 @@ public class FormController implements Initializable {
                 }
             }
         });
+    }
 
-        // 手机号验证
-        phone1Field.textProperty().addListener((obs, oldVal, newVal) -> {
+    /**
+     * 添加电话号码输入框的验证监听
+     */
+    private void addPhoneValidationListener(TextField phoneField) {
+        phoneField.textProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal != null && !newVal.trim().isEmpty()) {
                 if (ValidationUtil.isValidPhone(newVal)) {
-                    phone1Field.setStyle("-fx-border-color: #10b981; -fx-border-width: 2;");
+                    phoneField.setStyle("-fx-border-color: #10b981; -fx-border-width: 2;");
                 } else {
-                    phone1Field.setStyle("-fx-border-color: #ef4444; -fx-border-width: 2;");
+                    phoneField.setStyle("-fx-border-color: #ef4444; -fx-border-width: 2;");
                 }
             }
         });
+    }
+
+    /**
+     * 动态添加电话号码输入框
+     */
+    @FXML
+    private void addPhoneField() {
+        // 创建一个水平容器存放输入框和删除按钮
+        javafx.scene.layout.HBox phoneBox = new javafx.scene.layout.HBox(10);
+        phoneBox.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
+
+        // 创建电话输入框
+        TextField phoneField = new TextField();
+        phoneField.setPromptText("请输入11位手机号");
+        phoneField.setPrefWidth(250);
+        javafx.scene.layout.HBox.setHgrow(phoneField, javafx.scene.layout.Priority.ALWAYS);
+
+        // 添加验证监听
+        addPhoneValidationListener(phoneField);
+
+        // 创建删除按钮
+        Button removeButton = new Button("❌");
+        removeButton.getStyleClass().add("danger-button");
+        removeButton.setOnAction(e -> removePhoneField(phoneBox, phoneField));
+
+        // 如果只有一个电话框，不显示删除按钮
+        if (phoneFields.isEmpty()) {
+            removeButton.setVisible(false);
+            removeButton.setManaged(false);
+        }
+
+        phoneBox.getChildren().addAll(phoneField, removeButton);
+
+        // 添加到容器
+        phonesContainer.getChildren().add(phoneBox);
+        phoneFields.add(phoneField);
+
+        // 如果添加第二个电话框，显示第一个的删除按钮
+        if (phoneFields.size() == 2 && phonesContainer.getChildren().size() > 0) {
+            javafx.scene.layout.HBox firstBox = (javafx.scene.layout.HBox) phonesContainer.getChildren().get(0);
+            if (firstBox.getChildren().size() > 1) {
+                Button firstRemoveBtn = (Button) firstBox.getChildren().get(1);
+                firstRemoveBtn.setVisible(true);
+                firstRemoveBtn.setManaged(true);
+            }
+        }
+    }
+
+    /**
+     * 移除电话号码输入框
+     */
+    private void removePhoneField(javafx.scene.layout.HBox phoneBox, TextField phoneField) {
+        phonesContainer.getChildren().remove(phoneBox);
+        phoneFields.remove(phoneField);
+
+        // 如果只剩一个电话框，隐藏删除按钮
+        if (phoneFields.size() == 1 && phonesContainer.getChildren().size() > 0) {
+            javafx.scene.layout.HBox lastBox = (javafx.scene.layout.HBox) phonesContainer.getChildren().get(0);
+            if (lastBox.getChildren().size() > 1) {
+                Button removeBtn = (Button) lastBox.getChildren().get(1);
+                removeBtn.setVisible(false);
+                removeBtn.setManaged(false);
+            }
+        }
     }
 
     // ==================== 公共方法 ====================
@@ -245,12 +315,21 @@ public class FormController implements Initializable {
 
         spouseField.setText(info.getSpouse());
 
-        // 电话
+        // 电话 - 动态加载
         List<String> phones = info.getPhones();
+        // 先清空现有电话框
+        phonesContainer.getChildren().clear();
+        phoneFields.clear();
+
         if (phones != null && !phones.isEmpty()) {
-            if (phones.size() > 0) phone1Field.setText(phones.get(0));
-            if (phones.size() > 1) phone2Field.setText(phones.get(1));
-            if (phones.size() > 2) phone3Field.setText(phones.get(2));
+            // 为每个电话号码添加一个输入框
+            for (String phone : phones) {
+                addPhoneField();
+                phoneFields.get(phoneFields.size() - 1).setText(phone);
+            }
+        } else {
+            // 至少添加一个空的电话框
+            addPhoneField();
         }
 
         occupationField.setText(info.getOccupation());
@@ -310,9 +389,12 @@ public class FormController implements Initializable {
         educationCombo.setValue(null);
         maritalStatusCombo.setValue(null);
         spouseField.clear();
-        phone1Field.clear();
-        phone2Field.clear();
-        phone3Field.clear();
+
+        // 清空电话框，重置为一个空的输入框
+        phonesContainer.getChildren().clear();
+        phoneFields.clear();
+        addPhoneField();
+
         occupationField.clear();
         workAddressField.clear();
         homeAddressField.clear();
@@ -369,10 +451,14 @@ public class FormController implements Initializable {
             errors.add("请选择性别");
         }
 
-        if (phone1Field.getText() == null || phone1Field.getText().trim().isEmpty()) {
-            errors.add("联系电话不能为空");
-        } else if (!ValidationUtil.isValidPhone(phone1Field.getText())) {
-            errors.add("联系电话格式不正确");
+        // 验证已填写的电话号码格式（可选，但如果填写了必须正确）
+        for (TextField phoneField : phoneFields) {
+            String phone = phoneField.getText();
+            if (phone != null && !phone.trim().isEmpty()) {
+                if (!ValidationUtil.isValidPhone(phone)) {
+                    errors.add("电话号码格式不正确：" + phone);
+                }
+            }
         }
 
         if (riskLevelCombo.getValue() == null) {
@@ -432,16 +518,13 @@ public class FormController implements Initializable {
             personalInfo.setMaritalStatus(findMaritalStatusByDisplayName(maritalStatusCombo.getValue()));
             personalInfo.setSpouse(spouseField.getText());
 
-            // 电话列表
+            // 电话列表 - 从动态电话框中收集
             List<String> phones = new ArrayList<>();
-            if (phone1Field.getText() != null && !phone1Field.getText().trim().isEmpty()) {
-                phones.add(phone1Field.getText().trim());
-            }
-            if (phone2Field.getText() != null && !phone2Field.getText().trim().isEmpty()) {
-                phones.add(phone2Field.getText().trim());
-            }
-            if (phone3Field.getText() != null && !phone3Field.getText().trim().isEmpty()) {
-                phones.add(phone3Field.getText().trim());
+            for (TextField phoneField : phoneFields) {
+                String phone = phoneField.getText();
+                if (phone != null && !phone.trim().isEmpty()) {
+                    phones.add(phone.trim());
+                }
             }
             personalInfo.setPhones(phones);
 

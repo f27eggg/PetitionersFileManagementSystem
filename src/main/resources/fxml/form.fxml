@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 
 <BorderPane xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1"
@@ -76,19 +78,16 @@
                                 <Label text="配偶姓名：" styleClass="form-label" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
                                 <TextField fx:id="spouseField" promptText="配偶姓名" styleClass="form-field" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
 
-                                <!-- 第5行 -->
-                                <Label text="*联系电话1：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-                                <TextField fx:id="phone1Field" promptText="主要联系电话" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-
-                                <Label text="联系电话2：" styleClass="form-label" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
-                                <TextField fx:id="phone2Field" promptText="备用电话" styleClass="form-field" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+                                <!-- 第5行：联系电话（动态添加） -->
+                                <Label text="联系电话：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                                <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.columnSpan="3" alignment="CENTER_LEFT">
+                                    <VBox fx:id="phonesContainer" spacing="5" HBox.hgrow="ALWAYS"/>
+                                    <Button text="➕ 添加电话" onAction="#addPhoneField" styleClass="secondary-button"/>
+                                </HBox>
 
                                 <!-- 第6行 -->
-                                <Label text="联系电话3：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-                                <TextField fx:id="phone3Field" promptText="第三个电话" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
-
-                                <Label text="职业：" styleClass="form-label" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
-                                <TextField fx:id="occupationField" promptText="职业或工作单位" styleClass="form-field" GridPane.columnIndex="3" GridPane.rowIndex="5"/>
+                                <Label text="职业：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                                <TextField fx:id="occupationField" promptText="职业或工作单位" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.columnSpan="3"/>
 
                                 <!-- 第7行 -->
                                 <Label text="工作地址：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
@@ -168,11 +167,11 @@
                                 <Label text="是否能解决：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
                                 <ComboBox fx:id="canResolveCombo" promptText="选择" prefWidth="300" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                     <items>
-                                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                                        <FXCollections fx:factory="observableArrayList">
                                             <String fx:value="是"/>
                                             <String fx:value="否"/>
                                             <String fx:value="部分可以"/>
-                                        </javafx.collections.FXCollections>
+                                        </FXCollections>
                                     </items>
                                 </ComboBox>
 
@@ -191,11 +190,11 @@
                                 <Label text="有无接应人：" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
                                 <ComboBox fx:id="hasReceptionCombo" promptText="选择" prefWidth="300" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                     <items>
-                                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                                        <FXCollections fx:factory="observableArrayList">
                                             <String fx:value="有"/>
                                             <String fx:value="无"/>
                                             <String fx:value="不详"/>
-                                        </javafx.collections.FXCollections>
+                                        </FXCollections>
                                     </items>
                                 </ComboBox>
                             </GridPane>
