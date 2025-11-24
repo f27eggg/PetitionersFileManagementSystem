@@ -104,7 +104,42 @@ public class FormController implements Initializable {
         // 初始化电话号码容器（添加一个默认的电话输入框）
         addPhoneField();
 
+        // 添加淡入动画效果
+        addFadeInAnimation();
+
         System.out.println("FormController 初始化完成！");
+    }
+
+    /**
+     * 添加淡入动画效果
+     */
+    private void addFadeInAnimation() {
+        // 为TabPane添加淡入效果
+        tabPane.setOpacity(0);
+        javafx.animation.FadeTransition fadeIn = new javafx.animation.FadeTransition(
+            javafx.util.Duration.millis(500), tabPane
+        );
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
+        fadeIn.play();
+
+        // 为按钮添加轻微的脉冲效果
+        javafx.animation.Timeline pulse = new javafx.animation.Timeline(
+            new javafx.animation.KeyFrame(javafx.util.Duration.ZERO,
+                new javafx.animation.KeyValue(saveButton.scaleXProperty(), 1.0),
+                new javafx.animation.KeyValue(saveButton.scaleYProperty(), 1.0)
+            ),
+            new javafx.animation.KeyFrame(javafx.util.Duration.seconds(1),
+                new javafx.animation.KeyValue(saveButton.scaleXProperty(), 1.03),
+                new javafx.animation.KeyValue(saveButton.scaleYProperty(), 1.03)
+            ),
+            new javafx.animation.KeyFrame(javafx.util.Duration.seconds(2),
+                new javafx.animation.KeyValue(saveButton.scaleXProperty(), 1.0),
+                new javafx.animation.KeyValue(saveButton.scaleYProperty(), 1.0)
+            )
+        );
+        pulse.setCycleCount(javafx.animation.Animation.INDEFINITE);
+        pulse.play();
     }
 
     /**
