@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
 
 <!--
   仪表盘页面
@@ -82,13 +83,40 @@
         <Button text="🔄 刷新数据" styleClass="secondary-button" onAction="#refreshData"/>
     </HBox>
 
-    <!-- 占位符区域（后续添加图表） -->
-    <VBox styleClass="card" VBox.vgrow="ALWAYS">
-        <padding>
-            <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
-        </padding>
-        <Label text="统计图表区域" styleClass="card-title"/>
-        <Label text="此区域将在阶段六添加可视化图表" styleClass="card-subtitle"/>
-    </VBox>
+    <!-- 图表区域 -->
+    <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+        <!-- 危险等级分布饼图 -->
+        <VBox styleClass="chart-container" HBox.hgrow="ALWAYS">
+            <Label text="危险等级分布" styleClass="chart-title"/>
+            <PieChart fx:id="riskLevelChart" legendVisible="true" labelsVisible="true"
+                      prefHeight="300" VBox.vgrow="ALWAYS"/>
+        </VBox>
+
+        <!-- 上访次数分布柱状图 -->
+        <VBox styleClass="chart-container" HBox.hgrow="ALWAYS">
+            <Label text="上访次数分布" styleClass="chart-title"/>
+            <BarChart fx:id="visitCountChart" prefHeight="300" VBox.vgrow="ALWAYS">
+                <xAxis>
+                    <CategoryAxis label="次数范围"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="人数"/>
+                </yAxis>
+            </BarChart>
+        </VBox>
+
+        <!-- 籍贯分布柱状图 -->
+        <VBox styleClass="chart-container" HBox.hgrow="ALWAYS">
+            <Label text="籍贯分布（前10）" styleClass="chart-title"/>
+            <BarChart fx:id="nativePlaceChart" prefHeight="300" VBox.vgrow="ALWAYS">
+                <xAxis>
+                    <CategoryAxis label="籍贯"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="人数"/>
+                </yAxis>
+            </BarChart>
+        </VBox>
+    </HBox>
 
 </VBox>
