@@ -357,13 +357,12 @@ public class DetailController implements Initializable {
                 }
             });
 
-            // 创建新窗口
-            Stage stage = new Stage();
-            stage.setTitle("编辑人员信息 - " + currentPetitioner.getPersonalInfo().getName());
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setWidth(1000);
-            stage.setHeight(700);
+            // 创建美化的弹窗
+            Stage parentStage = (Stage) editButton.getScene().getWindow();
+            Stage stage = com.petition.util.StageUtil.createStyledDialog(
+                "✏️ 编辑人员信息 - " + currentPetitioner.getPersonalInfo().getName(),
+                root, parentStage, 1200, 800
+            );
             stage.show();
 
         } catch (Exception e) {

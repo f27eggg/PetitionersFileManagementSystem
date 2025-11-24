@@ -108,7 +108,6 @@
     <center>
         <StackPane fx:id="contentArea" styleClass="content-area">
             <!-- 动态加载的页面内容将显示在这里 -->
-            <Label text="欢迎使用上访人员重点监控信息管理系统" styleClass="welcome-text"/>
         </StackPane>
     </center>
 

@@ -1,0 +1,547 @@
+[ {
+  "id" : "a1b2c3d4-e5f6-4a5b-8c9d-1e2f3a4b5c6d",
+  "createTime" : "2024-01-15T09:30:00",
+  "updateTime" : "2024-11-20T14:20:00",
+  "personalInfo" : {
+    "name" : "张建国",
+    "idCard" : "110101196503121234",
+    "gender" : "MALE",
+    "nativePlace" : "河北省保定市",
+    "education" : "JUNIOR_HIGH",
+    "formerName" : "张建",
+    "maritalStatus" : "MARRIED",
+    "spouse" : "李秀英",
+    "phones" : [ "13812345678", "13998765432" ],
+    "occupation" : "退休工人",
+    "workAddress" : "",
+    "homeAddress" : "河北省保定市莲池区建设路123号",
+    "visitCount" : 5,
+    "counterMeasures" : "熟悉北京地铁线路，经常变换手机号码，使用现金支付避免追踪",
+    "consumptionHabits" : "住宿多选择城中村小旅馆，每次停留3-5天，饮食习惯在小餐馆用餐",
+    "photos" : [ ]
+  },
+  "beijingContact" : {
+    "contactName" : "王大成",
+    "formerAddress" : "北京市朝阳区劲松街道劲松小区",
+    "contactIdCard" : "110105197802151122",
+    "relationship" : "同乡",
+    "assistDescription" : "提供临时住宿，协助打听信访接待时间和地点",
+    "photos" : [ ]
+  },
+  "petitionCase" : {
+    "petitionContent" : "要求解决国企改制下岗补偿问题，认为当年补偿标准过低，要求重新核算补偿金",
+    "canResolve" : "否",
+    "resolutionMethod" : "已按当时政策标准执行完毕，不存在重新核算依据",
+    "visitTrajectory" : "2020年3月首次进京；2021年6月再次进京在信访局门口聚集；2022年10月、2023年5月、2024年8月多次进京",
+    "entryMethod" : "TRAIN",
+    "transportInBeijing" : "SUBWAY",
+    "hasReception" : "有"
+  },
+  "riskAssessment" : {
+    "riskLevel" : "HIGH"
+  }
+}, {
+  "id" : "b2c3d4e5-f6a7-4b5c-9d8e-2f3a4b5c6d7e",
+  "createTime" : "2024-02-20T10:15:00",
+  "updateTime" : "2024-11-22T16:30:00",
+  "personalInfo" : {
+    "name" : "刘芳",
+    "idCard" : "130102197808233456",
+    "gender" : "FEMALE",
+    "nativePlace" : "河北省石家庄市",
+    "education" : "SENIOR_HIGH",
+    "formerName" : "",
+    "maritalStatus" : "DIVORCED",
+    "spouse" : "",
+    "phones" : [ "15987654321" ],
+    "occupation" : "无业",
+    "workAddress" : "",
+    "homeAddress" : "河北省石家庄市桥西区新华路56号",
+    "visitCount" : 12,
+    "counterMeasures" : "使用多个手机号，频繁更换住宿地点，与其他上访人员结伴行动",
+    "consumptionHabits" : "住宿地点不固定，经常使用假名登记，饮食多在快餐店解决",
+    "photos" : [ ]
+  },
+  "beijingContact" : {
+    "contactName" : "赵敏",
+    "formerAddress" : "北京市海淀区学院路街道",
+    "contactIdCard" : "110108198305122334",
+    "relationship" : "朋友",
+    "assistDescription" : "提供信访相关信息，偶尔提供住宿",
+    "photos" : [ ]
+  },
+  "petitionCase" : {
+    "petitionContent" : "房屋拆迁补偿纠纷，认为补偿标准不合理，要求提高补偿款",
+    "canResolve" : "部分可以",
+    "resolutionMethod" : "可协调适当提高补偿标准，但需经评估程序",
+    "visitTrajectory" : "自2021年起频繁进京，几乎每月一次，多次在天安门地区徘徊，曾在信访办门口聚集",
+    "entryMethod" : "HIGH_SPEED_RAIL",
+    "transportInBeijing" : "BUS",
+    "hasReception" : "有"
+  },
+  "riskAssessment" : {
+    "riskLevel" : "CRITICAL"
+  }
+}, {
+  "id" : "c3d4e5f6-a7b8-4c5d-9e8f-3a4b5c6d7e8f",
+  "createTime" : "2024-03-10T08:45:00",
+  "updateTime" : "2024-10-15T11:00:00",
+  "personalInfo" : {
+    "name" : "王建华",
+    "idCard" : "410102196212155678",
+    "gender" : "MALE",
+    "nativePlace" : "河南省郑州市",
+    "education" : "PRIMARY_SCHOOL",
+    "formerName" : "",
+    "maritalStatus" : "MARRIED",
+    "spouse" : "陈小红",
+    "phones" : [ "13676543210", "15812349876" ],
+    "occupation" : "农民",
+    "workAddress" : "",
+    "homeAddress" : "河南省郑州市中原区西三环88号",
+    "visitCount" : 3,
+    "counterMeasures" : "不太懂反侦察手段，行为较为直接",
+    "consumptionHabits" : "节俭型，住宿选择便宜旅馆，饮食简单",
+    "photos" : [ ]
+  },
+  "beijingContact" : {
+    "contactName" : "",
+    "formerAddress" : "",
+    "contactIdCard" : "",
+    "relationship" : "",
+    "assistDescription" : "",
+    "photos" : [ ]
+  },
+  "petitionCase" : {
+    "petitionContent" : "农村土地征收补偿问题，认为补偿款被村干部私吞",
+    "canResolve" : "是",
+    "resolutionMethod" : "已启动调查程序，如查实将追回补偿款并追责",
+    "visitTrajectory" : "2023年11月首次进京，2024年3月和8月再次进京",
+    "entryMethod" : "LONG_DISTANCE_BUS",
+    "transportInBeijing" : "WALKING",
+    "hasReception" : "无"
+  },
+  "riskAssessment" : {
+    "riskLevel" : "MEDIUM"
+  }
+}, {
+  "id" : "d4e5f6a7-b8c9-4d5e-9f8a-4b5c6d7e8f9a",
+  "createTime" : "2024-04-05T13:20:00",
+  "updateTime" : "2024-11-18T09:45:00",
+  "personalInfo" : {
+    "name" : "陈志强",
+    "idCard" : "370102197105227890",
+    "gender" : "MALE",
+    "nativePlace" : "山东省济南市",
+    "education" : "BACHELOR",
+    "formerName" : "",
+    "maritalStatus" : "MARRIED",
+    "spouse" : "孙丽华",
+    "phones" : [ "13512348765" ],
+    "occupation" : "企业职员",
+    "workAddress" : "山东省济南市历下区经十路188号",
+    "homeAddress" : "山东省济南市历下区文化东路45号",
+    "visitCount" : 2,
+    "counterMeasures" : "较为谨慎，了解法律程序，通过正常渠道反映问题",
+    "consumptionHabits" : "住宿选择经济型酒店，饮食正常",
+    "photos" : [ ]
+  },
+  "beijingContact" : {
+    "contactName" : "",
+    "formerAddress" : "",
+    "contactIdCard" : "",
+    "relationship" : "",
+    "assistDescription" : "",
+    "photos" : [ ]
+  },
+  "petitionCase" : {
+    "petitionContent" : "劳动纠纷，企业违法解除劳动合同，要求恢复劳动关系并赔偿",
+    "canResolve" : "是",
+    "resolutionMethod" : "可通过劳动仲裁和司法程序解决",
+    "visitTrajectory" : "2024年4月和9月两次进京，均通过正常信访渠道反映问题",
+    "entryMethod" : "HIGH_SPEED_RAIL",
+    "transportInBeijing" : "SUBWAY",
+    "hasReception" : "无"
+  },
+  "riskAssessment" : {
+    "riskLevel" : "LOW"
+  }
+}, {
+  "id" : "e5f6a7b8-c9d0-4e5f-9a8b-5c6d7e8f9a0b",
+  "createTime" : "2024-05-12T11:30:00",
+  "updateTime" : "2024-11-23T15:10:00",
+  "personalInfo" : {
+    "name" : "李秀梅",
+    "idCard" : "420102196807141234",
+    "gender" : "FEMALE",
+    "nativePlace" : "湖北省武汉市",
+    "education" : "JUNIOR_COLLEGE",
+    "formerName" : "",
+    "maritalStatus" : "WIDOWED",
+    "spouse" : "",
+    "phones" : [ "13798765432", "15887654321" ],
+    "occupation" : "退休教师",
+    "workAddress" : "",
+    "homeAddress" : "湖北省武汉市江汉区解放大道234号",
+    "visitCount" : 8,
+    "counterMeasures" : "经验丰富，会选择敏感时期进京，了解信访接待流程",
+    "consumptionHabits" : "住宿有固定旅馆，与老板熟悉，饮食习惯固定餐馆",
+    "photos" : [ ]
+  },
+  "beijingContact" : {
+    "contactName" : "周建平",
+    "formerAddress" : "北京市西城区月坛街道",
+    "contactIdCard" : "110102196503188899",
+    "relationship" : "表亲",
+    "assistDescription" : "提供住宿，偶尔陪同前往信访部门",
+    "photos" : [ ]
+  },
+  "petitionCase" : {
+    "petitionContent" : "医疗纠纷，认为医院误诊导致配偶去世，要求赔偿和追责",
+    "canResolve" : "部分可以",
+    "resolutionMethod" : "可通过医疗事故鉴定和司法程序处理",
+    "visitTrajectory" : "从2022年开始每年进京2-3次，主要集中在两会期间和国庆前后",
+    "entryMethod" : "TRAIN",
+    "transportInBeijing" : "BUS",
+    "hasReception" : "有"
+  },
+  "riskAssessment" : {
+    "riskLevel" : "HIGH"
+  }
+}, {
+  "id" : "f6a7b8c9-d0e1-4f5a-9b8c-6d7e8f9a0b1c",
+  "createTime" : "2024-06-08T14:50:00",
+  "updateTime" : "2024-11-15T10:25:00",
+  "personalInfo" : {
+    "name" : "赵国栋",
+    "idCard" : "510102197412093456",
+    "gender" : "MALE",
+    "nativePlace" : "四川省成都市",
+    "education" : "MASTER",
+    "formerName" : "",
+    "maritalStatus" : "MARRIED",
+    "spouse" : "杨静",
+    "phones" : [ "13912345678" ],
+    "occupation" : "自由职业",
+    "workAddress" : "",
+    "homeAddress" : "四川省成都市武侯区科华北路66号",
+    "visitCount" : 1,
+    "counterMeasures" : "首次上访，对流程不熟悉",
+    "consumptionHabits" : "住宿选择连锁酒店，消费能力中等",
+    "photos" : [ ]
+  },
+  "beijingContact" : {
+    "contactName" : "",
+    "formerAddress" : "",
+    "contactIdCard" : "",
+    "relationship" : "",
+    "assistDescription" : "",
+    "photos" : [ ]
+  },
+  "petitionCase" : {
+    "petitionContent" : "知识产权纠纷，认为政府部门在专利审批中存在失误",
+    "canResolve" : "是",
+    "resolutionMethod" : "可通过行政复议或司法程序解决",
+    "visitTrajectory" : "2024年6月首次进京，通过正常渠道反映问题",
+    "entryMethod" : "AIRPLANE",
+    "transportInBeijing" : "TAXI",
+    "hasReception" : "无"
+  },
+  "riskAssessment" : {
+    "riskLevel" : "LOW"
+  }
+}, {
+  "id" : "a7b8c9d0-e1f2-4a5b-9c8d-7e8f9a0b1c2d",
+  "createTime" : "2024-07-22T09:10:00",
+  "updateTime" : "2024-11-21T13:40:00",
+  "personalInfo" : {
+    "name" : "孙小燕",
+    "idCard" : "320102198203165678",
+    "gender" : "FEMALE",
+    "nativePlace" : "江苏省南京市",
+    "education" : "TECHNICAL_SECONDARY",
+    "formerName" : "孙燕",
+    "maritalStatus" : "MARRIED",
+    "spouse" : "李明",
+    "phones" : [ "13665432109", "15778899001" ],
+    "occupation" : "个体户",
+    "workAddress" : "江苏省南京市秦淮区中华路112号",
+    "homeAddress" : "江苏省南京市秦淮区长乐路78号",
+    "visitCount" : 6,
+    "counterMeasures" : "会避开监控摄像头，使用现金交易，与其他上访人员交流经验",
+    "consumptionHabits" : "住宿选择城乡结合部旅馆，消费节俭",
+    "photos" : [ ]
+  },
+  "beijingContact" : {
+    "contactName" : "马强",
+    "formerAddress" : "北京市丰台区丰台街道",
+    "contactIdCard" : "110106198012255566",
+    "relationship" : "生意伙伴",
+    "assistDescription" : "提供北京地区信息，偶尔提供交通协助",
+    "photos" : [ ]
+  },
+  "petitionCase" : {
+    "petitionContent" : "市场管理纠纷，认为市场管理方违规收费并强制搬迁",
+    "canResolve" : "部分可以",
+    "resolutionMethod" : "可协调降低部分费用，但搬迁决定符合规划要求",
+    "visitTrajectory" : "2023年初开始上访，平均每两个月进京一次",
+    "entryMethod" : "HIGH_SPEED_RAIL",
+    "transportInBeijing" : "RIDE_HAILING",
+    "hasReception" : "有"
+  },
+  "riskAssessment" : {
+    "riskLevel" : "MEDIUM"
+  }
+}, {
+  "id" : "b8c9d0e1-f2a3-4b5c-9d8e-8f9a0b1c2d3e",
+  "createTime" : "2024-08-30T15:35:00",
+  "updateTime" : "2024-11-19T12:15:00",
+  "personalInfo" : {
+    "name" : "周志伟",
+    "idCard" : "430102196509287890",
+    "gender" : "MALE",
+    "nativePlace" : "湖南省长沙市",
+    "education" : "SENIOR_HIGH",
+    "formerName" : "",
+    "maritalStatus" : "DIVORCED",
+    "spouse" : "",
+    "phones" : [ "13554433221" ],
+    "occupation" : "货车司机",
+    "workAddress" : "",
+    "homeAddress" : "湖南省长沙市芙蓉区车站路155号",
+    "visitCount" : 4,
+    "counterMeasures" : "利用职业便利，自驾货车进京，不易被追踪",
+    "consumptionHabits" : "住宿在货车停车场或便宜旅馆，饮食在路边摊",
+    "photos" : [ ]
+  },
+  "beijingContact" : {
+    "contactName" : "",
+    "formerAddress" : "",
+    "contactIdCard" : "",
+    "relationship" : "",
+    "assistDescription" : "",
+    "photos" : [ ]
+  },
+  "petitionCase" : {
+    "petitionContent" : "交通事故赔偿纠纷，认为交警部门责任认定不公，要求重新认定",
+    "canResolve" : "否",
+    "resolutionMethod" : "责任认定程序合法，可通过司法程序申诉但改判可能性小",
+    "visitTrajectory" : "2023年6月首次进京，之后2023年12月、2024年4月、2024年9月再次进京",
+    "entryMethod" : "SELF_DRIVING",
+    "transportInBeijing" : "SELF_DRIVING",
+    "hasReception" : "无"
+  },
+  "riskAssessment" : {
+    "riskLevel" : "MEDIUM"
+  }
+}, {
+  "id" : "c9d0e1f2-a3b4-4c5d-9e8f-9a0b1c2d3e4f",
+  "createTime" : "2024-09-15T10:05:00",
+  "updateTime" : "2024-11-24T08:50:00",
+  "personalInfo" : {
+    "name" : "吴桂兰",
+    "idCard" : "610102196106121234",
+    "gender" : "FEMALE",
+    "nativePlace" : "陕西省西安市",
+    "education" : "PRIMARY_SCHOOL",
+    "formerName" : "",
+    "maritalStatus" : "MARRIED",
+    "spouse" : "张福",
+    "phones" : [ "13443322110" ],
+    "occupation" : "无业",
+    "workAddress" : "",
+    "homeAddress" : "陕西省西安市碑林区南二环88号",
+    "visitCount" : 15,
+    "counterMeasures" : "非常熟悉上访流程，会组织串联其他上访人员，使用多种通讯工具",
+    "consumptionHabits" : "长期在京居住，有固定住所，已形成小型上访群体",
+    "photos" : [ ]
+  },
+  "beijingContact" : {
+    "contactName" : "郑大娘",
+    "formerAddress" : "北京市石景山区八角街道",
+    "contactIdCard" : "110107195808094455",
+    "relationship" : "同乡",
+    "assistDescription" : "提供长期住宿，协助组织上访活动，传播上访经验",
+    "photos" : [ ]
+  },
+  "petitionCase" : {
+    "petitionContent" : "房屋产权纠纷，长达20年的历史遗留问题，涉及多方利益",
+    "canResolve" : "否",
+    "resolutionMethod" : "问题复杂，涉及历史遗留问题，已通过多次司法程序，无新证据难以改判",
+    "visitTrajectory" : "自2018年开始频繁进京，几乎每月都会在京停留，已成为常驻上访人员",
+    "entryMethod" : "TRAIN",
+    "transportInBeijing" : "BUS",
+    "hasReception" : "有"
+  },
+  "riskAssessment" : {
+    "riskLevel" : "CRITICAL"
+  }
+}, {
+  "id" : "d0e1f2a3-b4c5-4d5e-9f8a-0b1c2d3e4f5a",
+  "createTime" : "2024-10-20T16:25:00",
+  "updateTime" : "2024-11-22T11:30:00",
+  "personalInfo" : {
+    "name" : "马建军",
+    "idCard" : "220102197707183456",
+    "gender" : "MALE",
+    "nativePlace" : "吉林省长春市",
+    "education" : "JUNIOR_HIGH",
+    "formerName" : "",
+    "maritalStatus" : "MARRIED",
+    "spouse" : "刘艳",
+    "phones" : [ "13332221100", "15556677889" ],
+    "occupation" : "下岗工人",
+    "workAddress" : "",
+    "homeAddress" : "吉林省长春市南关区人民大街99号",
+    "visitCount" : 7,
+    "counterMeasures" : "会选择节假日进京，了解上访集中区域，与其他上访人员保持联系",
+    "consumptionHabits" : "住宿在上访人员集中的旅馆，消费极为节俭",
+    "photos" : [ ]
+  },
+  "beijingContact" : {
+    "contactName" : "李大爷",
+    "formerAddress" : "北京市通州区永顺镇",
+    "contactIdCard" : "110112196201157788",
+    "relationship" : "老乡",
+    "assistDescription" : "提供临时住宿和生活帮助",
+    "photos" : [ ]
+  },
+  "petitionCase" : {
+    "petitionContent" : "企业破产职工安置问题，要求补发拖欠的工资和保险",
+    "canResolve" : "部分可以",
+    "resolutionMethod" : "企业已破产清算，可从破产财产中按比例受偿，但无法全额支付",
+    "visitTrajectory" : "从2022年开始每年进京2-3次，主要在春节前和国庆期间",
+    "entryMethod" : "TRAIN",
+    "transportInBeijing" : "BUS",
+    "hasReception" : "有"
+  },
+  "riskAssessment" : {
+    "riskLevel" : "HIGH"
+  }
+}, {
+  "id" : "dd7e5594-6c8c-48d3-b02e-5a92e01dc7e0",
+  "createTime" : "2025-11-24T17:34:25.2447907",
+  "updateTime" : "2025-11-24T17:34:25.2447907",
+  "personalInfo" : {
+    "name" : "张国",
+    "idCard" : "110101196503122000",
+    "gender" : "MALE",
+    "nativePlace" : "河北省保定市",
+    "education" : "JUNIOR_HIGH",
+    "formerName" : null,
+    "maritalStatus" : "MARRIED",
+    "spouse" : null,
+    "phones" : [ "9223372036854775807" ],
+    "occupation" : "退休工人",
+    "workAddress" : null,
+    "homeAddress" : "河北省保定市莲池区建设路123号",
+    "visitCount" : 5,
+    "counterMeasures" : null,
+    "consumptionHabits" : null,
+    "photos" : [ ]
+  },
+  "beijingContact" : {
+    "contactName" : "王大成",
+    "formerAddress" : null,
+    "contactIdCard" : null,
+    "relationship" : "同乡",
+    "assistDescription" : null,
+    "photos" : [ ]
+  },
+  "petitionCase" : {
+    "petitionContent" : "要求解决国企改制下岗补偿问题，认为当年补偿标准过低，要求重新核算补偿金",
+    "canResolve" : null,
+    "resolutionMethod" : null,
+    "visitTrajectory" : null,
+    "entryMethod" : "TRAIN",
+    "transportInBeijing" : "SUBWAY",
+    "hasReception" : null
+  },
+  "riskAssessment" : {
+    "riskLevel" : "HIGH"
+  }
+}, {
+  "id" : "3c8b0083-1a95-4392-8cc9-ac9cc00c66d5",
+  "createTime" : "2025-11-24T17:34:25.2796971",
+  "updateTime" : "2025-11-24T17:34:25.2796971",
+  "personalInfo" : {
+    "name" : "刘芳阿",
+    "idCard" : "130102197808223008",
+    "gender" : "FEMALE",
+    "nativePlace" : "河北省石家庄市",
+    "education" : "SENIOR_HIGH",
+    "formerName" : null,
+    "maritalStatus" : "DIVORCED",
+    "spouse" : null,
+    "phones" : [ "15987654321" ],
+    "occupation" : "无业",
+    "workAddress" : null,
+    "homeAddress" : "河北省石家庄市桥西区新华路56号",
+    "visitCount" : 12,
+    "counterMeasures" : null,
+    "consumptionHabits" : null,
+    "photos" : [ ]
+  },
+  "beijingContact" : {
+    "contactName" : "赵敏",
+    "formerAddress" : null,
+    "contactIdCard" : null,
+    "relationship" : "朋友",
+    "assistDescription" : null,
+    "photos" : [ ]
+  },
+  "petitionCase" : {
+    "petitionContent" : "房屋拆迁补偿纠纷，认为补偿标准不合理，要求提高补偿款",
+    "canResolve" : null,
+    "resolutionMethod" : null,
+    "visitTrajectory" : null,
+    "entryMethod" : "HIGH_SPEED_RAIL",
+    "transportInBeijing" : "BUS",
+    "hasReception" : null
+  },
+  "riskAssessment" : {
+    "riskLevel" : "CRITICAL"
+  }
+}, {
+  "id" : "79b7e9be-dcb5-45b6-9566-65aea03f587b",
+  "createTime" : "2025-11-24T17:49:19.9925553",
+  "updateTime" : "2025-11-24T17:49:19.9925553",
+  "personalInfo" : {
+    "name" : "刘一村",
+    "idCard" : "37012319991115003X",
+    "gender" : "MALE",
+    "nativePlace" : "山东省济南市长清区",
+    "education" : "BACHELOR",
+    "formerName" : "小猫咪",
+    "maritalStatus" : "UNMARRIED",
+    "spouse" : "",
+    "phones" : [ "17742871786" ],
+    "occupation" : "",
+    "workAddress" : "",
+    "homeAddress" : "",
+    "visitCount" : 1,
+    "counterMeasures" : "",
+    "consumptionHabits" : "",
+    "photos" : [ ]
+  },
+  "beijingContact" : {
+    "contactName" : "王",
+    "formerAddress" : "",
+    "contactIdCard" : "15564115696",
+    "relationship" : "父亲",
+    "assistDescription" : "",
+    "photos" : [ ]
+  },
+  "petitionCase" : {
+    "petitionContent" : "1111",
+    "canResolve" : "是",
+    "resolutionMethod" : "",
+    "visitTrajectory" : "",
+    "entryMethod" : null,
+    "transportInBeijing" : null,
+    "hasReception" : null
+  },
+  "riskAssessment" : {
+    "riskLevel" : "CRITICAL"
+  }
+} ]

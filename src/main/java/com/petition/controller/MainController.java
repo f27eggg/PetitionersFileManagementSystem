@@ -118,7 +118,8 @@ public class MainController {
             updateRecordCount();
 
             // 默认加载仪表盘页面
-            loadPage("dashboard");
+            Parent dashboardPage = loadPage("dashboard");
+            contentArea.getChildren().add(dashboardPage);
 
         } catch (Exception e) {
             e.printStackTrace();

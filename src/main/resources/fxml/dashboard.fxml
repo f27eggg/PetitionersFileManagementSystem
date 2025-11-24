@@ -100,7 +100,7 @@
                     <CategoryAxis label="次数范围"/>
                 </xAxis>
                 <yAxis>
-                    <NumberAxis label="人数"/>
+                    <NumberAxis label="人数" tickUnit="1" minorTickVisible="false"/>
                 </yAxis>
             </BarChart>
         </VBox>
@@ -113,7 +113,7 @@
                     <CategoryAxis label="籍贯"/>
                 </xAxis>
                 <yAxis>
-                    <NumberAxis label="人数"/>
+                    <NumberAxis label="人数" tickUnit="1" minorTickVisible="false"/>
                 </yAxis>
             </BarChart>
         </VBox>

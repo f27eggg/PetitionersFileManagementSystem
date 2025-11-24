@@ -2,15 +2,25 @@ package com.petition.controller;
 
 import com.petition.model.Petitioner;
 import com.petition.model.enums.RiskLevel;
+import com.petition.service.ExportService;
+import com.petition.service.ImportService;
 import com.petition.service.PetitionerService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -181,18 +191,43 @@ public class DashboardController {
         visitCountChart.getData().clear();
         visitCountChart.getData().add(series);
         visitCountChart.setLegendVisible(false);
+
+        // 设置Y轴显示整数（强制）
+        if (visitCountChart.getYAxis() instanceof javafx.scene.chart.NumberAxis numberAxis) {
+            numberAxis.setAutoRanging(true);
+            numberAxis.setTickUnit(1.0);
+            numberAxis.setMinorTickVisible(false);
+            numberAxis.setMinorTickCount(0);
+            numberAxis.setForceZeroInRange(true);
+            // 设置标签格式化器，只显示整数刻度
+            numberAxis.setTickLabelFormatter(new javafx.util.StringConverter<Number>() {
+                @Override
+                public String toString(Number object) {
+                    // 只显示整数刻度，过滤掉小数刻度
+                    double value = object.doubleValue();
+                    if (Math.abs(value - Math.round(value)) < 0.01) {
+                        return String.format("%.0f", value);
+                    }
+                    return "";
+                }
+                @Override
+                public Number fromString(String string) {
+                    return Double.parseDouble(string);
+                }
+            });
+        }
     }
 
     /**
      * 加载籍贯分布柱状图（前10）
      */
     private void loadNativePlaceChart(List<Petitioner> petitioners) {
-        // 按籍贯统计人数
+        // 提取省份（从籍贯中截取省名）
         Map<String, Long> nativePlaceDistribution = petitioners.stream()
                 .filter(p -> p.getPersonalInfo().getNativePlace() != null
                           && !p.getPersonalInfo().getNativePlace().isEmpty())
                 .collect(Collectors.groupingBy(
-                        p -> p.getPersonalInfo().getNativePlace(),
+                        p -> extractProvinceName(p.getPersonalInfo().getNativePlace()),
                         Collectors.counting()
                 ));
 
@@ -213,6 +248,64 @@ public class DashboardController {
         nativePlaceChart.getData().clear();
         nativePlaceChart.getData().add(series);
         nativePlaceChart.setLegendVisible(false);
+
+        // 设置Y轴显示整数（强制）
+        if (nativePlaceChart.getYAxis() instanceof javafx.scene.chart.NumberAxis numberAxis) {
+            numberAxis.setAutoRanging(true);
+            numberAxis.setTickUnit(1.0);
+            numberAxis.setMinorTickVisible(false);
+            numberAxis.setMinorTickCount(0);
+            numberAxis.setForceZeroInRange(true);
+            // 设置标签格式化器，只显示整数刻度
+            numberAxis.setTickLabelFormatter(new javafx.util.StringConverter<Number>() {
+                @Override
+                public String toString(Number object) {
+                    // 只显示整数刻度，过滤掉小数刻度
+                    double value = object.doubleValue();
+                    if (Math.abs(value - Math.round(value)) < 0.01) {
+                        return String.format("%.0f", value);
+                    }
+                    return "";
+                }
+                @Override
+                public Number fromString(String string) {
+                    return Double.parseDouble(string);
+                }
+            });
+        }
+    }
+
+    /**
+     * 从籍贯字符串中提取省份名称
+     * 例如："河北省保定市" -> "河北省"
+     */
+    private String extractProvinceName(String nativePlace) {
+        if (nativePlace == null || nativePlace.isEmpty()) {
+            return "未知";
+        }
+
+        // 查找"省"的位置
+        int provinceIndex = nativePlace.indexOf("省");
+        if (provinceIndex > 0) {
+            return nativePlace.substring(0, provinceIndex + 1);
+        }
+
+        // 处理直辖市和特别行政区（北京市、上海市、天津市、重庆市、香港、澳门）
+        if (nativePlace.startsWith("北京")) return "北京市";
+        if (nativePlace.startsWith("上海")) return "上海市";
+        if (nativePlace.startsWith("天津")) return "天津市";
+        if (nativePlace.startsWith("重庆")) return "重庆市";
+        if (nativePlace.startsWith("香港")) return "香港";
+        if (nativePlace.startsWith("澳门")) return "澳门";
+
+        // 处理自治区
+        int regionIndex = nativePlace.indexOf("自治区");
+        if (regionIndex > 0) {
+            return nativePlace.substring(0, regionIndex + 3);
+        }
+
+        // 如果都不符合，返回前两个字或整个字符串
+        return nativePlace.length() > 2 ? nativePlace.substring(0, 2) : nativePlace;
     }
 
     /**
@@ -220,8 +313,34 @@ public class DashboardController {
      */
     @FXML
     private void addPetitioner() {
-        // TODO: 打开新增人员表单
-        System.out.println("新增人员");
+        try {
+            // 加载表单页面
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/form.fxml"));
+            Parent formRoot = loader.load();
+
+            // 创建美化的弹窗
+            Stage parentStage = (Stage) totalCountLabel.getScene().getWindow();
+            Stage formStage = com.petition.util.StageUtil.createStyledDialog(
+                "🆕 新增上访人员", formRoot, parentStage, 1200, 800
+            );
+
+            // 获取FormController并设置回调
+            FormController formController = loader.getController();
+            formController.setOnSaveCallback(() -> {
+                // 添加关闭动画
+                com.petition.util.StageUtil.addCloseAnimation(formRoot, () -> {
+                    // 保存成功后刷新数据
+                    loadStatistics();
+                    loadCharts();
+                    formStage.close();
+                });
+            });
+
+            formStage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showError("打开表单失败：" + e.getMessage());
+        }
     }
 
     /**
@@ -229,8 +348,36 @@ public class DashboardController {
      */
     @FXML
     private void importData() {
-        // TODO: 打开导入数据对话框
-        System.out.println("导入数据");
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("选择要导入的Excel文件");
+            fileChooser.getExtensionFilters().add(
+                    new FileChooser.ExtensionFilter("Excel文件", "*.xlsx", "*.xls")
+            );
+
+            // 显示文件选择对话框
+            Stage stage = (Stage) totalCountLabel.getScene().getWindow();
+            File file = fileChooser.showOpenDialog(stage);
+
+            if (file != null) {
+                // 执行导入
+                ImportService importService = new ImportService();
+                var result = importService.importFromExcel(file.getAbsolutePath(), true);
+
+                // 显示导入结果
+                showInfo(String.format("导入完成！\n成功：%d 条\n失败：%d 条\n跳过：%d 条",
+                        result.getSuccessCount(),
+                        result.getErrorCount(),
+                        result.getSkippedCount()));
+
+                // 刷新数据
+                loadStatistics();
+                loadCharts();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            showError("导入失败：" + e.getMessage());
+        }
     }
 
     /**
@@ -238,8 +385,30 @@ public class DashboardController {
      */
     @FXML
     private void exportData() {
-        // TODO: 打开导出数据对话框
-        System.out.println("导出数据");
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("选择导出位置");
+            fileChooser.setInitialFileName("上访人员数据.xlsx");
+            fileChooser.getExtensionFilters().add(
+                    new FileChooser.ExtensionFilter("Excel文件", "*.xlsx")
+            );
+
+            // 显示文件保存对话框
+            Stage stage = (Stage) totalCountLabel.getScene().getWindow();
+            File file = fileChooser.showSaveDialog(stage);
+
+            if (file != null) {
+                // 执行导出
+                ExportService exportService = new ExportService();
+                List<Petitioner> allPetitioners = petitionerService.getAllPetitioners();
+                exportService.exportToExcel(file.getAbsolutePath(), allPetitioners);
+
+                showInfo("导出成功！\n文件：" + file.getAbsolutePath());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            showError("导出失败：" + e.getMessage());
+        }
     }
 
     /**
@@ -250,5 +419,27 @@ public class DashboardController {
         loadStatistics();
         loadCharts();
         System.out.println("数据已刷新");
+    }
+
+    /**
+     * 显示信息对话框
+     */
+    private void showInfo(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("提示");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    /**
+     * 显示错误对话框
+     */
+    private void showError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("错误");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

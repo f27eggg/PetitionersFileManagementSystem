@@ -505,13 +505,12 @@ public class PetitionersController implements Initializable {
             // 设置数据变更回调（删除或编辑后刷新列表）
             controller.setOnDataChangedCallback(this::loadData);
 
-            // 创建新窗口
-            Stage stage = new Stage();
-            stage.setTitle("人员详细信息 - " + petitioner.getPersonalInfo().getName());
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setWidth(1100);
-            stage.setHeight(750);
+            // 创建美化的弹窗
+            Stage parentStage = (Stage) petitionersTable.getScene().getWindow();
+            Stage stage = com.petition.util.StageUtil.createStyledDialog(
+                "👤 人员详细信息 - " + petitioner.getPersonalInfo().getName(),
+                root, parentStage, 1100, 750
+            );
             stage.show();
 
         } catch (Exception e) {
@@ -550,10 +549,12 @@ public class PetitionersController implements Initializable {
                 loadData(); // 刷新列表
             });
 
-            Stage stage = new Stage();
-            stage.setTitle(petitioner == null ? "新增人员" : "编辑人员");
-            stage.setScene(new Scene(root, 1000, 700));
-            stage.initModality(Modality.APPLICATION_MODAL);
+            // 创建美化的弹窗
+            Stage parentStage = (Stage) petitionersTable.getScene().getWindow();
+            String title = petitioner == null ? "🆕 新增人员" : "✏️ 编辑人员";
+            Stage stage = com.petition.util.StageUtil.createStyledDialog(
+                title, root, parentStage, 1200, 800
+            );
             stage.show();
 
         } catch (Exception e) {

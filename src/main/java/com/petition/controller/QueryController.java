@@ -448,12 +448,12 @@ public class QueryController implements Initializable {
             controller.setData(petitioner);
             controller.setOnDataChangedCallback(() -> handleSearch());
 
-            Stage stage = new Stage();
-            stage.setTitle("人员详情 - " + petitioner.getName());
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setWidth(1000);
-            stage.setHeight(700);
+            // 创建美化的弹窗
+            Stage parentStage = (Stage) resultTable.getScene().getWindow();
+            Stage stage = com.petition.util.StageUtil.createStyledDialog(
+                "👤 人员详情 - " + petitioner.getName(),
+                root, parentStage, 1100, 750
+            );
             stage.show();
 
         } catch (Exception e) {
