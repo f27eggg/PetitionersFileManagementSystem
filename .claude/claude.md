@@ -262,6 +262,17 @@ D:\Program Files\Apache-maven-3.6.3\apache-maven-3.6.3\bin\mvn
 D:\Program Files\JetBrains\PROJECT_JAVA\PetitionersFileManagementSystem
 ```
 
+**启动命令**：
+```bash
+"D:\Program Files\Apache-maven-3.6.3\apache-maven-3.6.3\bin\mvn" -f "d:\Program Files\JetBrains\PROJECT_JAVA\PetitionersFileManagementSystem\pom.xml" javafx:run
+```
+
+或在项目目录下：
+```bash
+cd "d:\Program Files\JetBrains\PROJECT_JAVA\PetitionersFileManagementSystem"
+"D:\Program Files\Apache-maven-3.6.3\apache-maven-3.6.3\bin\mvn" javafx:run
+```
+
 ---
 
 ### 7. 当前开发状态
