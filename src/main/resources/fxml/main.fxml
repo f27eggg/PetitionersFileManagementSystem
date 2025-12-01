@@ -77,16 +77,6 @@
                         styleClass="nav-button"
                         onAction="#showQuery" maxWidth="Infinity"/>
 
-                <!-- 统计分析 -->
-                <Button fx:id="navStatistics" text="📈 统计分析"
-                        styleClass="nav-button"
-                        onAction="#showStatistics" maxWidth="Infinity"/>
-
-                <!-- 数据管理 -->
-                <Button fx:id="navData" text="💾 数据管理"
-                        styleClass="nav-button"
-                        onAction="#showData" maxWidth="Infinity"/>
-
                 <!-- 系统设置 -->
                 <Button fx:id="navSettings" text="⚙️ 系统设置"
                         styleClass="nav-button"

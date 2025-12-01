@@ -58,12 +58,6 @@ public class MainController {
     private Button navQuery;
 
     @FXML
-    private Button navStatistics;
-
-    @FXML
-    private Button navData;
-
-    @FXML
     private Button navSettings;
 
     @FXML
@@ -207,22 +201,6 @@ public class MainController {
     }
 
     /**
-     * 显示统计分析页面
-     */
-    @FXML
-    private void showStatistics() {
-        switchPage("statistics", navStatistics);
-    }
-
-    /**
-     * 显示数据管理页面
-     */
-    @FXML
-    private void showData() {
-        switchPage("data", navData);
-    }
-
-    /**
      * 显示系统设置页面
      */
     @FXML
@@ -349,8 +327,6 @@ public class MainController {
         if (currentActiveNav == navDashboard) return "dashboard";
         if (currentActiveNav == navPetitioners) return "petitioners";
         if (currentActiveNav == navQuery) return "query";
-        if (currentActiveNav == navStatistics) return "statistics";
-        if (currentActiveNav == navData) return "data";
         if (currentActiveNav == navSettings) return "settings";
         return "dashboard";
     }

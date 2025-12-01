@@ -17,8 +17,6 @@
         <Label text="👥 人员管理" styleClass="page-title"/>
         <Region HBox.hgrow="ALWAYS"/>
         <Button fx:id="addButton" text="+ 新增人员" styleClass="primary-button" onAction="#handleAdd"/>
-        <Button fx:id="importButton" text="📥 导入数据" styleClass="secondary-button" onAction="#handleImport"/>
-        <Button fx:id="exportButton" text="📤 导出数据" styleClass="secondary-button" onAction="#handleExport"/>
     </HBox>
 
     <!-- 搜索和筛选栏 -->
