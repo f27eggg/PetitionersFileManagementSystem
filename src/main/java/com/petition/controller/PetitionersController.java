@@ -421,6 +421,15 @@ public class PetitionersController implements Initializable {
         applyFilters();
     }
 
+    /**
+     * 刷新数据
+     */
+    @FXML
+    private void handleRefresh() {
+        loadData();
+        updateTableView();
+    }
+
     // ==================== 分页事件 ====================
 
     @FXML

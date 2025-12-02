@@ -7,7 +7,7 @@
 <VBox xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.petition.controller.QueryController"
-      spacing="20.0" styleClass="page-container">
+      spacing="15.0" styleClass="page-container">
     <padding>
         <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
     </padding>
@@ -19,71 +19,63 @@
         <Label fx:id="resultCountLabel" text="共 0 条结果" styleClass="result-count"/>
     </HBox>
 
-    <!-- 查询条件区域 -->
-    <VBox spacing="15.0" styleClass="query-panel">
+    <!-- 查询条件区域 - 紧凑网格布局 -->
+    <VBox spacing="12.0" styleClass="query-panel">
         <padding>
-            <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+            <Insets top="15.0" right="20.0" bottom="15.0" left="20.0"/>
         </padding>
 
-        <!-- 第一行条件 -->
-        <HBox spacing="30.0" alignment="CENTER_LEFT">
-            <HBox spacing="10.0" alignment="CENTER_LEFT">
-                <Label text="姓名：" styleClass="query-label"/>
-                <TextField fx:id="nameField" promptText="请输入姓名" prefWidth="150" styleClass="query-field"/>
-            </HBox>
+        <GridPane hgap="20.0" vgap="12.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="80" prefWidth="80"/>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="150" prefWidth="180"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="80" prefWidth="80"/>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="150" prefWidth="180"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="80" prefWidth="80"/>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="150" prefWidth="180"/>
+            </columnConstraints>
 
-            <HBox spacing="10.0" alignment="CENTER_LEFT">
-                <Label text="身份证号：" styleClass="query-label"/>
-                <TextField fx:id="idCardField" promptText="请输入身份证号" prefWidth="180" styleClass="query-field"/>
-            </HBox>
+            <!-- 第一行 -->
+            <Label text="姓名" styleClass="query-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="nameField" promptText="请输入姓名" styleClass="query-field" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
-            <HBox spacing="10.0" alignment="CENTER_LEFT">
-                <Label text="籍贯：" styleClass="query-label"/>
-                <TextField fx:id="nativePlaceField" promptText="请输入籍贯" prefWidth="150" styleClass="query-field"/>
-            </HBox>
-        </HBox>
+            <Label text="身份证号" styleClass="query-label" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+            <TextField fx:id="idCardField" promptText="请输入身份证号" styleClass="query-field" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
 
-        <!-- 第二行条件 -->
-        <HBox spacing="30.0" alignment="CENTER_LEFT">
-            <HBox spacing="10.0" alignment="CENTER_LEFT">
-                <Label text="危险等级：" styleClass="query-label"/>
-                <ComboBox fx:id="riskLevelCombo" prefWidth="120" styleClass="query-combo"/>
-            </HBox>
+            <Label text="籍贯" styleClass="query-label" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+            <TextField fx:id="nativePlaceField" promptText="请输入籍贯" styleClass="query-field" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
 
-            <HBox spacing="10.0" alignment="CENTER_LEFT">
-                <Label text="性别：" styleClass="query-label"/>
-                <ComboBox fx:id="genderCombo" prefWidth="100" styleClass="query-combo"/>
-            </HBox>
+            <!-- 第二行 -->
+            <Label text="危险等级" styleClass="query-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <ComboBox fx:id="riskLevelCombo" prefWidth="180" styleClass="query-combo" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
-            <HBox spacing="10.0" alignment="CENTER_LEFT">
-                <Label text="上访次数：" styleClass="query-label"/>
-                <Spinner fx:id="minVisitSpinner" prefWidth="80" styleClass="query-spinner"/>
+            <Label text="性别" styleClass="query-label" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+            <ComboBox fx:id="genderCombo" prefWidth="180" styleClass="query-combo" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+            <Label text="上访次数" styleClass="query-label" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
+            <HBox spacing="8" alignment="CENTER_LEFT" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                <Spinner fx:id="minVisitSpinner" prefWidth="70" styleClass="query-spinner"/>
                 <Label text="至" styleClass="query-label"/>
-                <Spinner fx:id="maxVisitSpinner" prefWidth="80" styleClass="query-spinner"/>
+                <Spinner fx:id="maxVisitSpinner" prefWidth="70" styleClass="query-spinner"/>
                 <Label text="次" styleClass="query-label"/>
             </HBox>
-        </HBox>
 
-        <!-- 第三行条件 -->
-        <HBox spacing="30.0" alignment="CENTER_LEFT">
-            <HBox spacing="10.0" alignment="CENTER_LEFT">
-                <Label text="文化程度：" styleClass="query-label"/>
-                <ComboBox fx:id="educationCombo" prefWidth="120" styleClass="query-combo"/>
-            </HBox>
+            <!-- 第三行 -->
+            <Label text="文化程度" styleClass="query-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <ComboBox fx:id="educationCombo" prefWidth="180" styleClass="query-combo" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
-            <HBox spacing="10.0" alignment="CENTER_LEFT">
-                <Label text="婚姻状况：" styleClass="query-label"/>
-                <ComboBox fx:id="maritalStatusCombo" prefWidth="120" styleClass="query-combo"/>
-            </HBox>
+            <Label text="婚姻状况" styleClass="query-label" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+            <ComboBox fx:id="maritalStatusCombo" prefWidth="180" styleClass="query-combo" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
 
-            <HBox spacing="10.0" alignment="CENTER_LEFT">
-                <Label text="进京方式：" styleClass="query-label"/>
-                <ComboBox fx:id="entryMethodCombo" prefWidth="120" styleClass="query-combo"/>
-            </HBox>
-        </HBox>
+            <Label text="进京方式" styleClass="query-label" GridPane.columnIndex="4" GridPane.rowIndex="2"/>
+            <ComboBox fx:id="entryMethodCombo" prefWidth="180" styleClass="query-combo" GridPane.columnIndex="5" GridPane.rowIndex="2"/>
+        </GridPane>
 
         <!-- 操作按钮 -->
-        <HBox spacing="15.0" alignment="CENTER_RIGHT">
+        <HBox spacing="12.0" alignment="CENTER_RIGHT">
+            <padding>
+                <Insets top="8.0"/>
+            </padding>
             <Button fx:id="resetButton" text="🔄 重置条件" styleClass="secondary-button" onAction="#handleReset"/>
             <Button fx:id="searchButton" text="🔍 查询" styleClass="primary-button" onAction="#handleSearch"/>
             <Button fx:id="exportButton" text="📤 导出结果" styleClass="success-button" onAction="#handleExport"/>
