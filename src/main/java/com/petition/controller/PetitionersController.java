@@ -50,8 +50,6 @@ public class PetitionersController implements Initializable {
     @FXML private ComboBox<String> educationCombo;
     @FXML private ComboBox<String> maritalStatusCombo;
     @FXML private ComboBox<String> entryMethodCombo;
-    @FXML private Spinner<Integer> minVisitSpinner;
-    @FXML private Spinner<Integer> maxVisitSpinner;
     @FXML private Button resetButton;
     @FXML private Label countLabel;
 
@@ -99,9 +97,6 @@ public class PetitionersController implements Initializable {
 
         // 初始化筛选器
         initializeFilters();
-
-        // 初始化Spinner控件
-        initializeSpinners();
 
         // 初始化表格列
         initializeTableColumns();
@@ -163,21 +158,6 @@ public class PetitionersController implements Initializable {
         }
         entryMethodCombo.setItems(FXCollections.observableArrayList(entryMethods));
         entryMethodCombo.getSelectionModel().selectFirst();
-    }
-
-    /**
-     * 初始化Spinner控件
-     */
-    private void initializeSpinners() {
-        // 最小上访次数
-        SpinnerValueFactory<Integer> minFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000, 0);
-        minVisitSpinner.setValueFactory(minFactory);
-        minVisitSpinner.setEditable(true);
-
-        // 最大上访次数
-        SpinnerValueFactory<Integer> maxFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000, 100);
-        maxVisitSpinner.setValueFactory(maxFactory);
-        maxVisitSpinner.setEditable(true);
     }
 
     /**
@@ -492,24 +472,6 @@ public class PetitionersController implements Initializable {
                 }
             }
 
-            // 上访次数范围匹配
-            Integer minCount = minVisitSpinner.getValue();
-            Integer maxCount = maxVisitSpinner.getValue();
-
-            // 如果设置了范围条件(不是默认的0-100)
-            if (minCount != null && maxCount != null && !(minCount == 0 && maxCount == 100)) {
-                if (petitioner.getPersonalInfo() != null &&
-                    petitioner.getPersonalInfo().getVisitCount() != null) {
-                    int count = petitioner.getPersonalInfo().getVisitCount();
-                    if (count < minCount || count > maxCount) {
-                        return false;
-                    }
-                } else {
-                    // 如果没有上访次数数据,且设置了非默认范围,则不匹配
-                    return false;
-                }
-            }
-
             return true;
         });
 
@@ -535,10 +497,6 @@ public class PetitionersController implements Initializable {
         educationCombo.getSelectionModel().selectFirst();
         maritalStatusCombo.getSelectionModel().selectFirst();
         entryMethodCombo.getSelectionModel().selectFirst();
-
-        // 重置数字输入框
-        minVisitSpinner.getValueFactory().setValue(0);
-        maxVisitSpinner.getValueFactory().setValue(100);
 
         // 应用筛选（显示全部）
         applyFilters();

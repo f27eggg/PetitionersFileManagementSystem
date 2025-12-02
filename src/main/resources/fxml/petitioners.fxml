@@ -78,17 +78,6 @@
                 <Label text="进京方式" styleClass="query-label"/>
                 <ComboBox fx:id="entryMethodCombo" maxWidth="Infinity" styleClass="combo-box"/>
             </VBox>
-
-            <!-- 第三行：上访次数范围 -->
-            <VBox spacing="3.0" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2">
-                <Label text="上访次数范围" styleClass="query-label"/>
-                <HBox spacing="5.0" alignment="CENTER_LEFT">
-                    <Spinner fx:id="minVisitSpinner" prefWidth="65" maxWidth="65" styleClass="spinner"/>
-                    <Label text="-" styleClass="query-label"/>
-                    <Spinner fx:id="maxVisitSpinner" prefWidth="65" maxWidth="65" styleClass="spinner"/>
-                    <Label text="次" styleClass="query-label"/>
-                </HBox>
-            </VBox>
         </GridPane>
 
         <!-- 操作按钮和统计 -->

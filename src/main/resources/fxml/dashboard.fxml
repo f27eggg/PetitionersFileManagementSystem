@@ -4,12 +4,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.chart.*?>
+<?import eu.hansolo.tilesfx.Tile?>
 
 <!--
-  仪表盘页面
+  仪表盘页面 - 使用TilesFX现代化统计卡片
   功能：显示系统概览、统计数据卡片
   @author 刘一村
-  @version 1.0.0
+  @version 2.0.0
 -->
 <VBox xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
@@ -23,57 +24,10 @@
     <!-- 页面标题 -->
     <Label text="📊 数据仪表盘" styleClass="page-title"/>
 
-    <!-- 统计卡片区域 -->
-    <GridPane hgap="20.0" vgap="20.0">
-        <!-- 第一行卡片 -->
-        <!-- 总人数卡片 -->
-        <VBox styleClass="stat-card" GridPane.columnIndex="0" GridPane.rowIndex="0">
-            <padding>
-                <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
-            </padding>
-            <Label text="总人数" styleClass="stat-label"/>
-            <Label fx:id="totalCountLabel" text="0" styleClass="stat-value"/>
-            <Label text="所有上访人员" styleClass="stat-desc"/>
-        </VBox>
-
-        <!-- 高危人员卡片 -->
-        <VBox styleClass="stat-card, stat-card-danger" GridPane.columnIndex="1" GridPane.rowIndex="0">
-            <padding>
-                <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
-            </padding>
-            <Label text="高危人员" styleClass="stat-label"/>
-            <Label fx:id="highRiskCountLabel" text="0" styleClass="stat-value"/>
-            <Label text="危险等级：高" styleClass="stat-desc"/>
-        </VBox>
-
-        <!-- 中危人员卡片 -->
-        <VBox styleClass="stat-card, stat-card-warning" GridPane.columnIndex="2" GridPane.rowIndex="0">
-            <padding>
-                <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
-            </padding>
-            <Label text="中危人员" styleClass="stat-label"/>
-            <Label fx:id="mediumRiskCountLabel" text="0" styleClass="stat-value"/>
-            <Label text="危险等级：中" styleClass="stat-desc"/>
-        </VBox>
-
-        <!-- 低危人员卡片 -->
-        <VBox styleClass="stat-card, stat-card-success" GridPane.columnIndex="3" GridPane.rowIndex="0">
-            <padding>
-                <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
-            </padding>
-            <Label text="低危人员" styleClass="stat-label"/>
-            <Label fx:id="lowRiskCountLabel" text="0" styleClass="stat-value"/>
-            <Label text="危险等级：低" styleClass="stat-desc"/>
-        </VBox>
-
-        <!-- 列宽约束 -->
-        <columnConstraints>
-            <ColumnConstraints percentWidth="25.0"/>
-            <ColumnConstraints percentWidth="25.0"/>
-            <ColumnConstraints percentWidth="25.0"/>
-            <ColumnConstraints percentWidth="25.0"/>
-        </columnConstraints>
-    </GridPane>
+    <!-- TilesFX统计卡片区域 -->
+    <HBox spacing="15.0" fx:id="tilesContainer" prefHeight="180.0">
+        <!-- Tiles将在Controller中动态创建和添加 -->
+    </HBox>
 
     <!-- 图表区域 -->
     <HBox spacing="20.0" VBox.vgrow="ALWAYS">

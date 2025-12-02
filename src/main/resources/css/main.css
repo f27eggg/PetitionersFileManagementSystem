@@ -643,10 +643,10 @@
 
 .spinner .text-field {
     -fx-background-color: transparent;
-    -fx-text-fill: #f8fafc;
+    -fx-text-fill: #ffffff;
     -fx-prompt-text-fill: #64748b;
-    -fx-font-size: 14px;
-    -fx-font-weight: 600;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
 }
 
 .spinner .increment-arrow-button,

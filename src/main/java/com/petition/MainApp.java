@@ -1,5 +1,6 @@
 package com.petition;
 
+import atlantafx.base.theme.PrimerDark;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,6 +29,11 @@ public class MainApp extends Application {
             System.out.println("=== 应用程序启动 ===");
             System.out.println("工作目录: " + System.getProperty("user.dir"));
 
+            // 应用AtlantaFX Primer Dark主题
+            System.out.println("正在应用AtlantaFX Primer Dark主题...");
+            Application.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
+            System.out.println("AtlantaFX主题应用成功！");
+
             // 加载主窗口FXML
             System.out.println("正在加载main.fxml...");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
@@ -38,11 +44,11 @@ public class MainApp extends Application {
             System.out.println("正在创建Scene...");
             Scene scene = new Scene(root, 1600, 900);
 
-            // 加载CSS样式
-            System.out.println("正在加载CSS样式...");
+            // 加载自定义CSS样式（补充样式）
+            System.out.println("正在加载自定义CSS样式...");
             String cssPath = getClass().getResource("/css/main.css").toExternalForm();
             scene.getStylesheets().add(cssPath);
-            System.out.println("CSS加载成功：" + cssPath);
+            System.out.println("自定义CSS加载成功：" + cssPath);
 
             // 配置舞台
             System.out.println("正在配置Stage...");

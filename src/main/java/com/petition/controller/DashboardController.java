@@ -5,10 +5,14 @@ import com.petition.model.enums.RiskLevel;
 import com.petition.service.ExportService;
 import com.petition.service.ImportService;
 import com.petition.service.PetitionerService;
+import eu.hansolo.tilesfx.Tile;
+import eu.hansolo.tilesfx.TileBuilder;
+import eu.hansolo.tilesfx.colors.Bright;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
@@ -16,6 +20,9 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -25,28 +32,19 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * 仪表盘控制器
+ * 仪表盘控制器 - 使用TilesFX现代化统计卡片
  * 功能：
- * 1. 显示系统统计数据
+ * 1. 使用TilesFX显示现代化统计卡片
  * 2. 显示可视化图表（危险等级、上访次数、籍贯分布）
  * 3. 提供快速操作入口
  *
  * @author 刘一村
- * @version 1.0.0
+ * @version 2.0.0
  */
 public class DashboardController {
 
     @FXML
-    private Label totalCountLabel;
-
-    @FXML
-    private Label highRiskCountLabel;
-
-    @FXML
-    private Label mediumRiskCountLabel;
-
-    @FXML
-    private Label lowRiskCountLabel;
+    private HBox tilesContainer;
 
     @FXML
     private PieChart riskLevelChart;
@@ -59,6 +57,12 @@ public class DashboardController {
 
     private PetitionerService petitionerService;
 
+    // TilesFX统计卡片
+    private Tile totalCountTile;
+    private Tile highRiskTile;
+    private Tile mediumRiskTile;
+    private Tile lowRiskTile;
+
     /**
      * FXML加载完成后自动调用
      */
@@ -66,11 +70,94 @@ public class DashboardController {
     public void initialize() {
         try {
             petitionerService = new PetitionerService();
+            createTiles();
             loadStatistics();
             loadCharts();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 创建TilesFX统计卡片
+     */
+    private void createTiles() {
+        // 总人数卡片 - 蓝色主题
+        totalCountTile = TileBuilder.create()
+                .skinType(Tile.SkinType.NUMBER)
+                .title("总人数")
+                .description("所有上访人员")
+                .textAlignment(TextAlignment.CENTER)
+                .value(0)
+                .unit("人")
+                .backgroundColor(Color.web("#1e293b"))
+                .titleColor(Color.web("#94a3b8"))
+                .descriptionColor(Color.web("#64748b"))
+                .valueColor(Color.web("#0ea5e9"))
+                .unitColor(Color.web("#0ea5e9"))
+                .decimals(0)
+                .prefSize(280, 180)
+                .build();
+
+        // 高危人员卡片 - 红色主题
+        highRiskTile = TileBuilder.create()
+                .skinType(Tile.SkinType.NUMBER)
+                .title("高危人员")
+                .description("危险等级：高")
+                .textAlignment(TextAlignment.CENTER)
+                .value(0)
+                .unit("人")
+                .backgroundColor(Color.web("#1e293b"))
+                .titleColor(Color.web("#94a3b8"))
+                .descriptionColor(Color.web("#64748b"))
+                .valueColor(Color.web("#ef4444"))
+                .unitColor(Color.web("#ef4444"))
+                .decimals(0)
+                .prefSize(280, 180)
+                .build();
+
+        // 中危人员卡片 - 橙色主题
+        mediumRiskTile = TileBuilder.create()
+                .skinType(Tile.SkinType.NUMBER)
+                .title("中危人员")
+                .description("危险等级：中")
+                .textAlignment(TextAlignment.CENTER)
+                .value(0)
+                .unit("人")
+                .backgroundColor(Color.web("#1e293b"))
+                .titleColor(Color.web("#94a3b8"))
+                .descriptionColor(Color.web("#64748b"))
+                .valueColor(Color.web("#f59e0b"))
+                .unitColor(Color.web("#f59e0b"))
+                .decimals(0)
+                .prefSize(280, 180)
+                .build();
+
+        // 低危人员卡片 - 绿色主题
+        lowRiskTile = TileBuilder.create()
+                .skinType(Tile.SkinType.NUMBER)
+                .title("低危人员")
+                .description("危险等级：低")
+                .textAlignment(TextAlignment.CENTER)
+                .value(0)
+                .unit("人")
+                .backgroundColor(Color.web("#1e293b"))
+                .titleColor(Color.web("#94a3b8"))
+                .descriptionColor(Color.web("#64748b"))
+                .valueColor(Color.web("#10b981"))
+                .unitColor(Color.web("#10b981"))
+                .decimals(0)
+                .prefSize(280, 180)
+                .build();
+
+        // 添加卡片到容器
+        tilesContainer.getChildren().addAll(
+                totalCountTile,
+                highRiskTile,
+                mediumRiskTile,
+                lowRiskTile
+        );
+        tilesContainer.setAlignment(Pos.CENTER);
     }
 
     /**
@@ -81,7 +168,7 @@ public class DashboardController {
             List<Petitioner> allPetitioners = petitionerService.getAllPetitioners();
 
             // 总人数
-            totalCountLabel.setText(String.valueOf(allPetitioners.size()));
+            totalCountTile.setValue(allPetitioners.size());
 
             // 按危险等级统计
             long highRiskCount = allPetitioners.stream()
@@ -97,9 +184,9 @@ public class DashboardController {
                     .filter(p -> p.getRiskAssessment().getRiskLevel() == RiskLevel.LOW)
                     .count();
 
-            highRiskCountLabel.setText(String.valueOf(highRiskCount));
-            mediumRiskCountLabel.setText(String.valueOf(mediumRiskCount));
-            lowRiskCountLabel.setText(String.valueOf(lowRiskCount));
+            highRiskTile.setValue(highRiskCount);
+            mediumRiskTile.setValue(mediumRiskCount);
+            lowRiskTile.setValue(lowRiskCount);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -319,7 +406,7 @@ public class DashboardController {
             Parent formRoot = loader.load();
 
             // 创建美化的弹窗
-            Stage parentStage = (Stage) totalCountLabel.getScene().getWindow();
+            Stage parentStage = (Stage) tilesContainer.getScene().getWindow();
             Stage formStage = com.petition.util.StageUtil.createStyledDialog(
                 "🆕 新增上访人员", formRoot, parentStage, 1200, 800
             );
@@ -356,7 +443,7 @@ public class DashboardController {
             );
 
             // 显示文件选择对话框
-            Stage stage = (Stage) totalCountLabel.getScene().getWindow();
+            Stage stage = (Stage) tilesContainer.getScene().getWindow();
             File file = fileChooser.showOpenDialog(stage);
 
             if (file != null) {
@@ -394,7 +481,7 @@ public class DashboardController {
             );
 
             // 显示文件保存对话框
-            Stage stage = (Stage) totalCountLabel.getScene().getWindow();
+            Stage stage = (Stage) tilesContainer.getScene().getWindow();
             File file = fileChooser.showSaveDialog(stage);
 
             if (file != null) {
