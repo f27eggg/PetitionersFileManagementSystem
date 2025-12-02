@@ -1,3 +1,50 @@
+#!/bin/bash
+# ============================================================================
+#  上访人员管理系统 - UI现代化升级一键安装脚本
+#  
+#  使用方法:
+#    1. 将此脚本放到项目根目录 (PetitionersFileManagementSystem/)
+#    2. 执行: bash install-ui-upgrade.sh
+#    3. 脚本会自动更新文件并提交到Git
+# ============================================================================
+
+set -e
+
+echo ""
+echo "╔══════════════════════════════════════════════════════════════╗"
+echo "║     🎨 上访人员管理系统 - UI现代化升级安装程序              ║"
+echo "╚══════════════════════════════════════════════════════════════╝"
+echo ""
+
+# 检查是否在项目根目录
+if [ ! -f "pom.xml" ]; then
+    echo "❌ 错误: 请在项目根目录运行此脚本"
+    echo "   当前目录: $(pwd)"
+    exit 1
+fi
+
+echo "📍 项目目录: $(pwd)"
+echo ""
+
+# 创建备份
+echo "📦 步骤 1/5: 备份原有文件..."
+mkdir -p .backup/css .backup/util
+[ -f "src/main/resources/css/main.css" ] && cp src/main/resources/css/main.css .backup/css/ 2>/dev/null || true
+[ -d "src/main/java/com/petition/util" ] && cp src/main/java/com/petition/util/*.java .backup/util/ 2>/dev/null || true
+echo "   ✅ 备份完成 -> .backup/"
+
+# 确保目录存在
+echo ""
+echo "📁 步骤 2/5: 创建目录结构..."
+mkdir -p src/main/resources/css
+mkdir -p src/main/java/com/petition/util
+echo "   ✅ 目录准备完成"
+
+# 写入CSS主题文件
+echo ""
+echo "🎨 步骤 3/5: 写入样式文件..."
+
+cat > src/main/resources/css/main.css << 'CSSEOF'
 /*
  * ============================================================================
  *  上访人员重点监控信息管理系统 - 现代化UI主题 v2.0
@@ -858,3 +905,394 @@
 .text-success { -fx-text-fill: #10b981; }
 .text-warning { -fx-text-fill: #f59e0b; }
 .text-danger { -fx-text-fill: #ef4444; }
+CSSEOF
+
+echo "   ✅ main.css 写入完成"
+
+# 写入AnimationUtil.java
+echo ""
+echo "⚡ 步骤 4/5: 写入Java工具类..."
+
+cat > src/main/java/com/petition/util/AnimationUtil.java << 'JAVAEOF'
+package com.petition.util;
+
+import javafx.animation.*;
+import javafx.scene.Node;
+import javafx.scene.layout.Region;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+
+/**
+ * UI动画工具类
+ * 提供丰富的动画效果用于增强用户体验
+ */
+public class AnimationUtil {
+
+    public static final Duration FAST = Duration.millis(150);
+    public static final Duration NORMAL = Duration.millis(250);
+    public static final Duration SLOW = Duration.millis(400);
+
+    /** 淡入动画 */
+    public static void fadeIn(Node node) {
+        fadeIn(node, NORMAL, null);
+    }
+
+    public static void fadeIn(Node node, Duration duration, Runnable onFinished) {
+        node.setOpacity(0);
+        FadeTransition ft = new FadeTransition(duration, node);
+        ft.setFromValue(0);
+        ft.setToValue(1);
+        ft.setInterpolator(Interpolator.EASE_OUT);
+        if (onFinished != null) ft.setOnFinished(e -> onFinished.run());
+        ft.play();
+    }
+
+    /** 淡出动画 */
+    public static void fadeOut(Node node, Duration duration, Runnable onFinished) {
+        FadeTransition ft = new FadeTransition(duration, node);
+        ft.setFromValue(node.getOpacity());
+        ft.setToValue(0);
+        ft.setInterpolator(Interpolator.EASE_IN);
+        if (onFinished != null) ft.setOnFinished(e -> onFinished.run());
+        ft.play();
+    }
+
+    /** 缩放进入 */
+    public static void scaleIn(Node node) {
+        scaleIn(node, NORMAL, null);
+    }
+
+    public static void scaleIn(Node node, Duration duration, Runnable onFinished) {
+        node.setScaleX(0.8);
+        node.setScaleY(0.8);
+        node.setOpacity(0);
+
+        ParallelTransition pt = new ParallelTransition();
+        ScaleTransition st = new ScaleTransition(duration, node);
+        st.setFromX(0.8); st.setFromY(0.8);
+        st.setToX(1.0); st.setToY(1.0);
+        st.setInterpolator(Interpolator.EASE_OUT);
+
+        FadeTransition ft = new FadeTransition(duration, node);
+        ft.setFromValue(0); ft.setToValue(1);
+
+        pt.getChildren().addAll(st, ft);
+        if (onFinished != null) pt.setOnFinished(e -> onFinished.run());
+        pt.play();
+    }
+
+    /** 弹性反馈 */
+    public static void bounce(Node node) {
+        ScaleTransition st = new ScaleTransition(Duration.millis(100), node);
+        st.setFromX(1.0); st.setFromY(1.0);
+        st.setToX(0.95); st.setToY(0.95);
+        st.setAutoReverse(true);
+        st.setCycleCount(2);
+        st.play();
+    }
+
+    /** 抖动动画(验证失败) */
+    public static void shake(Node node) {
+        TranslateTransition tt = new TranslateTransition(Duration.millis(50), node);
+        tt.setFromX(0); tt.setByX(10);
+        tt.setCycleCount(6);
+        tt.setAutoReverse(true);
+        tt.setOnFinished(e -> node.setTranslateX(0));
+        tt.play();
+    }
+
+    /** 从右侧滑入 */
+    public static void slideInFromRight(Node node) {
+        node.setTranslateX(50);
+        node.setOpacity(0);
+
+        ParallelTransition pt = new ParallelTransition();
+        TranslateTransition tt = new TranslateTransition(NORMAL, node);
+        tt.setFromX(50); tt.setToX(0);
+
+        FadeTransition ft = new FadeTransition(NORMAL, node);
+        ft.setFromValue(0); ft.setToValue(1);
+
+        pt.getChildren().addAll(tt, ft);
+        pt.play();
+    }
+
+    /** 交错淡入 */
+    public static void staggerFadeIn(Node... nodes) {
+        for (int i = 0; i < nodes.length; i++) {
+            Node node = nodes[i];
+            node.setOpacity(0);
+            FadeTransition ft = new FadeTransition(NORMAL, node);
+            ft.setFromValue(0); ft.setToValue(1);
+            ft.setDelay(Duration.millis(i * 50));
+            ft.play();
+        }
+    }
+
+    /** 弹窗打开动画 */
+    public static void dialogOpen(Stage stage) {
+        if (stage.getScene() == null) return;
+        Node root = stage.getScene().getRoot();
+        root.setScaleX(0.9); root.setScaleY(0.9);
+        root.setOpacity(0);
+
+        ParallelTransition pt = new ParallelTransition();
+        ScaleTransition st = new ScaleTransition(NORMAL, root);
+        st.setFromX(0.9); st.setFromY(0.9);
+        st.setToX(1.0); st.setToY(1.0);
+
+        FadeTransition ft = new FadeTransition(NORMAL, root);
+        ft.setFromValue(0); ft.setToValue(1);
+
+        pt.getChildren().addAll(st, ft);
+        pt.setDelay(Duration.millis(50));
+        pt.play();
+    }
+
+    /** 弹窗关闭动画 */
+    public static void dialogClose(Stage stage, Runnable onFinished) {
+        if (stage.getScene() == null) {
+            if (onFinished != null) onFinished.run();
+            return;
+        }
+        Node root = stage.getScene().getRoot();
+
+        ParallelTransition pt = new ParallelTransition();
+        ScaleTransition st = new ScaleTransition(FAST, root);
+        st.setToX(0.9); st.setToY(0.9);
+
+        FadeTransition ft = new FadeTransition(FAST, root);
+        ft.setToValue(0);
+
+        pt.getChildren().addAll(st, ft);
+        pt.setOnFinished(e -> { if (onFinished != null) onFinished.run(); });
+        pt.play();
+    }
+
+    /** 添加悬停缩放 */
+    public static void addHoverScale(Node node, double scale) {
+        node.setOnMouseEntered(e -> {
+            ScaleTransition st = new ScaleTransition(FAST, node);
+            st.setToX(scale); st.setToY(scale);
+            st.play();
+        });
+        node.setOnMouseExited(e -> {
+            ScaleTransition st = new ScaleTransition(FAST, node);
+            st.setToX(1.0); st.setToY(1.0);
+            st.play();
+        });
+    }
+}
+JAVAEOF
+
+echo "   ✅ AnimationUtil.java 写入完成"
+
+cat > src/main/java/com/petition/util/DialogUtil.java << 'JAVA2EOF'
+package com.petition.util;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.Window;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.function.Consumer;
+
+/**
+ * 现代化弹窗工具类
+ */
+public class DialogUtil {
+
+    private static final String MAIN_CSS = "/css/main.css";
+
+    /** 创建表单弹窗 */
+    public static <T> Stage createFormDialog(
+            Window owner, String fxmlPath, String title,
+            double width, double height, Consumer<T> onController) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            URL url = DialogUtil.class.getResource(fxmlPath);
+            if (url == null) throw new IOException("找不到: " + fxmlPath);
+            loader.setLocation(url);
+            Parent root = loader.load();
+
+            if (onController != null) {
+                T ctrl = loader.getController();
+                onController.accept(ctrl);
+            }
+
+            Scene scene = new Scene(root, width, height);
+            scene.setFill(Color.TRANSPARENT);
+            
+            URL css = DialogUtil.class.getResource(MAIN_CSS);
+            if (css != null) scene.getStylesheets().add(css.toExternalForm());
+
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.DECORATED);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(owner);
+            stage.setTitle(title);
+            stage.setScene(scene);
+            stage.setMinWidth(width * 0.8);
+            stage.setMinHeight(height * 0.8);
+
+            if (owner != null) {
+                stage.setX(owner.getX() + (owner.getWidth() - width) / 2);
+                stage.setY(owner.getY() + (owner.getHeight() - height) / 2);
+            }
+
+            scene.setOnKeyPressed(e -> {
+                if (e.getCode() == KeyCode.ESCAPE) closeWithAnimation(stage);
+            });
+
+            stage.setOnShown(e -> AnimationUtil.dialogOpen(stage));
+            return stage;
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorAlert("加载失败", e.getMessage());
+            return null;
+        }
+    }
+
+    /** 关闭弹窗(带动画) */
+    public static void closeWithAnimation(Stage stage) {
+        AnimationUtil.dialogClose(stage, stage::close);
+    }
+
+    /** 确认对话框 */
+    public static void showConfirmDialog(String title, String msg, Runnable onConfirm, Runnable onCancel) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        applyDarkTheme(alert);
+        alert.showAndWait().ifPresent(r -> {
+            if (r == ButtonType.OK && onConfirm != null) onConfirm.run();
+            else if (onCancel != null) onCancel.run();
+        });
+    }
+
+    /** 信息提示 */
+    public static void showInfoAlert(String title, String msg) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        applyDarkTheme(alert);
+        alert.showAndWait();
+    }
+
+    /** 成功提示 */
+    public static void showSuccessAlert(String title, String msg) {
+        showInfoAlert("✅ " + title, msg);
+    }
+
+    /** 错误提示 */
+    public static void showErrorAlert(String title, String msg) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("❌ " + title);
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        applyDarkTheme(alert);
+        alert.showAndWait();
+    }
+
+    /** 警告提示 */
+    public static void showWarningAlert(String title, String msg) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("⚠️ " + title);
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        applyDarkTheme(alert);
+        alert.showAndWait();
+    }
+
+    /** 删除确认 */
+    public static void showDeleteConfirmDialog(String name, Runnable onConfirm) {
+        showConfirmDialog("⚠️ 确认删除", 
+            "确定要删除「" + name + "」吗？\n此操作不可恢复！", 
+            onConfirm, null);
+    }
+
+    private static void applyDarkTheme(Alert alert) {
+        DialogPane pane = alert.getDialogPane();
+        pane.setStyle("-fx-background-color: #1e293b; -fx-border-color: #334155;");
+        try {
+            URL css = DialogUtil.class.getResource(MAIN_CSS);
+            if (css != null) pane.getStylesheets().add(css.toExternalForm());
+        } catch (Exception ignored) {}
+    }
+}
+JAVA2EOF
+
+echo "   ✅ DialogUtil.java 写入完成"
+
+# Git提交
+echo ""
+echo "🚀 步骤 5/5: Git提交..."
+
+git add -A
+
+git commit -m "feat: UI全面现代化升级 - 科技感玻璃态设计
+
+🎨 视觉设计升级:
+- 全新深空灰主题(#0f172a, #1e293b)
+- 玻璃态卡片效果(半透明+边框发光)
+- 科技蓝渐变配色(#3b82f6 → #2563eb)
+- 统一的配色变量系统
+
+✨ 新增组件样式:
+- 现代化按钮(渐变、发光、点击反馈)
+- 玻璃态输入框(聚焦发光效果)
+- 风险等级徽章(彩色圆角标签)
+- 统计卡片(渐变背景+悬停效果)
+- 标签页、表格、下拉框等全面升级
+
+🎬 动画效果:
+- 新增AnimationUtil动画工具类
+- 淡入淡出、缩放、滑动动画
+- 交错列表动画(stagger效果)
+- 悬停缩放效果
+- 弹窗打开/关闭动画
+- 表单验证抖动效果
+
+💬 弹窗系统:
+- 新增DialogUtil弹窗工具类
+- 统一的表单弹窗创建方法
+- 暗色主题确认/提示对话框
+
+📁 文件变更:
+- 重写 css/main.css
+- 新增 util/AnimationUtil.java
+- 新增 util/DialogUtil.java
+
+🤖 Generated with Claude
+
+Co-Authored-By: Claude <noreply@anthropic.com>"
+
+echo "   ✅ Git提交完成"
+
+# 推送
+echo ""
+echo "📤 推送到远程仓库..."
+git push origin master
+
+echo ""
+echo "╔══════════════════════════════════════════════════════════════╗"
+echo "║     ✅ UI现代化升级完成！                                   ║"
+echo "╚══════════════════════════════════════════════════════════════╝"
+echo ""
+echo "📋 更新内容:"
+echo "   • src/main/resources/css/main.css (主题样式)"
+echo "   • src/main/java/com/petition/util/AnimationUtil.java"
+echo "   • src/main/java/com/petition/util/DialogUtil.java"
+echo ""
+echo "🔨 建议执行: mvn compile 验证编译"
+echo ""
