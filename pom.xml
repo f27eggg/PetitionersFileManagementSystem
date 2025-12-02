@@ -19,10 +19,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <javafx.version>17.0.2</javafx.version>
         <jackson.version>2.16.0</jackson.version>
-        <materialfx.version>11.16.0</materialfx.version>
+        <materialfx.version>11.17.0</materialfx.version>
         <atlantafx.version>2.0.0</atlantafx.version>
         <controlsfx.version>11.2.0</controlsfx.version>
-        <tilesfx.version>17.1.18</tilesfx.version>
+        <tilesfx.version>11.48</tilesfx.version>
     </properties>
 
     <dependencies>
@@ -105,7 +105,30 @@
         <dependency>
             <groupId>eu.hansolo</groupId>
             <artifactId>tilesfx</artifactId>
-            <version>11.48</version>
+            <version>${tilesfx.version}</version>
+            <exclusions>
+                <!-- 排除TilesFX自带的JavaFX 11依赖,使用我们的JavaFX 17 -->
+                <exclusion>
+                    <groupId>org.openjfx</groupId>
+                    <artifactId>javafx-base</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.openjfx</groupId>
+                    <artifactId>javafx-graphics</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.openjfx</groupId>
+                    <artifactId>javafx-controls</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.openjfx</groupId>
+                    <artifactId>javafx-media</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.openjfx</groupId>
+                    <artifactId>javafx-web</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
     </dependencies>
