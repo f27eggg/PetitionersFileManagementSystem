@@ -55,9 +55,6 @@ public class MainController {
     private Button navPetitioners;
 
     @FXML
-    private Button navQuery;
-
-    @FXML
     private Button navSettings;
 
     @FXML
@@ -193,14 +190,6 @@ public class MainController {
     }
 
     /**
-     * 显示高级查询页面
-     */
-    @FXML
-    private void showQuery() {
-        switchPage("query", navQuery);
-    }
-
-    /**
      * 显示系统设置页面
      */
     @FXML
@@ -326,7 +315,6 @@ public class MainController {
     private String getCurrentPageName() {
         if (currentActiveNav == navDashboard) return "dashboard";
         if (currentActiveNav == navPetitioners) return "petitioners";
-        if (currentActiveNav == navQuery) return "query";
         if (currentActiveNav == navSettings) return "settings";
         return "dashboard";
     }

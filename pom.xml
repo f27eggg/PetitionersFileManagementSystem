@@ -19,6 +19,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <javafx.version>17.0.2</javafx.version>
         <jackson.version>2.16.0</jackson.version>
+        <materialfx.version>11.16.0</materialfx.version>
+        <atlantafx.version>2.0.0</atlantafx.version>
+        <controlsfx.version>11.2.0</controlsfx.version>
+        <tilesfx.version>17.1.18</tilesfx.version>
     </properties>
 
     <dependencies>
@@ -73,6 +77,35 @@
             <artifactId>junit-jupiter</artifactId>
             <version>5.10.1</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- Modern JavaFX Component Libraries -->
+        <!-- MaterialFX - Material Design 3 Components -->
+        <dependency>
+            <groupId>io.github.palexdev</groupId>
+            <artifactId>materialfx</artifactId>
+            <version>${materialfx.version}</version>
+        </dependency>
+
+        <!-- AtlantaFX - Modern CSS Theme Framework -->
+        <dependency>
+            <groupId>io.github.mkpaz</groupId>
+            <artifactId>atlantafx-base</artifactId>
+            <version>${atlantafx.version}</version>
+        </dependency>
+
+        <!-- ControlsFX - Advanced UI Controls -->
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>${controlsfx.version}</version>
+        </dependency>
+
+        <!-- TilesFX - Dashboard and Chart Components -->
+        <dependency>
+            <groupId>eu.hansolo</groupId>
+            <artifactId>tilesfx</artifactId>
+            <version>11.48</version>
         </dependency>
 
     </dependencies>

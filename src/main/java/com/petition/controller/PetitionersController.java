@@ -1,8 +1,7 @@
 package com.petition.controller;
 
 import com.petition.model.Petitioner;
-import com.petition.model.enums.Gender;
-import com.petition.model.enums.RiskLevel;
+import com.petition.model.enums.*;
 import com.petition.service.PetitionerService;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -42,11 +41,17 @@ public class PetitionersController implements Initializable {
     @FXML private Button importButton;
     @FXML private Button exportButton;
 
-    // 搜索和筛选组件
-    @FXML private TextField searchField;
+    // 搜索和筛选组件 - 扩展高级查询字段
+    @FXML private TextField nameField;
+    @FXML private TextField idCardField;
+    @FXML private TextField nativePlaceField;
     @FXML private ComboBox<String> riskLevelFilter;
     @FXML private ComboBox<String> genderFilter;
-    @FXML private ComboBox<String> categoryFilter;
+    @FXML private ComboBox<String> educationCombo;
+    @FXML private ComboBox<String> maritalStatusCombo;
+    @FXML private ComboBox<String> entryMethodCombo;
+    @FXML private Spinner<Integer> minVisitSpinner;
+    @FXML private Spinner<Integer> maxVisitSpinner;
     @FXML private Button resetButton;
     @FXML private Label countLabel;
 
@@ -95,6 +100,9 @@ public class PetitionersController implements Initializable {
         // 初始化筛选器
         initializeFilters();
 
+        // 初始化Spinner控件
+        initializeSpinners();
+
         // 初始化表格列
         initializeTableColumns();
 
@@ -111,22 +119,65 @@ public class PetitionersController implements Initializable {
      * 初始化筛选器下拉框
      */
     private void initializeFilters() {
-        // 风险等级筛选器
-        riskLevelFilter.setItems(FXCollections.observableArrayList(
-                "全部", "高危", "中危", "低危"
-        ));
-        riskLevelFilter.setValue("全部");
-
         // 性别筛选器
-        genderFilter.setItems(FXCollections.observableArrayList(
-                "全部", "男", "女"
-        ));
-        genderFilter.setValue("全部");
+        java.util.List<String> genders = new java.util.ArrayList<>();
+        genders.add("全部");
+        for (Gender gender : Gender.values()) {
+            genders.add(gender.getDisplayName());
+        }
+        genderFilter.setItems(FXCollections.observableArrayList(genders));
+        genderFilter.getSelectionModel().selectFirst();
 
-        // 类别筛选器(暂时隐藏,设为全部)
-        categoryFilter.setItems(FXCollections.observableArrayList("全部"));
-        categoryFilter.setValue("全部");
-        categoryFilter.setVisible(false);
+        // 文化程度
+        java.util.List<String> educations = new java.util.ArrayList<>();
+        educations.add("全部");
+        for (Education edu : Education.values()) {
+            educations.add(edu.getDisplayName());
+        }
+        educationCombo.setItems(FXCollections.observableArrayList(educations));
+        educationCombo.getSelectionModel().selectFirst();
+
+        // 婚姻状况
+        java.util.List<String> maritalStatuses = new java.util.ArrayList<>();
+        maritalStatuses.add("全部");
+        for (MaritalStatus status : MaritalStatus.values()) {
+            maritalStatuses.add(status.getDisplayName());
+        }
+        maritalStatusCombo.setItems(FXCollections.observableArrayList(maritalStatuses));
+        maritalStatusCombo.getSelectionModel().selectFirst();
+
+        // 危险等级
+        java.util.List<String> riskLevels = new java.util.ArrayList<>();
+        riskLevels.add("全部");
+        for (RiskLevel level : RiskLevel.values()) {
+            riskLevels.add(level.getDisplayName());
+        }
+        riskLevelFilter.setItems(FXCollections.observableArrayList(riskLevels));
+        riskLevelFilter.getSelectionModel().selectFirst();
+
+        // 进京方式
+        java.util.List<String> entryMethods = new java.util.ArrayList<>();
+        entryMethods.add("全部");
+        for (EntryMethod method : EntryMethod.values()) {
+            entryMethods.add(method.getDisplayName());
+        }
+        entryMethodCombo.setItems(FXCollections.observableArrayList(entryMethods));
+        entryMethodCombo.getSelectionModel().selectFirst();
+    }
+
+    /**
+     * 初始化Spinner控件
+     */
+    private void initializeSpinners() {
+        // 最小上访次数
+        SpinnerValueFactory<Integer> minFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000, 0);
+        minVisitSpinner.setValueFactory(minFactory);
+        minVisitSpinner.setEditable(true);
+
+        // 最大上访次数
+        SpinnerValueFactory<Integer> maxFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000, 100);
+        maxVisitSpinner.setValueFactory(maxFactory);
+        maxVisitSpinner.setEditable(true);
     }
 
     /**
@@ -351,14 +402,6 @@ public class PetitionersController implements Initializable {
     // ==================== 搜索和筛选事件 ====================
 
     /**
-     * 处理搜索输入
-     */
-    @FXML
-    private void handleSearch() {
-        applyFilters();
-    }
-
-    /**
      * 处理筛选条件变更
      */
     @FXML
@@ -367,38 +410,104 @@ public class PetitionersController implements Initializable {
     }
 
     /**
-     * 应用筛选条件
+     * 应用筛选条件（整合高级查询逻辑）
      */
     private void applyFilters() {
-        String searchText = searchField.getText().toLowerCase().trim();
-        String riskFilter = riskLevelFilter.getValue();
-        String genderFilterValue = genderFilter.getValue();
-
         filteredPetitioners.setPredicate(petitioner -> {
-            // 搜索文本筛选
-            if (!searchText.isEmpty()) {
-                String name = petitioner.getName();
-                String idCard = petitioner.getIdCard();
-                String phone = petitioner.getPersonalInfo().getPrimaryPhone();
-
-                boolean matches = (name != null && name.toLowerCase().contains(searchText))
-                        || (idCard != null && idCard.toLowerCase().contains(searchText))
-                        || (phone != null && phone.toLowerCase().contains(searchText));
-                if (!matches) return false;
+            // 姓名匹配
+            String nameKeyword = nameField.getText();
+            if (nameKeyword != null && !nameKeyword.trim().isEmpty()) {
+                if (petitioner.getName() == null ||
+                    !petitioner.getName().contains(nameKeyword.trim())) {
+                    return false;
+                }
             }
 
-            // 风险等级筛选
-            if (!riskFilter.equals("全部")) {
-                RiskLevel level = petitioner.getRiskAssessment().getRiskLevel();
-                String levelStr = level != null ? level.getDisplayName() : "";
-                if (!levelStr.equals(riskFilter)) return false;
+            // 身份证号匹配
+            String idCardKeyword = idCardField.getText();
+            if (idCardKeyword != null && !idCardKeyword.trim().isEmpty()) {
+                if (petitioner.getIdCard() == null ||
+                    !petitioner.getIdCard().contains(idCardKeyword.trim())) {
+                    return false;
+                }
+            }
+
+            // 籍贯匹配
+            String nativePlaceKeyword = nativePlaceField.getText();
+            if (nativePlaceKeyword != null && !nativePlaceKeyword.trim().isEmpty()) {
+                if (petitioner.getPersonalInfo() == null ||
+                    petitioner.getPersonalInfo().getNativePlace() == null ||
+                    !petitioner.getPersonalInfo().getNativePlace().contains(nativePlaceKeyword.trim())) {
+                    return false;
+                }
             }
 
             // 性别筛选
-            if (!genderFilterValue.equals("全部")) {
-                Gender gender = petitioner.getPersonalInfo().getGender();
-                String genderStr = gender != null ? gender.getDisplayName() : "";
-                if (!genderStr.equals(genderFilterValue)) return false;
+            String selectedGender = genderFilter.getValue();
+            if (selectedGender != null && !"全部".equals(selectedGender)) {
+                if (petitioner.getPersonalInfo() == null ||
+                    petitioner.getPersonalInfo().getGender() == null ||
+                    !selectedGender.equals(petitioner.getPersonalInfo().getGender().getDisplayName())) {
+                    return false;
+                }
+            }
+
+            // 文化程度匹配
+            String selectedEducation = educationCombo.getValue();
+            if (selectedEducation != null && !"全部".equals(selectedEducation)) {
+                if (petitioner.getPersonalInfo() == null ||
+                    petitioner.getPersonalInfo().getEducation() == null ||
+                    !selectedEducation.equals(petitioner.getPersonalInfo().getEducation().getDisplayName())) {
+                    return false;
+                }
+            }
+
+            // 婚姻状况匹配
+            String selectedMaritalStatus = maritalStatusCombo.getValue();
+            if (selectedMaritalStatus != null && !"全部".equals(selectedMaritalStatus)) {
+                if (petitioner.getPersonalInfo() == null ||
+                    petitioner.getPersonalInfo().getMaritalStatus() == null ||
+                    !selectedMaritalStatus.equals(petitioner.getPersonalInfo().getMaritalStatus().getDisplayName())) {
+                    return false;
+                }
+            }
+
+            // 危险等级筛选
+            String selectedRiskLevel = riskLevelFilter.getValue();
+            if (selectedRiskLevel != null && !"全部".equals(selectedRiskLevel)) {
+                if (petitioner.getRiskAssessment() == null ||
+                    petitioner.getRiskAssessment().getRiskLevel() == null ||
+                    !selectedRiskLevel.equals(petitioner.getRiskAssessment().getRiskLevel().getDisplayName())) {
+                    return false;
+                }
+            }
+
+            // 进京方式匹配
+            String selectedEntryMethod = entryMethodCombo.getValue();
+            if (selectedEntryMethod != null && !"全部".equals(selectedEntryMethod)) {
+                if (petitioner.getPetitionCase() == null ||
+                    petitioner.getPetitionCase().getEntryMethod() == null ||
+                    !selectedEntryMethod.equals(petitioner.getPetitionCase().getEntryMethod().getDisplayName())) {
+                    return false;
+                }
+            }
+
+            // 上访次数范围匹配
+            Integer minCount = minVisitSpinner.getValue();
+            Integer maxCount = maxVisitSpinner.getValue();
+
+            // 如果设置了范围条件(不是默认的0-100)
+            if (minCount != null && maxCount != null && !(minCount == 0 && maxCount == 100)) {
+                if (petitioner.getPersonalInfo() != null &&
+                    petitioner.getPersonalInfo().getVisitCount() != null) {
+                    int count = petitioner.getPersonalInfo().getVisitCount();
+                    if (count < minCount || count > maxCount) {
+                        return false;
+                    }
+                } else {
+                    // 如果没有上访次数数据,且设置了非默认范围,则不匹配
+                    return false;
+                }
             }
 
             return true;
@@ -415,9 +524,23 @@ public class PetitionersController implements Initializable {
      */
     @FXML
     private void handleReset() {
-        searchField.clear();
-        riskLevelFilter.setValue("全部");
-        genderFilter.setValue("全部");
+        // 清空文本框
+        nameField.clear();
+        idCardField.clear();
+        nativePlaceField.clear();
+
+        // 重置下拉框
+        riskLevelFilter.getSelectionModel().selectFirst();
+        genderFilter.getSelectionModel().selectFirst();
+        educationCombo.getSelectionModel().selectFirst();
+        maritalStatusCombo.getSelectionModel().selectFirst();
+        entryMethodCombo.getSelectionModel().selectFirst();
+
+        // 重置数字输入框
+        minVisitSpinner.getValueFactory().setValue(0);
+        maxVisitSpinner.getValueFactory().setValue(100);
+
+        // 应用筛选（显示全部）
         applyFilters();
     }
 

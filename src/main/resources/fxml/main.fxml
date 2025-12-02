@@ -72,11 +72,6 @@
                         styleClass="nav-button"
                         onAction="#showPetitioners" maxWidth="Infinity"/>
 
-                <!-- 高级查询 -->
-                <Button fx:id="navQuery" text="🔍 高级查询"
-                        styleClass="nav-button"
-                        onAction="#showQuery" maxWidth="Infinity"/>
-
                 <!-- 系统设置 -->
                 <Button fx:id="navSettings" text="⚙️ 系统设置"
                         styleClass="nav-button"
