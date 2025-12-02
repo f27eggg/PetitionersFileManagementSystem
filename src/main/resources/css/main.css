@@ -1,58 +1,72 @@
 /*
  * ============================================================================
- *  上访人员重点监控信息管理系统 - 现代化UI主题 v2.0
- *  设计理念: 科技感玻璃态 + 渐变光效 + 流畅动画
+ *  上访人员重点监控信息管理系统 - 现代化UI主题 v3.0
+ *  设计理念: 赛博朋克 + 数据可视化 + 流畅交互
  * ============================================================================
  */
 
-/* 全局根样式 - 配色系统 */
+/* ==================== 全局根样式 ==================== */
 .root {
-    -fx-background-color: #0f172a;
+    -fx-background-color: #0a0e1a;
     -fx-font-family: "Microsoft YaHei UI", "PingFang SC", "Segoe UI", sans-serif;
     -fx-font-size: 14px;
-    -fx-text-fill: #f8fafc;
+    -fx-text-fill: #e2e8f0;
 }
 
-/* 主窗口布局 */
+/* ==================== 主窗口布局 ==================== */
 .main-container {
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #0f172a, #1e293b);
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #0a0e1a, #1a1f35);
 }
 
-/* 顶部标题栏 */
+/* ==================== 顶部标题栏 ==================== */
 .header-bar {
-    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #1e293bee, #0f172aee);
-    -fx-padding: 12 24 12 24;
-    -fx-border-color: transparent transparent #334155 transparent;
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #0d1224ee, #1a1f35ee);
+    -fx-padding: 16 28 16 28;
+    -fx-border-color: transparent transparent #2d3a5a transparent;
     -fx-border-width: 0 0 1 0;
-    -fx-effect: dropshadow(gaussian, #00000060, 10, 0, 0, 2);
+    -fx-effect: dropshadow(gaussian, #00d4ff20, 20, 0, 0, 4);
 }
 
 .header-logo {
-    -fx-effect: dropshadow(gaussian, #3b82f680, 8, 0.5, 0, 0);
+    -fx-effect: dropshadow(gaussian, #00d4ff80, 12, 0.6, 0, 0);
 }
 
 .header-title {
-    -fx-font-size: 20px;
+    -fx-font-size: 22px;
     -fx-font-weight: bold;
-    -fx-text-fill: #f8fafc;
+    -fx-text-fill: linear-gradient(from 0% 50% to 100% 50%, #ffffff, #00d4ff);
 }
 
 .header-subtitle {
     -fx-font-size: 12px;
-    -fx-text-fill: #94a3b8;
+    -fx-text-fill: #64748b;
+    -fx-padding: 2 0 0 0;
 }
 
-/* 侧边导航栏 */
+/* ==================== 侧边导航栏 ==================== */
 .sidebar {
-    -fx-background-color: linear-gradient(from 50% 0% to 50% 100%, #1e293bf0, #0f172af0);
-    -fx-padding: 16 0 16 0;
-    -fx-pref-width: 240;
+    -fx-background-color: linear-gradient(from 50% 0% to 50% 100%, #0d1224f8, #0a0e1af8);
+    -fx-padding: 20 0 20 0;
+    -fx-pref-width: 260;
     -fx-min-width: 60;
-    -fx-border-color: transparent #334155 transparent transparent;
+    -fx-border-color: transparent #1e293b transparent transparent;
     -fx-border-width: 0 1 0 0;
 }
 
-/* 导航按钮 */
+.sidebar-header {
+    -fx-padding: 0 20 20 20;
+    -fx-border-color: transparent transparent #1e293b transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.nav-section-title {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #475569;
+    -fx-padding: 16 20 8 20;
+}
+
+/* 导航按钮 - 使用文字图标避免乱码 */
 .nav-button {
     -fx-background-color: transparent;
     -fx-background-radius: 12;
@@ -63,26 +77,230 @@
     -fx-alignment: CENTER_LEFT;
     -fx-graphic-text-gap: 14;
     -fx-pref-height: 48;
+    -fx-max-width: 10000;
 }
 
 .nav-button:hover {
-    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #3b82f620, transparent);
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #00d4ff15, transparent);
     -fx-text-fill: #e2e8f0;
 }
 
 .nav-button-active {
-    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #3b82f630, #3b82f610);
-    -fx-text-fill: #3b82f6;
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #00d4ff25, #00d4ff05);
+    -fx-text-fill: #00d4ff;
     -fx-font-weight: bold;
-    -fx-border-color: #3b82f6 transparent transparent transparent;
+    -fx-border-color: #00d4ff transparent transparent transparent;
     -fx-border-width: 0 0 0 3;
-    -fx-effect: dropshadow(gaussian, #3b82f640, 12, 0, 0, 0);
+    -fx-border-radius: 0;
+    -fx-background-radius: 0 12 12 0;
+    -fx-effect: dropshadow(gaussian, #00d4ff30, 16, 0, 0, 0);
 }
 
-/* 内容区域 */
+/* 导航图标容器 */
+.nav-icon {
+    -fx-min-width: 24;
+    -fx-min-height: 24;
+    -fx-alignment: CENTER;
+    -fx-font-size: 16px;
+}
+
+/* ==================== 仪表盘 - 科技感升级 ==================== */
+.dashboard-container {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+/* 仪表盘顶部概览条 */
+.dashboard-overview-bar {
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #0d122480, #1a1f3580);
+    -fx-background-radius: 20;
+    -fx-border-color: #2d3a5a;
+    -fx-border-width: 1;
+    -fx-border-radius: 20;
+    -fx-padding: 24 32 24 32;
+    -fx-effect: dropshadow(gaussian, #00000040, 20, 0, 0, 8);
+}
+
+/* 数据指标卡片 - 赛博朋克风格 */
+.metric-card {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #0d1224cc, #1a1f35cc);
+    -fx-background-radius: 16;
+    -fx-border-color: #2d3a5a;
+    -fx-border-width: 1;
+    -fx-border-radius: 16;
+    -fx-padding: 20 24 20 24;
+    -fx-pref-width: 200;
+    -fx-min-height: 120;
+    -fx-cursor: hand;
+}
+
+.metric-card:hover {
+    -fx-border-color: #00d4ff60;
+    -fx-effect: dropshadow(gaussian, #00d4ff30, 20, 0, 0, 0);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.metric-card-primary {
+    -fx-border-color: #00d4ff40;
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #00d4ff10, #0d1224cc);
+}
+
+.metric-card-primary:hover {
+    -fx-border-color: #00d4ff;
+    -fx-effect: dropshadow(gaussian, #00d4ff50, 24, 0, 0, 0);
+}
+
+.metric-card-danger {
+    -fx-border-color: #ff006640;
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ff006610, #0d1224cc);
+}
+
+.metric-card-danger:hover {
+    -fx-border-color: #ff0066;
+    -fx-effect: dropshadow(gaussian, #ff006650, 24, 0, 0, 0);
+}
+
+.metric-card-warning {
+    -fx-border-color: #ffaa0040;
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffaa0010, #0d1224cc);
+}
+
+.metric-card-warning:hover {
+    -fx-border-color: #ffaa00;
+    -fx-effect: dropshadow(gaussian, #ffaa0050, 24, 0, 0, 0);
+}
+
+.metric-card-success {
+    -fx-border-color: #00ff8840;
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #00ff8810, #0d1224cc);
+}
+
+.metric-card-success:hover {
+    -fx-border-color: #00ff88;
+    -fx-effect: dropshadow(gaussian, #00ff8850, 24, 0, 0, 0);
+}
+
+.metric-value {
+    -fx-font-size: 42px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+.metric-value-primary { -fx-text-fill: #00d4ff; }
+.metric-value-danger { -fx-text-fill: #ff0066; }
+.metric-value-warning { -fx-text-fill: #ffaa00; }
+.metric-value-success { -fx-text-fill: #00ff88; }
+
+.metric-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #64748b;
+    -fx-padding: 8 0 0 0;
+}
+
+.metric-trend {
+    -fx-font-size: 12px;
+    -fx-padding: 4 8 4 8;
+    -fx-background-radius: 12;
+}
+
+.metric-trend-up {
+    -fx-background-color: #00ff8820;
+    -fx-text-fill: #00ff88;
+}
+
+.metric-trend-down {
+    -fx-background-color: #ff006620;
+    -fx-text-fill: #ff0066;
+}
+
+/* 数据面板 - 全息投影风格 */
+.data-panel {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #0d1224dd, #1a1f35dd);
+    -fx-background-radius: 20;
+    -fx-border-color: #2d3a5a;
+    -fx-border-width: 1;
+    -fx-border-radius: 20;
+    -fx-padding: 24;
+    -fx-effect: dropshadow(gaussian, #00000060, 24, 0, 0, 8);
+}
+
+.data-panel-header {
+    -fx-padding: 0 0 16 0;
+    -fx-border-color: transparent transparent #2d3a5a transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.data-panel-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #f8fafc;
+}
+
+.data-panel-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #64748b;
+}
+
+/* 实时数据网格线效果 */
+.grid-overlay {
+    -fx-background-color: transparent;
+    -fx-border-color: #00d4ff08;
+    -fx-border-width: 1;
+}
+
+/* 脉冲动画指示器 */
+.pulse-indicator {
+    -fx-background-color: #00ff88;
+    -fx-background-radius: 50;
+    -fx-min-width: 8;
+    -fx-min-height: 8;
+    -fx-effect: dropshadow(gaussian, #00ff8880, 8, 0.5, 0, 0);
+}
+
+.pulse-indicator-warning {
+    -fx-background-color: #ffaa00;
+    -fx-effect: dropshadow(gaussian, #ffaa0080, 8, 0.5, 0, 0);
+}
+
+.pulse-indicator-danger {
+    -fx-background-color: #ff0066;
+    -fx-effect: dropshadow(gaussian, #ff006680, 8, 0.5, 0, 0);
+}
+
+/* 快捷操作卡片 */
+.quick-action-card {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #1a1f35, #0d1224);
+    -fx-background-radius: 16;
+    -fx-border-color: #2d3a5a;
+    -fx-border-width: 1;
+    -fx-border-radius: 16;
+    -fx-padding: 20;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER;
+}
+
+.quick-action-card:hover {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #00d4ff15, #1a1f35);
+    -fx-border-color: #00d4ff60;
+    -fx-effect: dropshadow(gaussian, #00d4ff30, 16, 0, 0, 0);
+}
+
+.quick-action-icon {
+    -fx-font-size: 32px;
+    -fx-text-fill: #00d4ff;
+}
+
+.quick-action-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #94a3b8;
+    -fx-padding: 8 0 0 0;
+}
+
+/* ==================== 内容区域 ==================== */
 .content-area {
     -fx-background-color: transparent;
-    -fx-padding: 24;
+    -fx-padding: 28;
 }
 
 /* 页面标题 */
@@ -94,15 +312,15 @@
 
 .page-subtitle {
     -fx-font-size: 14px;
-    -fx-text-fill: #94a3b8;
+    -fx-text-fill: #64748b;
     -fx-padding: 4 0 0 0;
 }
 
-/* 卡片组件 */
+/* ==================== 通用卡片 ==================== */
 .card {
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #1e293bcc, #0f172acc);
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #0d1224cc, #1a1f35cc);
     -fx-background-radius: 16;
-    -fx-border-color: #334155;
+    -fx-border-color: #2d3a5a;
     -fx-border-width: 1;
     -fx-border-radius: 16;
     -fx-padding: 20;
@@ -110,84 +328,13 @@
 }
 
 .card:hover {
-    -fx-border-color: #475569;
+    -fx-border-color: #3d4a6a;
     -fx-effect: dropshadow(gaussian, #00000060, 20, 0, 0, 6);
 }
 
-/* 统计卡片 */
-.stat-card {
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #1e293bdd, #0f172add);
-    -fx-background-radius: 16;
-    -fx-border-color: #334155;
-    -fx-border-width: 1;
-    -fx-border-radius: 16;
-    -fx-padding: 24;
-    -fx-pref-width: 220;
-    -fx-min-height: 140;
-    -fx-effect: dropshadow(gaussian, #00000040, 12, 0, 0, 4);
-    -fx-cursor: hand;
-}
-
-.stat-card:hover {
-    -fx-scale-x: 1.02;
-    -fx-scale-y: 1.02;
-}
-
-.stat-card-primary {
-    -fx-border-color: #3b82f640;
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #1e3a5fdd, #0f172add);
-}
-
-.stat-card-primary:hover {
-    -fx-border-color: #3b82f680;
-    -fx-effect: dropshadow(gaussian, #3b82f640, 20, 0, 0, 0);
-}
-
-.stat-card-danger {
-    -fx-border-color: #ef444440;
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #3f1d1ddd, #0f172add);
-}
-
-.stat-card-danger:hover {
-    -fx-border-color: #ef444480;
-    -fx-effect: dropshadow(gaussian, #ef444440, 20, 0, 0, 0);
-}
-
-.stat-card-warning {
-    -fx-border-color: #f59e0b40;
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #3f2d0fdd, #0f172add);
-}
-
-.stat-card-warning:hover {
-    -fx-border-color: #f59e0b80;
-    -fx-effect: dropshadow(gaussian, #f59e0b40, 20, 0, 0, 0);
-}
-
-.stat-card-success {
-    -fx-border-color: #10b98140;
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #0f2f24dd, #0f172add);
-}
-
-.stat-card-success:hover {
-    -fx-border-color: #10b98180;
-    -fx-effect: dropshadow(gaussian, #10b98140, 20, 0, 0, 0);
-}
-
-.stat-value {
-    -fx-font-size: 36px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #f8fafc;
-}
-
-.stat-label {
-    -fx-font-size: 13px;
-    -fx-text-fill: #94a3b8;
-    -fx-padding: 4 0 0 0;
-}
-
-/* 按钮系统 */
+/* ==================== 按钮系统 ==================== */
 .btn {
-    -fx-padding: 10 20 10 20;
+    -fx-padding: 12 24 12 24;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
     -fx-font-size: 14px;
@@ -206,52 +353,52 @@
 }
 
 .btn-primary {
-    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #3b82f6, #2563eb);
-    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #00d4ff, #0099cc);
+    -fx-text-fill: #0a0e1a;
     -fx-border-color: transparent;
 }
 
 .btn-primary:hover {
-    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #60a5fa, #3b82f6);
-    -fx-effect: dropshadow(gaussian, #3b82f660, 12, 0, 0, 0);
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #33ddff, #00bbee);
+    -fx-effect: dropshadow(gaussian, #00d4ff60, 16, 0, 0, 0);
 }
 
 .btn-secondary {
     -fx-background-color: transparent;
     -fx-text-fill: #94a3b8;
-    -fx-border-color: #475569;
+    -fx-border-color: #3d4a6a;
     -fx-border-width: 1.5;
 }
 
 .btn-secondary:hover {
-    -fx-background-color: #33415520;
+    -fx-background-color: #2d3a5a30;
     -fx-text-fill: #e2e8f0;
-    -fx-border-color: #64748b;
+    -fx-border-color: #4d5a7a;
 }
 
 .btn-success {
-    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #10b981, #059669);
-    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #00ff88, #00cc6a);
+    -fx-text-fill: #0a0e1a;
 }
 
 .btn-success:hover {
-    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #34d399, #10b981);
-    -fx-effect: dropshadow(gaussian, #10b98160, 12, 0, 0, 0);
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #33ff99, #00ee7a);
+    -fx-effect: dropshadow(gaussian, #00ff8860, 16, 0, 0, 0);
 }
 
 .btn-danger {
-    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #ef4444, #dc2626);
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #ff0066, #cc0052);
     -fx-text-fill: white;
 }
 
 .btn-danger:hover {
-    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #f87171, #ef4444);
-    -fx-effect: dropshadow(gaussian, #ef444460, 12, 0, 0, 0);
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #ff3388, #ee0066);
+    -fx-effect: dropshadow(gaussian, #ff006660, 16, 0, 0, 0);
 }
 
 .btn-warning {
-    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #f59e0b, #d97706);
-    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #ffaa00, #cc8800);
+    -fx-text-fill: #0a0e1a;
 }
 
 .btn-ghost {
@@ -261,7 +408,7 @@
 }
 
 .btn-ghost:hover {
-    -fx-background-color: #33415530;
+    -fx-background-color: #2d3a5a40;
     -fx-text-fill: #e2e8f0;
 }
 
@@ -275,67 +422,71 @@
 }
 
 .btn-lg {
-    -fx-padding: 14 28 14 28;
+    -fx-padding: 16 32 16 32;
     -fx-font-size: 16px;
     -fx-background-radius: 12;
 }
 
 .btn-sm {
-    -fx-padding: 6 12 6 12;
+    -fx-padding: 8 16 8 16;
     -fx-font-size: 12px;
     -fx-background-radius: 8;
 }
 
-/* 输入框系统 */
+/* ==================== 输入框系统 ==================== */
 .text-field, .text-area, .password-field {
-    -fx-background-color: #0f172a;
+    -fx-background-color: #0a0e1a;
     -fx-background-radius: 10;
-    -fx-border-color: #334155;
+    -fx-border-color: #2d3a5a;
     -fx-border-width: 1.5;
     -fx-border-radius: 10;
     -fx-padding: 12 16 12 16;
     -fx-text-fill: #f8fafc;
-    -fx-prompt-text-fill: #64748b;
+    -fx-prompt-text-fill: #4d5a7a;
     -fx-font-size: 14px;
 }
 
 .text-field:hover, .text-area:hover {
-    -fx-border-color: #475569;
-    -fx-background-color: #1e293b;
+    -fx-border-color: #3d4a6a;
+    -fx-background-color: #0d1224;
 }
 
 .text-field:focused, .text-area:focused {
-    -fx-border-color: #3b82f6;
-    -fx-background-color: #1e293b;
-    -fx-effect: dropshadow(gaussian, #3b82f640, 8, 0, 0, 0);
+    -fx-border-color: #00d4ff;
+    -fx-background-color: #0d1224;
+    -fx-effect: dropshadow(gaussian, #00d4ff40, 8, 0, 0, 0);
 }
 
 .text-field-error {
-    -fx-border-color: #ef4444;
+    -fx-border-color: #ff0066;
 }
 
 .text-field-error:focused {
-    -fx-effect: dropshadow(gaussian, #ef444440, 8, 0, 0, 0);
+    -fx-effect: dropshadow(gaussian, #ff006640, 8, 0, 0, 0);
 }
 
-/* 下拉框 */
+.text-field-success {
+    -fx-border-color: #00ff88;
+}
+
+/* ==================== 下拉框 ==================== */
 .combo-box {
-    -fx-background-color: #0f172a;
+    -fx-background-color: #0a0e1a;
     -fx-background-radius: 10;
-    -fx-border-color: #334155;
+    -fx-border-color: #2d3a5a;
     -fx-border-width: 1.5;
     -fx-border-radius: 10;
     -fx-padding: 4;
 }
 
 .combo-box:hover {
-    -fx-border-color: #475569;
-    -fx-background-color: #1e293b;
+    -fx-border-color: #3d4a6a;
+    -fx-background-color: #0d1224;
 }
 
 .combo-box:focused {
-    -fx-border-color: #3b82f6;
-    -fx-effect: dropshadow(gaussian, #3b82f640, 8, 0, 0, 0);
+    -fx-border-color: #00d4ff;
+    -fx-effect: dropshadow(gaussian, #00d4ff40, 8, 0, 0, 0);
 }
 
 .combo-box .list-cell {
@@ -345,26 +496,26 @@
 }
 
 .combo-box-popup .list-view {
-    -fx-background-color: #1e293b;
+    -fx-background-color: #0d1224;
     -fx-background-radius: 10;
-    -fx-border-color: #334155;
+    -fx-border-color: #2d3a5a;
     -fx-border-radius: 10;
-    -fx-effect: dropshadow(gaussian, #00000060, 16, 0, 0, 8);
+    -fx-effect: dropshadow(gaussian, #00000080, 20, 0, 0, 8);
 }
 
 .combo-box-popup .list-cell {
     -fx-background-color: transparent;
     -fx-text-fill: #e2e8f0;
-    -fx-padding: 10 16 10 16;
+    -fx-padding: 12 16 12 16;
 }
 
 .combo-box-popup .list-cell:hover {
-    -fx-background-color: #33415580;
+    -fx-background-color: #00d4ff20;
 }
 
 .combo-box-popup .list-cell:selected {
-    -fx-background-color: #3b82f630;
-    -fx-text-fill: #3b82f6;
+    -fx-background-color: #00d4ff30;
+    -fx-text-fill: #00d4ff;
 }
 
 .combo-box .arrow-button {
@@ -376,79 +527,98 @@
     -fx-background-color: #64748b;
 }
 
-/* 表格 */
+/* ==================== 表格 ==================== */
 .table-view {
     -fx-background-color: transparent;
-    -fx-border-color: #334155;
-    -fx-border-radius: 12;
-    -fx-background-radius: 12;
+    -fx-border-color: #2d3a5a;
+    -fx-border-radius: 16;
+    -fx-background-radius: 16;
 }
 
 .table-view .column-header-background {
-    -fx-background-color: linear-gradient(from 50% 0% to 50% 100%, #1e293b, #0f172a);
-    -fx-background-radius: 12 12 0 0;
+    -fx-background-color: linear-gradient(from 50% 0% to 50% 100%, #1a1f35, #0d1224);
+    -fx-background-radius: 16 16 0 0;
 }
 
 .table-view .column-header {
     -fx-background-color: transparent;
-    -fx-border-color: transparent transparent #334155 transparent;
+    -fx-border-color: transparent transparent #2d3a5a transparent;
     -fx-border-width: 0 0 1 0;
-    -fx-padding: 14 16 14 16;
+    -fx-padding: 16 16 16 16;
 }
 
 .table-view .column-header .label {
     -fx-font-size: 13px;
     -fx-font-weight: bold;
-    -fx-text-fill: #94a3b8;
+    -fx-text-fill: #64748b;
 }
 
 .table-view .table-row-cell {
     -fx-background-color: transparent;
-    -fx-border-color: transparent transparent #33415540 transparent;
+    -fx-border-color: transparent transparent #2d3a5a20 transparent;
     -fx-border-width: 0 0 1 0;
     -fx-table-cell-border-color: transparent;
 }
 
 .table-view .table-row-cell:odd {
-    -fx-background-color: #0f172a40;
+    -fx-background-color: #0a0e1a40;
 }
 
 .table-view .table-row-cell:hover {
-    -fx-background-color: #33415560;
+    -fx-background-color: #00d4ff15;
 }
 
 .table-view .table-row-cell:selected {
-    -fx-background-color: #3b82f630;
+    -fx-background-color: #00d4ff25;
 }
 
 .table-view .table-cell {
-    -fx-padding: 12 16 12 16;
+    -fx-padding: 14 16 14 16;
     -fx-text-fill: #e2e8f0;
     -fx-font-size: 13px;
     -fx-alignment: CENTER_LEFT;
 }
 
-/* 滚动条 */
+/* 表格中的头像列 */
+.table-avatar {
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-border-color: #00d4ff40;
+    -fx-border-width: 2;
+    -fx-min-width: 40;
+    -fx-min-height: 40;
+    -fx-max-width: 40;
+    -fx-max-height: 40;
+    -fx-effect: dropshadow(gaussian, #00d4ff30, 4, 0, 0, 0);
+}
+
+.table-avatar:hover {
+    -fx-border-color: #00d4ff;
+    -fx-effect: dropshadow(gaussian, #00d4ff60, 8, 0, 0, 0);
+    -fx-cursor: hand;
+}
+
+/* ==================== 滚动条 ==================== */
 .scroll-bar {
     -fx-background-color: transparent;
 }
 
 .scroll-bar .track {
-    -fx-background-color: #1e293b40;
+    -fx-background-color: #0d122440;
     -fx-background-radius: 4;
 }
 
 .scroll-bar .thumb {
-    -fx-background-color: #475569;
+    -fx-background-color: #3d4a6a;
     -fx-background-radius: 4;
 }
 
 .scroll-bar .thumb:hover {
-    -fx-background-color: #64748b;
+    -fx-background-color: #4d5a7a;
 }
 
 .scroll-bar .thumb:pressed {
-    -fx-background-color: #3b82f6;
+    -fx-background-color: #00d4ff;
 }
 
 .scroll-bar .increment-button, .scroll-bar .decrement-button {
@@ -461,70 +631,393 @@
     -fx-shape: "";
 }
 
-/* 标签页 */
-.tab-pane {
-    -fx-background-color: transparent;
+/* ==================== 向导式弹窗 ==================== */
+.wizard-dialog {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #0d1224f8, #1a1f35f8);
+    -fx-background-radius: 24;
+    -fx-border-color: #2d3a5a;
+    -fx-border-width: 1;
+    -fx-border-radius: 24;
+    -fx-effect: dropshadow(gaussian, #000000a0, 48, 0, 0, 16);
 }
 
-.tab-pane .tab-header-background {
-    -fx-background-color: transparent;
+/* 向导头部 */
+.wizard-header {
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #00d4ff15, transparent);
+    -fx-padding: 28 32 28 32;
+    -fx-border-color: transparent transparent #2d3a5a transparent;
+    -fx-border-width: 0 0 1 0;
 }
 
-.tab-pane .headers-region {
-    -fx-background-color: #1e293b;
-    -fx-background-radius: 12;
-    -fx-padding: 4;
+.wizard-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #f8fafc;
 }
 
-.tab-pane .tab {
-    -fx-background-color: transparent;
-    -fx-background-radius: 10;
-    -fx-padding: 10 20 10 20;
-    -fx-cursor: hand;
-}
-
-.tab-pane .tab .tab-label {
-    -fx-text-fill: #94a3b8;
+.wizard-subtitle {
     -fx-font-size: 14px;
+    -fx-text-fill: #64748b;
+    -fx-padding: 4 0 0 0;
 }
 
-.tab-pane .tab:hover {
-    -fx-background-color: #33415540;
+/* 步骤指示器 */
+.wizard-steps {
+    -fx-padding: 24 32 24 32;
+    -fx-background-color: #0a0e1a40;
+    -fx-spacing: 0;
 }
 
-.tab-pane .tab:hover .tab-label {
-    -fx-text-fill: #e2e8f0;
+.wizard-step {
+    -fx-alignment: CENTER;
+    -fx-spacing: 8;
 }
 
-.tab-pane .tab:selected {
-    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #3b82f6, #2563eb);
-    -fx-effect: dropshadow(gaussian, #3b82f640, 8, 0, 0, 0);
+.wizard-step-circle {
+    -fx-min-width: 36;
+    -fx-min-height: 36;
+    -fx-max-width: 36;
+    -fx-max-height: 36;
+    -fx-background-color: #1a1f35;
+    -fx-background-radius: 50;
+    -fx-border-color: #2d3a5a;
+    -fx-border-width: 2;
+    -fx-border-radius: 50;
+    -fx-alignment: CENTER;
 }
 
-.tab-pane .tab:selected .tab-label {
-    -fx-text-fill: white;
+.wizard-step-circle-active {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #00d4ff, #0099cc);
+    -fx-border-color: #00d4ff;
+    -fx-effect: dropshadow(gaussian, #00d4ff60, 12, 0, 0, 0);
+}
+
+.wizard-step-circle-completed {
+    -fx-background-color: #00ff88;
+    -fx-border-color: #00ff88;
+}
+
+.wizard-step-number {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #64748b;
+}
+
+.wizard-step-number-active {
+    -fx-text-fill: #0a0e1a;
+}
+
+.wizard-step-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #64748b;
+    -fx-padding: 8 0 0 0;
+}
+
+.wizard-step-label-active {
+    -fx-text-fill: #00d4ff;
     -fx-font-weight: bold;
 }
 
-.tab-pane .tab-content-area {
-    -fx-background-color: transparent;
-    -fx-padding: 20 0 0 0;
+.wizard-step-line {
+    -fx-background-color: #2d3a5a;
+    -fx-pref-height: 2;
+    -fx-pref-width: 60;
 }
 
-/* 对话框 */
-.dialog-pane {
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #1e293b, #0f172a);
+.wizard-step-line-completed {
+    -fx-background-color: #00ff88;
+}
+
+/* 向导内容区 */
+.wizard-content {
+    -fx-padding: 32;
+    -fx-spacing: 24;
+}
+
+.wizard-section {
+    -fx-background-color: #0a0e1a60;
     -fx-background-radius: 16;
-    -fx-border-color: #334155;
+    -fx-border-color: #2d3a5a;
+    -fx-border-width: 1;
     -fx-border-radius: 16;
-    -fx-effect: dropshadow(gaussian, #00000080, 32, 0, 0, 8);
+    -fx-padding: 24;
+}
+
+.wizard-section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00d4ff;
+    -fx-padding: 0 0 16 0;
+}
+
+.wizard-field-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #94a3b8;
+    -fx-padding: 0 0 8 0;
+}
+
+.wizard-field-hint {
+    -fx-font-size: 11px;
+    -fx-text-fill: #4d5a7a;
+    -fx-padding: 4 0 0 0;
+}
+
+/* 向导底部 */
+.wizard-footer {
+    -fx-background-color: linear-gradient(from 50% 0% to 50% 100%, #0d1224, #0a0e1a);
+    -fx-padding: 20 32 20 32;
+    -fx-border-color: #2d3a5a transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* ==================== 下滑式查看弹窗 ==================== */
+.slide-viewer {
+    -fx-background-color: #0a0e1af0;
+}
+
+.slide-viewer-header {
+    -fx-background-color: linear-gradient(from 50% 100% to 50% 0%, #0a0e1a, transparent);
+    -fx-padding: 20 24 20 24;
+}
+
+.slide-viewer-close {
+    -fx-background-color: #2d3a5a80;
+    -fx-background-radius: 50;
+    -fx-min-width: 40;
+    -fx-min-height: 40;
+    -fx-cursor: hand;
+}
+
+.slide-viewer-close:hover {
+    -fx-background-color: #ff006680;
+}
+
+.slide-viewer-content {
+    -fx-padding: 0 32 32 32;
+}
+
+.slide-viewer-section {
+    -fx-background-color: #0d122480;
+    -fx-background-radius: 20;
+    -fx-border-color: #2d3a5a;
+    -fx-border-width: 1;
+    -fx-border-radius: 20;
+    -fx-padding: 24;
+    -fx-spacing: 16;
+}
+
+.slide-viewer-section-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00d4ff;
+    -fx-padding: 0 0 12 0;
+    -fx-border-color: transparent transparent #2d3a5a transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.slide-viewer-field {
+    -fx-spacing: 4;
+}
+
+.slide-viewer-field-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #64748b;
+}
+
+.slide-viewer-field-value {
+    -fx-font-size: 14px;
+    -fx-text-fill: #e2e8f0;
+}
+
+/* 照片画廊 */
+.photo-gallery {
+    -fx-background-color: #0a0e1a;
+    -fx-background-radius: 16;
+    -fx-padding: 16;
+    -fx-spacing: 12;
+}
+
+.photo-gallery-main {
+    -fx-background-color: #0d1224;
+    -fx-background-radius: 12;
+    -fx-border-color: #2d3a5a;
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-min-height: 300;
+    -fx-alignment: CENTER;
+}
+
+.photo-gallery-main-image {
+    -fx-effect: dropshadow(gaussian, #00d4ff20, 16, 0, 0, 0);
+}
+
+.photo-gallery-thumbnails {
+    -fx-spacing: 8;
+    -fx-padding: 8 0 0 0;
+}
+
+.photo-thumbnail {
+    -fx-background-color: #1a1f35;
+    -fx-background-radius: 8;
+    -fx-border-color: #2d3a5a;
+    -fx-border-width: 2;
+    -fx-border-radius: 8;
+    -fx-min-width: 60;
+    -fx-min-height: 60;
+    -fx-max-width: 60;
+    -fx-max-height: 60;
+    -fx-cursor: hand;
+}
+
+.photo-thumbnail:hover {
+    -fx-border-color: #00d4ff60;
+}
+
+.photo-thumbnail-active {
+    -fx-border-color: #00d4ff;
+    -fx-effect: dropshadow(gaussian, #00d4ff40, 8, 0, 0, 0);
+}
+
+.photo-nav-button {
+    -fx-background-color: #0a0e1a80;
+    -fx-background-radius: 50;
+    -fx-min-width: 48;
+    -fx-min-height: 48;
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 20px;
+    -fx-cursor: hand;
+}
+
+.photo-nav-button:hover {
+    -fx-background-color: #00d4ff40;
+}
+
+.photo-counter {
+    -fx-background-color: #0a0e1acc;
+    -fx-background-radius: 20;
+    -fx-padding: 8 16 8 16;
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 13px;
+}
+
+/* ==================== 风险等级徽章 ==================== */
+.risk-badge {
+    -fx-padding: 6 14 6 14;
+    -fx-background-radius: 20;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}
+
+.risk-badge-extreme {
+    -fx-background-color: #ff006630;
+    -fx-text-fill: #ff6699;
+    -fx-border-color: #ff006650;
+    -fx-border-width: 1;
+    -fx-border-radius: 20;
+}
+
+.risk-badge-high {
+    -fx-background-color: #ff444430;
+    -fx-text-fill: #ff7777;
+    -fx-border-color: #ff444450;
+    -fx-border-width: 1;
+    -fx-border-radius: 20;
+}
+
+.risk-badge-medium {
+    -fx-background-color: #ffaa0030;
+    -fx-text-fill: #ffcc44;
+    -fx-border-color: #ffaa0050;
+    -fx-border-width: 1;
+    -fx-border-radius: 20;
+}
+
+.risk-badge-low {
+    -fx-background-color: #00ff8830;
+    -fx-text-fill: #66ffaa;
+    -fx-border-color: #00ff8850;
+    -fx-border-width: 1;
+    -fx-border-radius: 20;
+}
+
+/* ==================== 工具提示 ==================== */
+.tooltip {
+    -fx-background-color: #1a1f35f0;
+    -fx-background-radius: 8;
+    -fx-border-color: #2d3a5a;
+    -fx-border-radius: 8;
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 12px;
+    -fx-padding: 10 14 10 14;
+    -fx-effect: dropshadow(gaussian, #00000080, 12, 0, 0, 4);
+}
+
+/* ==================== 进度条 ==================== */
+.progress-bar {
+    -fx-pref-height: 6;
+    -fx-background-color: #1a1f35;
+    -fx-background-radius: 3;
+}
+
+.progress-bar .track {
+    -fx-background-color: #1a1f35;
+    -fx-background-radius: 3;
+}
+
+.progress-bar .bar {
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #00d4ff, #00ff88);
+    -fx-background-radius: 3;
+}
+
+/* ==================== 复选框 ==================== */
+.check-box {
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 14px;
+}
+
+.check-box .box {
+    -fx-background-color: #0a0e1a;
+    -fx-background-radius: 6;
+    -fx-border-color: #3d4a6a;
+    -fx-border-width: 2;
+    -fx-border-radius: 6;
+}
+
+.check-box:hover .box {
+    -fx-border-color: #00d4ff;
+}
+
+.check-box:selected .box {
+    -fx-background-color: #00d4ff;
+    -fx-border-color: #00d4ff;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #0a0e1a;
+}
+
+/* ==================== 分隔线 ==================== */
+.separator .line {
+    -fx-border-color: #2d3a5a;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* ==================== 对话框 ==================== */
+.dialog-pane {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #0d1224, #1a1f35);
+    -fx-background-radius: 20;
+    -fx-border-color: #2d3a5a;
+    -fx-border-radius: 20;
+    -fx-effect: dropshadow(gaussian, #000000a0, 40, 0, 0, 12);
 }
 
 .dialog-pane .header-panel {
-    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #1e293b, #0f172a);
-    -fx-background-radius: 16 16 0 0;
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #00d4ff15, transparent);
+    -fx-background-radius: 20 20 0 0;
     -fx-padding: 24;
-    -fx-border-color: transparent transparent #334155 transparent;
+    -fx-border-color: transparent transparent #2d3a5a transparent;
 }
 
 .dialog-pane .header-panel .label {
@@ -541,305 +1034,17 @@
     -fx-padding: 16 24 24 24;
 }
 
-/* 表单样式 */
-.form-dialog {
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #1e293bf0, #0f172af0);
-}
-
-.form-header {
-    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #3b82f620, transparent);
-    -fx-padding: 24 28 24 28;
-    -fx-border-color: transparent transparent #334155 transparent;
-    -fx-border-width: 0 0 1 0;
-}
-
-.form-header-title {
-    -fx-font-size: 22px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #f8fafc;
-}
-
-.form-header-subtitle {
-    -fx-font-size: 13px;
-    -fx-text-fill: #94a3b8;
-}
-
-.form-section {
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #1e293b80, #0f172a80);
-    -fx-background-radius: 16;
-    -fx-border-color: #334155;
-    -fx-border-width: 1;
-    -fx-border-radius: 16;
-    -fx-padding: 24;
-}
-
-.form-section-title {
-    -fx-font-size: 16px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #3b82f6;
-}
-
-.form-label {
-    -fx-font-size: 13px;
-    -fx-font-weight: 600;
-    -fx-text-fill: #94a3b8;
-}
-
-.form-footer {
-    -fx-background-color: linear-gradient(from 50% 0% to 50% 100%, #0f172a, #0f172af0);
-    -fx-padding: 16 28 16 28;
-    -fx-border-color: #334155 transparent transparent transparent;
-    -fx-border-width: 1 0 0 0;
-}
-
-/* 风险等级徽章 */
-.risk-badge {
-    -fx-padding: 4 12 4 12;
-    -fx-background-radius: 20;
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
-    -fx-alignment: CENTER;
-}
-
-.risk-badge-extreme {
-    -fx-background-color: #dc262630;
-    -fx-text-fill: #fca5a5;
-    -fx-border-color: #dc262650;
-    -fx-border-width: 1;
-    -fx-border-radius: 20;
-}
-
-.risk-badge-high {
-    -fx-background-color: #ef444430;
-    -fx-text-fill: #fca5a5;
-    -fx-border-color: #ef444450;
-    -fx-border-width: 1;
-    -fx-border-radius: 20;
-}
-
-.risk-badge-medium {
-    -fx-background-color: #f59e0b30;
-    -fx-text-fill: #fcd34d;
-    -fx-border-color: #f59e0b50;
-    -fx-border-width: 1;
-    -fx-border-radius: 20;
-}
-
-.risk-badge-low {
-    -fx-background-color: #10b98130;
-    -fx-text-fill: #6ee7b7;
-    -fx-border-color: #10b98150;
-    -fx-border-width: 1;
-    -fx-border-radius: 20;
-}
-
-/* 风险卡片选择器 */
-.risk-card {
-    -fx-background-color: #1e293b;
-    -fx-background-radius: 12;
-    -fx-border-width: 2;
-    -fx-border-radius: 12;
-    -fx-padding: 16 24 16 24;
-    -fx-cursor: hand;
-    -fx-min-width: 100;
-}
-
-.risk-card:hover {
-    -fx-scale-x: 1.05;
-    -fx-scale-y: 1.05;
-}
-
-.risk-card-low {
-    -fx-border-color: #10b98150;
-    -fx-background-color: linear-gradient(from 50% 0% to 50% 100%, #0f2f2480, #1e293b);
-}
-
-.risk-card-low.selected {
-    -fx-border-color: #10b981;
-    -fx-effect: dropshadow(gaussian, #10b98160, 16, 0, 0, 0);
-}
-
-.risk-card-medium {
-    -fx-border-color: #f59e0b50;
-    -fx-background-color: linear-gradient(from 50% 0% to 50% 100%, #3f2d0f80, #1e293b);
-}
-
-.risk-card-medium.selected {
-    -fx-border-color: #f59e0b;
-    -fx-effect: dropshadow(gaussian, #f59e0b60, 16, 0, 0, 0);
-}
-
-.risk-card-high {
-    -fx-border-color: #ef444450;
-    -fx-background-color: linear-gradient(from 50% 0% to 50% 100%, #3f1d1d80, #1e293b);
-}
-
-.risk-card-high.selected {
-    -fx-border-color: #ef4444;
-    -fx-effect: dropshadow(gaussian, #ef444460, 16, 0, 0, 0);
-}
-
-.risk-card-extreme {
-    -fx-border-color: #dc262650;
-    -fx-background-color: linear-gradient(from 50% 0% to 50% 100%, #4a111180, #1e293b);
-}
-
-.risk-card-extreme.selected {
-    -fx-border-color: #dc2626;
-    -fx-effect: dropshadow(gaussian, #dc262660, 16, 0, 0, 0);
-}
-
-/* Tooltip */
-.tooltip {
-    -fx-background-color: #1e293bf0;
-    -fx-background-radius: 8;
-    -fx-border-color: #334155;
-    -fx-border-radius: 8;
-    -fx-text-fill: #e2e8f0;
-    -fx-font-size: 12px;
-    -fx-padding: 8 12 8 12;
-    -fx-effect: dropshadow(gaussian, #00000060, 8, 0, 0, 4);
-}
-
-/* 进度条 */
-.progress-bar {
-    -fx-pref-height: 8;
-    -fx-background-color: #1e293b;
-    -fx-background-radius: 4;
-}
-
-.progress-bar .track {
-    -fx-background-color: #1e293b;
-    -fx-background-radius: 4;
-}
-
-.progress-bar .bar {
-    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #3b82f6, #8b5cf6);
-    -fx-background-radius: 4;
-}
-
-/* 复选框 */
-.check-box {
-    -fx-text-fill: #e2e8f0;
-    -fx-font-size: 14px;
-}
-
-.check-box .box {
-    -fx-background-color: #0f172a;
-    -fx-background-radius: 6;
-    -fx-border-color: #475569;
-    -fx-border-width: 2;
-    -fx-border-radius: 6;
-}
-
-.check-box:hover .box {
-    -fx-border-color: #3b82f6;
-}
-
-.check-box:selected .box {
-    -fx-background-color: #3b82f6;
-    -fx-border-color: #3b82f6;
-}
-
-.check-box:selected .mark {
-    -fx-background-color: white;
-}
-
-/* Spinner */
-.spinner {
-    -fx-background-color: #0f172a;
-    -fx-background-radius: 10;
-    -fx-border-color: #334155;
-    -fx-border-width: 1.5;
-    -fx-border-radius: 10;
-}
-
-.spinner:hover {
-    -fx-border-color: #475569;
-}
-
-.spinner:focused {
-    -fx-border-color: #3b82f6;
-}
-
-.spinner .text-field {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-padding: 8 12 8 12;
-    -fx-text-fill: #f8fafc;
-    -fx-font-size: 14px;
-    -fx-font-weight: 600;
-}
-
-.spinner .increment-arrow-button, .spinner .decrement-arrow-button {
-    -fx-background-color: #1e293b;
-    -fx-background-radius: 0 8 8 0;
-    -fx-padding: 8;
-    -fx-cursor: hand;
-}
-
-.spinner .increment-arrow-button:hover, .spinner .decrement-arrow-button:hover {
-    -fx-background-color: #334155;
-}
-
-.spinner .increment-arrow, .spinner .decrement-arrow {
-    -fx-background-color: #94a3b8;
-}
-
-/* 分隔线 */
-.separator .line {
-    -fx-border-color: #334155;
-    -fx-border-width: 1 0 0 0;
-}
-
-/* 搜索栏 */
+/* ==================== 搜索栏 ==================== */
 .search-bar {
-    -fx-background-color: #1e293b;
+    -fx-background-color: #0d1224;
     -fx-background-radius: 12;
     -fx-padding: 16;
     -fx-spacing: 16;
-    -fx-border-color: #334155;
+    -fx-border-color: #2d3a5a;
     -fx-border-radius: 12;
 }
 
-/* 分页 */
-.pagination-bar {
-    -fx-background-color: transparent;
-    -fx-padding: 16 0 0 0;
-    -fx-alignment: CENTER;
-    -fx-spacing: 8;
-}
-
-/* 图表 */
-.chart {
-    -fx-background-color: transparent;
-}
-
-.chart-plot-background {
-    -fx-background-color: transparent;
-}
-
-.chart-vertical-grid-lines, .chart-horizontal-grid-lines {
-    -fx-stroke: #33415540;
-}
-
-.chart-legend {
-    -fx-background-color: transparent;
-}
-
-.chart-legend-item {
-    -fx-text-fill: #94a3b8;
-}
-
-.axis {
-    -fx-tick-label-fill: #94a3b8;
-}
-
-.axis-label {
-    -fx-text-fill: #94a3b8;
-}
-
-/* 工具类 */
+/* ==================== 工具类 ==================== */
 .text-xs { -fx-font-size: 11px; }
 .text-sm { -fx-font-size: 12px; }
 .text-base { -fx-font-size: 14px; }
@@ -847,14 +1052,19 @@
 .text-xl { -fx-font-size: 18px; }
 .text-2xl { -fx-font-size: 22px; }
 .text-3xl { -fx-font-size: 28px; }
+.text-4xl { -fx-font-size: 36px; }
 
 .font-bold { -fx-font-weight: bold; }
 .font-semibold { -fx-font-weight: 600; }
 
 .text-primary { -fx-text-fill: #f8fafc; }
-.text-secondary { -fx-text-fill: #cbd5e1; }
-.text-muted { -fx-text-fill: #64748b; }
-.text-accent { -fx-text-fill: #3b82f6; }
-.text-success { -fx-text-fill: #10b981; }
-.text-warning { -fx-text-fill: #f59e0b; }
-.text-danger { -fx-text-fill: #ef4444; }
+.text-secondary { -fx-text-fill: #94a3b8; }
+.text-muted { -fx-text-fill: #4d5a7a; }
+.text-accent { -fx-text-fill: #00d4ff; }
+.text-success { -fx-text-fill: #00ff88; }
+.text-warning { -fx-text-fill: #ffaa00; }
+.text-danger { -fx-text-fill: #ff0066; }
+
+.bg-transparent { -fx-background-color: transparent; }
+.cursor-pointer { -fx-cursor: hand; }
+
