@@ -645,6 +645,8 @@
     -fx-background-color: transparent;
     -fx-text-fill: #f8fafc;
     -fx-prompt-text-fill: #64748b;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
 }
 
 .spinner .increment-arrow-button,
@@ -1303,27 +1305,6 @@
 
 .check-box:selected .mark {
     -fx-background-color: white;
-}
-
-/* Spinner样式 */
-.spinner {
-    -fx-background-color: #334155;
-    -fx-background-radius: 5;
-}
-
-.spinner .text-field {
-    -fx-background-color: transparent;
-    -fx-text-fill: #f1f5f9;
-}
-
-.spinner .increment-arrow-button,
-.spinner .decrement-arrow-button {
-    -fx-background-color: #475569;
-}
-
-.spinner .increment-arrow-button:hover,
-.spinner .decrement-arrow-button:hover {
-    -fx-background-color: #64748b;
 }
 
 /* 分隔线 */

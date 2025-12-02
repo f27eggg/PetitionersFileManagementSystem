@@ -75,14 +75,6 @@
         </columnConstraints>
     </GridPane>
 
-    <!-- 快速操作区域 -->
-    <HBox spacing="15.0" alignment="CENTER_LEFT">
-        <Button text="➕ 新增人员" styleClass="primary-button" onAction="#addPetitioner"/>
-        <Button text="📥 导入数据" styleClass="secondary-button" onAction="#importData"/>
-        <Button text="📤 导出数据" styleClass="secondary-button" onAction="#exportData"/>
-        <Button text="🔄 刷新数据" styleClass="secondary-button" onAction="#refreshData"/>
-    </HBox>
-
     <!-- 图表区域 -->
     <HBox spacing="20.0" VBox.vgrow="ALWAYS">
         <!-- 危险等级分布饼图 -->

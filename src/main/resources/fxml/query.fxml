@@ -7,9 +7,9 @@
 <VBox xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.petition.controller.QueryController"
-      spacing="15.0" styleClass="page-container">
+      spacing="10.0" styleClass="page-container">
     <padding>
-        <Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/>
+        <Insets top="20.0" right="30.0" bottom="30.0" left="30.0"/>
     </padding>
 
     <!-- 页面标题区域 -->
@@ -20,14 +20,14 @@
     </HBox>
 
     <!-- 查询条件卡片 -->
-    <VBox spacing="12.0" styleClass="search-bar">
+    <VBox spacing="8.0" styleClass="search-bar">
         <padding>
-            <Insets top="15.0" right="20.0" bottom="15.0" left="20.0"/>
+            <Insets top="12.0" right="18.0" bottom="12.0" left="18.0"/>
         </padding>
 
         <!-- 查询字段 -->
-        <VBox spacing="10.0">
-            <GridPane hgap="15.0" vgap="10.0">
+        <VBox spacing="8.0">
+            <GridPane hgap="12.0" vgap="8.0">
                 <columnConstraints>
                     <ColumnConstraints hgrow="SOMETIMES" percentWidth="33.33"/>
                     <ColumnConstraints hgrow="SOMETIMES" percentWidth="33.33"/>
@@ -35,56 +35,56 @@
                 </columnConstraints>
 
                 <!-- 第一行 -->
-                <VBox spacing="4.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <VBox spacing="3.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
                     <Label text="姓名" styleClass="query-label"/>
                     <TextField fx:id="nameField" promptText="请输入姓名" styleClass="text-field"/>
                 </VBox>
 
-                <VBox spacing="4.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <VBox spacing="3.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
                     <Label text="身份证号" styleClass="query-label"/>
                     <TextField fx:id="idCardField" promptText="请输入身份证号" styleClass="text-field"/>
                 </VBox>
 
-                <VBox spacing="4.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                <VBox spacing="3.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
                     <Label text="籍贯" styleClass="query-label"/>
                     <TextField fx:id="nativePlaceField" promptText="请输入籍贯" styleClass="text-field"/>
                 </VBox>
 
                 <!-- 第二行 -->
-                <VBox spacing="4.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <VBox spacing="3.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
                     <Label text="性别" styleClass="query-label"/>
                     <ComboBox fx:id="genderCombo" maxWidth="Infinity" styleClass="combo-box"/>
                 </VBox>
 
-                <VBox spacing="4.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <VBox spacing="3.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <Label text="文化程度" styleClass="query-label"/>
                     <ComboBox fx:id="educationCombo" maxWidth="Infinity" styleClass="combo-box"/>
                 </VBox>
 
-                <VBox spacing="4.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                <VBox spacing="3.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                     <Label text="婚姻状况" styleClass="query-label"/>
                     <ComboBox fx:id="maritalStatusCombo" maxWidth="Infinity" styleClass="combo-box"/>
                 </VBox>
 
                 <!-- 第三行 -->
-                <VBox spacing="4.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                <VBox spacing="3.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
                     <Label text="危险等级" styleClass="query-label"/>
                     <ComboBox fx:id="riskLevelCombo" maxWidth="Infinity" styleClass="combo-box"/>
                 </VBox>
 
-                <VBox spacing="4.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <VBox spacing="3.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <Label text="进京方式" styleClass="query-label"/>
                     <ComboBox fx:id="entryMethodCombo" maxWidth="Infinity" styleClass="combo-box"/>
                 </VBox>
 
-                <VBox spacing="4.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                    <HBox alignment="BOTTOM_LEFT" spacing="8.0">
-                        <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                <VBox spacing="3.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                    <HBox alignment="BOTTOM_LEFT" spacing="6.0">
+                        <VBox spacing="3.0" HBox.hgrow="ALWAYS">
                             <Label text="上访次数范围" styleClass="query-label"/>
-                            <HBox spacing="6.0" alignment="CENTER_LEFT">
-                                <Spinner fx:id="minVisitSpinner" prefWidth="70" maxWidth="70" styleClass="spinner"/>
+                            <HBox spacing="5.0" alignment="CENTER_LEFT">
+                                <Spinner fx:id="minVisitSpinner" prefWidth="65" maxWidth="65" styleClass="spinner"/>
                                 <Label text="-" styleClass="query-label"/>
-                                <Spinner fx:id="maxVisitSpinner" prefWidth="70" maxWidth="70" styleClass="spinner"/>
+                                <Spinner fx:id="maxVisitSpinner" prefWidth="65" maxWidth="65" styleClass="spinner"/>
                                 <Label text="次" styleClass="query-label"/>
                             </HBox>
                         </VBox>
@@ -94,18 +94,18 @@
         </VBox>
 
         <!-- 操作按钮区域 -->
-        <HBox spacing="12.0" alignment="CENTER_RIGHT">
+        <HBox spacing="10.0" alignment="CENTER_RIGHT">
             <Button fx:id="resetButton" text="重置条件" styleClass="secondary-button" onAction="#handleReset"
-                    style="-fx-min-width: 100px; -fx-padding: 8 20;"/>
+                    style="-fx-min-width: 95px; -fx-padding: 7 18;"/>
             <Button fx:id="searchButton" text="开始查询" styleClass="primary-button" onAction="#handleSearch"
-                    style="-fx-min-width: 100px; -fx-padding: 8 20;"/>
+                    style="-fx-min-width: 95px; -fx-padding: 7 18;"/>
             <Button fx:id="exportButton" text="导出结果" styleClass="success-button" onAction="#handleExport"
-                    style="-fx-min-width: 100px; -fx-padding: 8 20;"/>
+                    style="-fx-min-width: 95px; -fx-padding: 7 18;"/>
         </HBox>
     </VBox>
 
     <!-- 查询结果区域 -->
-    <VBox VBox.vgrow="ALWAYS" spacing="10.0">
+    <VBox VBox.vgrow="ALWAYS" spacing="8.0">
         <!-- 结果表格 -->
         <TableView fx:id="resultTable" VBox.vgrow="ALWAYS" styleClass="table-view">
             <columns>

@@ -353,16 +353,21 @@ public class QueryController implements Initializable {
         }
 
         // 上访次数范围匹配
-        int minCount = minVisitSpinner.getValue();
-        int maxCount = maxVisitSpinner.getValue();
-        if (petitioner.getPersonalInfo() != null &&
-            petitioner.getPersonalInfo().getVisitCount() != null) {
-            int count = petitioner.getPersonalInfo().getVisitCount();
-            if (count < minCount || count > maxCount) {
+        Integer minCount = minVisitSpinner.getValue();
+        Integer maxCount = maxVisitSpinner.getValue();
+
+        // 如果设置了范围条件(不是默认的0-100)
+        if (minCount != null && maxCount != null && !(minCount == 0 && maxCount == 100)) {
+            if (petitioner.getPersonalInfo() != null &&
+                petitioner.getPersonalInfo().getVisitCount() != null) {
+                int count = petitioner.getPersonalInfo().getVisitCount();
+                if (count < minCount || count > maxCount) {
+                    return false;
+                }
+            } else {
+                // 如果没有上访次数数据,且设置了非默认范围,则不匹配
                 return false;
             }
-        } else if (minCount > 0) {
-            return false;
         }
 
         return true;
